@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KVANT_Scada"
         mc:Ignorable="d"
-        Title="DanaEng D-1000" Height="768" Width="1024" Background="#FF95A8FF">
+        Title="DanaEng D-1000" Height="768" Width="1024" Background="#FF95A8FF" WindowState="Maximized">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="73" Margin="10,654,0,0" VerticalAlignment="Top" Width="996"/>
         <Grid HorizontalAlignment="Left" Height="586" Margin="10,63,0,0" VerticalAlignment="Top" Width="996">
-            <Image x:Name="Tech_cam" HorizontalAlignment="Left" Height="288" Margin="382,242,0,0" VerticalAlignment="Top" Width="278" Source="Вакуумная камера.png"/>
-            <Image HorizontalAlignment="Left" Height="40" Margin="464,207,0,0" VerticalAlignment="Top" Width="300" Source="Затвор шиберный.png"/>
-            <Image x:Name="Crio_pump" HorizontalAlignment="Left" Height="192" Margin="430,15,0,0" VerticalAlignment="Top" Width="188" Source="Криогенный насос CryoTorr10.png"/>
-            <Image HorizontalAlignment="Left" Height="127" Margin="216,97,0,0" VerticalAlignment="Top" Width="146" Source="Форвакуумный насос (Мнемосхема).png"/>
+            <Image x:Name="Tech_cam" HorizontalAlignment="Left" Height="288" Margin="382,242,0,0" VerticalAlignment="Top" Width="278" Source="Tech_cam.png"/>
+            <Image HorizontalAlignment="Left" Height="37" Margin="470,212,0,0" VerticalAlignment="Top" Width="230" Source="Затвор шиберный.png"/>
+            <Image x:Name="Crio_pump" HorizontalAlignment="Left" Height="148" Margin="448,68,0,0" VerticalAlignment="Top" Width="114" Source="Криогенный насос CryoTorr10.png" MouseLeftButtonUp="Crio_pump_MouseLeftButtonUp"/>
+            <Image HorizontalAlignment="Left" Height="127" Margin="86,187,0,0" VerticalAlignment="Top" Width="146" Source="Форвакуумный насос (Мнемосхема).png"/>
             <Image x:Name="Circle" HorizontalAlignment="Left" Height="93" Margin="474,324,0,0" VerticalAlignment="Top" Width="92" Source="Карусель.png" RenderTransformOrigin="0.505,0.441"/>
             <Image x:Name="ELI" HorizontalAlignment="Left" Height="80" Margin="571,356,0,0" VerticalAlignment="Top" Width="53" Source="Тигель.png"/>
             <Image x:Name="Ion" HorizontalAlignment="Left" Height="45" Margin="415,391,0,0" VerticalAlignment="Top" Width="59" Source="ИИ.png"/>
@@ -25,7 +25,7 @@
                 <TextBox x:Name="Main_pressure" HorizontalAlignment="Left" Height="21" Margin="117,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="96" Grid.ColumnSpan="2"/>
                 <Label x:Name="Main_press_label" Content="Давление в камере" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top"/>
             </Grid>
-            <Grid x:Name="Crio_Grid" HorizontalAlignment="Left" Height="84" Margin="571,90,0,0" VerticalAlignment="Top" Width="249">
+            <Grid x:Name="Crio_Grid" HorizontalAlignment="Left" Height="84" Margin="553,123,0,0" VerticalAlignment="Top" Width="249">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="127*"/>
                     <ColumnDefinition Width="90*"/>
@@ -35,6 +35,54 @@
                 <Label x:Name="Crio_temp" Content="Температура Крионасоса" HorizontalAlignment="Left" Margin="0,32,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="152"/>
                 <TextBox x:Name="Crio_temperature" HorizontalAlignment="Left" Height="21" Margin="6,36,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="90" Grid.Column="1"/>
             </Grid>
+            <Image x:Name="FVV_B"  HorizontalAlignment="Left" Height="55" Margin="294,394,0,0" VerticalAlignment="Top" Width="36" Source="Клапан_XMA-40-M9.png" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-89.783"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="FVV_S"  HorizontalAlignment="Left" Height="55" Margin="294,340,0,0" VerticalAlignment="Top" Width="36" Source="Клапан_XMA-40-M9.png" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="FVV_S_MouseLeftButtonDown">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1" ScaleX="1"/>
+                        <SkewTransform AngleY="0" AngleX="0"/>
+                        <RotateTransform Angle="89.783"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="CPV"  HorizontalAlignment="Left" Height="55" Margin="361,154,0,0" VerticalAlignment="Top" Width="36" Source="Клапан_XMA-40-M9.png" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="CPV_MouseLeftButtonDown">
+                <Image.LayoutTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.LayoutTransform>
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-89.783"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="BAV_3"  HorizontalAlignment="Left" Height="55" Margin="672,366,0,0" VerticalAlignment="Top" Width="36" Source="Клапан_XMA-40-M9.png" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="BAV_3_MouseLeftButtonDown">
+                <Image.LayoutTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.LayoutTransform>
+            </Image>
         </Grid>
 
     </Grid>

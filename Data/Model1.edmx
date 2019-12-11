@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище kvantValve" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="valves">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="DB" Type="int" Nullable="false" />
+          <Property Name="DBB" Type="int" Nullable="false" />
+          <Property Name="Opened" Type="bool" />
+          <Property Name="Closed" Type="bool" />
+          <Property Name="Opening" Type="bool" />
+          <Property Name="Closing" Type="bool" />
+          <Property Name="Blocked" Type="bool" />
+          <Property Name="Serviced" Type="bool" />
+        </EntityType>
+        <EntityContainer Name="Хранилище kvantValveContainer">
+          <EntitySet Name="valves" EntityType="Self.valves" Schema="kvant" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kvantValve" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="valves">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DB" Type="Int32" Nullable="false" />
+          <Property Name="DBB" Type="Int32" Nullable="false" />
+          <Property Name="Opened" Type="Boolean" />
+          <Property Name="Closed" Type="Boolean" />
+          <Property Name="Opening" Type="Boolean" />
+          <Property Name="Closing" Type="Boolean" />
+          <Property Name="Blocked" Type="Boolean" />
+          <Property Name="Serviced" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="eValves" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="valves" EntityType="Self.valves" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище kvantValveContainer" CdmEntityContainer="eValves">
+          <EntitySetMapping Name="valves">
+            <EntityTypeMapping TypeName="kvantValve.valves">
+              <MappingFragment StoreEntitySet="valves">
+                <ScalarProperty Name="Serviced" ColumnName="Serviced" />
+                <ScalarProperty Name="Blocked" ColumnName="Blocked" />
+                <ScalarProperty Name="Closing" ColumnName="Closing" />
+                <ScalarProperty Name="Opening" ColumnName="Opening" />
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
+                <ScalarProperty Name="Opened" ColumnName="Opened" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="DB" ColumnName="DB" />
+                <ScalarProperty Name="DBB" ColumnName="DBB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

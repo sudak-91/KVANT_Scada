@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище kvantModel" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="command_bit">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+            <PropertyRef Name="DBX" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="DB" Type="int" Nullable="false" />
+          <Property Name="DBB" Type="int" Nullable="false" />
+          <Property Name="DBX" Type="int" Nullable="false" />
+          <Property Name="Value" Type="bool" />
+        </EntityType>
+        <EntityType Name="real">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="DB" Type="int" Nullable="false" />
+          <Property Name="DBB" Type="int" Nullable="false" />
+          <Property Name="Value" Type="double" />
+        </EntityType>
+        <EntityType Name="valves">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="DB" Type="int" Nullable="false" />
+          <Property Name="DBB" Type="int" Nullable="false" />
+          <Property Name="Opened" Type="bool" />
+          <Property Name="Closed" Type="bool" />
+          <Property Name="Opening" Type="bool" />
+          <Property Name="Closing" Type="bool" />
+          <Property Name="Blocked" Type="bool" />
+          <Property Name="Serviced" Type="bool" />
+        </EntityType>
+        <EntityContainer Name="Хранилище kvantModelContainer">
+          <EntitySet Name="command_bit" EntityType="Self.command_bit" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="real" EntityType="Self.real" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="valves" EntityType="Self.valves" Schema="kvant" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kvantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="real">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DB" Type="Int32" Nullable="false" />
+          <Property Name="DBB" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Double" />
+        </EntityType>
+        <EntityContainer Name="Real_Tag_Entitys" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="real" EntityType="Self.real" />
+          <EntitySet Name="valves" EntityType="kvantModel.valves" />
+          <EntitySet Name="command_bit" EntityType="kvantModel.command_bit" />
+        </EntityContainer>
+        <EntityType Name="valves">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="DB" Type="Int32" Nullable="false" />
+          <Property Name="DBB" Type="Int32" Nullable="false" />
+          <Property Name="Opened" Type="Boolean" />
+          <Property Name="Closed" Type="Boolean" />
+          <Property Name="Opening" Type="Boolean" />
+          <Property Name="Closing" Type="Boolean" />
+          <Property Name="Blocked" Type="Boolean" />
+          <Property Name="Serviced" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="command_bit">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+            <PropertyRef Name="DBX" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="DB" Type="Int32" Nullable="false" />
+          <Property Name="DBB" Type="Int32" Nullable="false" />
+          <Property Name="DBX" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище kvantModelContainer" CdmEntityContainer="Real_Tag_Entitys">
+          <EntitySetMapping Name="real">
+            <EntityTypeMapping TypeName="kvantModel.real">
+              <MappingFragment StoreEntitySet="real">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="DB" ColumnName="DB" />
+                <ScalarProperty Name="DBB" ColumnName="DBB" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="valves">
+            <EntityTypeMapping TypeName="kvantModel.valves">
+              <MappingFragment StoreEntitySet="valves">
+                <ScalarProperty Name="Serviced" ColumnName="Serviced" />
+                <ScalarProperty Name="Blocked" ColumnName="Blocked" />
+                <ScalarProperty Name="Closing" ColumnName="Closing" />
+                <ScalarProperty Name="Opening" ColumnName="Opening" />
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
+                <ScalarProperty Name="Opened" ColumnName="Opened" />
+                <ScalarProperty Name="DBB" ColumnName="DBB" />
+                <ScalarProperty Name="DB" ColumnName="DB" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="command_bit">
+            <EntityTypeMapping TypeName="kvantModel.command_bit">
+              <MappingFragment StoreEntitySet="command_bit">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="DBX" ColumnName="DBX" />
+                <ScalarProperty Name="DBB" ColumnName="DBB" />
+                <ScalarProperty Name="DB" ColumnName="DB" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

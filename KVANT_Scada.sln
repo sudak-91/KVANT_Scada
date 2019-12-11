@@ -5,16 +5,42 @@ VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KVANT_Scada", "KVANT_Scada.csproj", "{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDT_DLL", "..\UDT_DLL\UDT_DLL.csproj", "{5DD27757-89CD-40AC-B74F-A2716F0068AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		test|Any CPU = test|Any CPU
+		test|x64 = test|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}.Debug|x64.ActiveCfg = Debug|x64
+		{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}.Debug|x64.Build.0 = Debug|x64
 		{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}.Release|x64.ActiveCfg = Release|x64
+		{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}.Release|x64.Build.0 = Release|x64
+		{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}.test|Any CPU.ActiveCfg = test|Any CPU
+		{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}.test|Any CPU.Build.0 = test|Any CPU
+		{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}.test|x64.ActiveCfg = test|x64
+		{D91D651E-A9C3-436B-BDC1-0B5EE11E7720}.test|x64.Build.0 = test|x64
+		{5DD27757-89CD-40AC-B74F-A2716F0068AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD27757-89CD-40AC-B74F-A2716F0068AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD27757-89CD-40AC-B74F-A2716F0068AD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5DD27757-89CD-40AC-B74F-A2716F0068AD}.Debug|x64.Build.0 = Debug|Any CPU
+		{5DD27757-89CD-40AC-B74F-A2716F0068AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD27757-89CD-40AC-B74F-A2716F0068AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD27757-89CD-40AC-B74F-A2716F0068AD}.Release|x64.ActiveCfg = Release|Any CPU
+		{5DD27757-89CD-40AC-B74F-A2716F0068AD}.Release|x64.Build.0 = Release|Any CPU
+		{5DD27757-89CD-40AC-B74F-A2716F0068AD}.test|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD27757-89CD-40AC-B74F-A2716F0068AD}.test|Any CPU.Build.0 = Release|Any CPU
+		{5DD27757-89CD-40AC-B74F-A2716F0068AD}.test|x64.ActiveCfg = Release|Any CPU
+		{5DD27757-89CD-40AC-B74F-A2716F0068AD}.test|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

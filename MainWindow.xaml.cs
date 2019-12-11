@@ -1,23 +1,11 @@
-﻿using KVANT_Scada.Config;
+﻿using KVANT_Scada.Data;
 using KVANT_Scada.UDT;
 using S7.Net;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
+using UDT_DLL;
+
 
 
 namespace KVANT_Scada
@@ -28,21 +16,31 @@ namespace KVANT_Scada
     /// '
 
     /// 
-   
+
     public partial class MainWindow : Window
     {
+       
         private Plc plc;
         private Installing_Tags Tags;
+        private Real_Tag_Entitys real_Tag_Entitys;
+        private GUI.SHV wSHV;
+        private GUI.BAV_3 wBAV_3;
+        private GUI.CPV wCPV;
+        private GUI.FVV_S wFVV_S;
         public MainWindow()
         {
+            this.Topmost = true;
             InitializeComponent();
+            real_Tag_Entitys = new Real_Tag_Entitys();
+           
             plc = new Plc (CpuType.S71500, "192.168.1.122", 0, 1);
             plc.Open();
             if (plc.IsConnected)
             {
-                Tags = new Installing_Tags(plc);
+                Tags = new Installing_Tags(plc, real_Tag_Entitys);
                 
             }
+            
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Interval = new System.TimeSpan(0,0,1);
             dispatcherTimer.Tick += new EventHandler(Count);
@@ -65,6 +63,34 @@ namespace KVANT_Scada
 
 
 
+
+        }
+
+        private void Crio_pump_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            wSHV = new GUI.SHV(Tags);
+            wSHV.ShowDialog();
+            
+        }
+
+        private void BAV_3_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            wBAV_3 = new GUI.BAV_3(Tags);
+            wBAV_3.ShowDialog();
+
+        }
+
+        private void CPV_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            wCPV = new GUI.CPV(Tags);
+            wCPV.ShowDialog();
+
+        }
+
+        private void FVV_S_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            wFVV_S = new GUI.FVV_S(Tags);
+            wFVV_S.ShowDialog();
 
         }
     }
