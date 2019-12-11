@@ -39,8 +39,23 @@ namespace KVANT_Scada.UDT
         private udtCommandBit CPVAutoModeSwitchOn;
         private udtCommandBit CPVServiceModeSwitchOn;
         private udtCommandBit CPVOpen;
+        private udtCommandBit CrioAutoModeSwitchOn;
+        private udtCommandBit CrioManStart;
+        private udtCommandBit FvpAutoModeSwitchOn;
+        private udtCommandBit FvpRemoteSwitchOn;
+        private udtCommandBit FvpManualStart;
 
 
+        #endregion
+        #region Crio
+        private udtCrio Crio;
+        #endregion
+        #region FVP
+        private udtFVP FVP;
+        #endregion
+
+        #region udtProcess
+        private udtProcess Tech_Cam;
         #endregion
     }
 }

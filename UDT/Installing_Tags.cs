@@ -26,7 +26,7 @@ namespace KVANT_Scada.UDT
             CPV = new udtValve(plc, 7, 16, real_Tag_Entitys, "CPV");
             BAV_3 = new udtValve(plc, 7, 22, real_Tag_Entitys, "BAV_3");
             #endregion
-            #region
+            #region CommandBit
             ShvAutoModeSwitchOn = new udtCommandBit(plc, 7, 24, 1, real_Tag_Entitys, "SHV_automode_witch_on");
             ShvServiceModeSwitchOn = new udtCommandBit(plc, 7, 24, 0, real_Tag_Entitys, "SHV_servicemode_switch_on");
             ShvOpen = new udtCommandBit(plc, 7, 24, 2, real_Tag_Entitys, "SHV_open");
@@ -46,13 +46,38 @@ namespace KVANT_Scada.UDT
             CPVAutoModeSwitchOn = new udtCommandBit(plc, 7, 12, 1, real_Tag_Entitys, "CPV_automode_witch_on");
             CPVServiceModeSwitchOn = new udtCommandBit(plc, 7, 12, 0, real_Tag_Entitys, "CPV_servicemode_switch_on");
             CPVOpen = new udtCommandBit(plc, 7, 12, 2, real_Tag_Entitys, "CPV_open");
+            CrioAutoModeSwitchOn = new udtCommandBit(plc, 8, 0, 0, real_Tag_Entitys, "Crio_Auto_Mode_Switch_On");
+            CrioManStart = new udtCommandBit(plc, 8, 0, 1, real_Tag_Entitys, "Crio_Manual_Start");
+
+            FvpAutoModeSwitchOn = new udtCommandBit(plc, 22, 0, 1, real_Tag_Entitys, "FVP_Auto_Mode_Switch_On");
+            FvpRemoteSwitchOn = new udtCommandBit(plc, 22, 0, 0, real_Tag_Entitys, "FVP_Remote_Switch_on");
+            FvpManualStart = new udtCommandBit(plc, 22, 0, 3, real_Tag_Entitys, "FVP_Manual_Start");
 
 
 
 
 
             #endregion
+            Crio = new udtCrio(plc, 8, 4, real_Tag_Entitys, "Crio");
+            FVP = new udtFVP(plc, 22, 0, real_Tag_Entitys, "FVP");
+            Tech_Cam = new udtProcess(plc, 24, 0, real_Tag_Entitys, "Tech_Cam");
         }
+
+        public void Update_Read()
+        {
+
+            Cam_pressure.Read_type();
+            FV_presure.Read_type();
+            Crio_pressure.Read_type();
+            Crio_temperature.Read_type();
+            SHV.Read_type();
+            Crio.Read_type();
+            FVP.Read_type();
+
+
+        }
+
+
         public double get_cam_pressure ()
         {
             return this.Cam_pressure.value;
@@ -86,17 +111,7 @@ namespace KVANT_Scada.UDT
         {
             return this.SHV.bServiced;
         }
-        public  void Update_Read()
-        {
 
-            Cam_pressure.Read_type();      
-            FV_presure.Read_type();
-            Crio_pressure.Read_type();
-            Crio_temperature.Read_type();
-            SHV.Read_type();
-
-
-        }
          public void SHV_auto_mode_on(bool value)
         {
             this.ShvAutoModeSwitchOn.Write(value);
@@ -258,6 +273,89 @@ namespace KVANT_Scada.UDT
         }
 
         #endregion
+
+        #region CRIO
+        public bool get_Crio_Power_On()
+        {
+            return this.Crio.bPowerOn;
+        }
+        public bool get_Crio_Turn_on()
+        {
+            return this.Crio.bTurnOn;
+
+        }
+        public bool get_Crio_AutoMode()
+        {
+            return this.Crio.bAutoMode;
+
+        }
+        public bool get_Crio_Blocked()
+        {
+            return this.Crio.bBlocked;
+        }
+        public bool get_Crio_Error()
+        {
+            return this.Crio.bError;
+        }
+        public void Crio_auto_mode_on(bool value)
+        {
+            this.CrioAutoModeSwitchOn.Write(value);
+        }
+        public void Crio_manual_start(bool value)
+        {
+            this.CrioManStart.Write(value);
+        }
+
+        #endregion
+
+        #region FVP
+        /*
+         
+       
+
+       
+               private udtCommandBit FvpAutoModeSwitchOn;
+        private udtCommandBit FvpRemoteSwitchOn;
+        private udtCommandBit FvpManualStart;
+         */
+         public bool get_FVP_Remote()
+        {
+            return this.FVP.bRemote;
+        }
+        public bool get_FVP_AutoMode()
+        {
+            return this.FVP.bAutoMode;
+        }
+        public bool get_FVP_Power_On()
+        {
+            return this.FVP.bPowerOn;
+        }
+        public bool get_FVP_Turn_On()
+        {
+            return this.FVP.bTurnOn;
+        }
+        public bool get_FVP_Block()
+        {
+            return this.FVP.bBlock;
+        }
+        public void FVP_Auto_mode(bool value)
+        {
+            this.FvpAutoModeSwitchOn.Write(value);
+        }
+        public void FVP_remote(bool value)
+        {
+            this.FvpRemoteSwitchOn.Write(value);
+        }
+        public void FVP_Manual_Start(bool value)
+        {
+            this.FvpManualStart.Write(value);
+        }
+
+        #endregion
+        public void Tech_Cam_PRocess(uint value)
+        {
+            this.Tech_Cam.Write(value);
+        }
 
 
     }

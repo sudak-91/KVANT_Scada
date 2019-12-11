@@ -358,6 +358,12 @@
     <Compile Include="Data\command_bit.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\crio.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\fvp.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Model1.cs">
       <DependentUpon>Model1.tt</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -367,6 +373,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Data\process.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\real.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
@@ -389,6 +398,12 @@
     <Compile Include="Data\valves.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Crio.xaml.cs">
+      <DependentUpon>Crio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FVP.xaml.cs">
+      <DependentUpon>FVP.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\FVV_B.xaml.cs">
       <DependentUpon>FVV_B.xaml</DependentUpon>
     </Compile>
@@ -408,7 +423,18 @@
     <Compile Include="UDT\Real_type.cs" />
     <Compile Include="UDT\Tag_List.cs" />
     <Compile Include="UDT\udtCommandBit.cs" />
+    <Compile Include="UDT\udtCrio.cs" />
+    <Compile Include="UDT\udtFVP.cs" />
+    <Compile Include="UDT\udtProcess.cs" />
     <Compile Include="UDT\udtValve.cs" />
+    <Page Include="GUI\Crio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\FVP.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\FVV_B.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

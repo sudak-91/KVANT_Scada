@@ -17,6 +17,48 @@
           <Property Name="DBX" Type="int" Nullable="false" />
           <Property Name="Value" Type="bool" />
         </EntityType>
+        <EntityType Name="crio">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="DB" Type="int" Nullable="false" />
+          <Property Name="DBB" Type="int" Nullable="false" />
+          <Property Name="PowerOn" Type="bool" />
+          <Property Name="Blocked" Type="bool" />
+          <Property Name="TurnOn" Type="bool" />
+          <Property Name="AutoMode" Type="bool" />
+          <Property Name="Error" Type="bool" />
+        </EntityType>
+        <EntityType Name="fvp">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="DB" Type="int" Nullable="false" />
+          <Property Name="DBB" Type="int" Nullable="false" />
+          <Property Name="Remote" Type="bool" />
+          <Property Name="AutoMode" Type="bool" />
+          <Property Name="Start" Type="bool" />
+          <Property Name="ManualStart" Type="bool" />
+          <Property Name="PowerOn" Type="bool" />
+          <Property Name="TurnOn" Type="bool" />
+          <Property Name="Block" Type="bool" />
+        </EntityType>
+        <EntityType Name="process">
+          <Key>
+            <PropertyRef Name="idprocess" />
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="idprocess" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+          <Property Name="DB" Type="int" Nullable="false" />
+          <Property Name="DBB" Type="int" Nullable="false" />
+          <Property Name="value" Type="int" />
+        </EntityType>
         <EntityType Name="real">
           <Key>
             <PropertyRef Name="DB" />
@@ -44,6 +86,9 @@
         </EntityType>
         <EntityContainer Name="Хранилище kvantModelContainer">
           <EntitySet Name="command_bit" EntityType="Self.command_bit" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="crio" EntityType="Self.crio" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="fvp" EntityType="Self.fvp" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="process" EntityType="Self.process" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="real" EntityType="Self.real" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="valves" EntityType="Self.valves" Schema="kvant" store:Type="Tables" />
         </EntityContainer>
@@ -65,6 +110,9 @@
           <EntitySet Name="real" EntityType="Self.real" />
           <EntitySet Name="valves" EntityType="kvantModel.valves" />
           <EntitySet Name="command_bit" EntityType="kvantModel.command_bit" />
+          <EntitySet Name="crio" EntityType="kvantModel.crio" />
+          <EntitySet Name="fvp" EntityType="kvantModel.fvp" />
+          <EntitySet Name="process" EntityType="kvantModel.process" />
         </EntityContainer>
         <EntityType Name="valves">
           <Key>
@@ -92,6 +140,48 @@
           <Property Name="DBB" Type="Int32" Nullable="false" />
           <Property Name="DBX" Type="Int32" Nullable="false" />
           <Property Name="Value" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="crio">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="DB" Type="Int32" Nullable="false" />
+          <Property Name="DBB" Type="Int32" Nullable="false" />
+          <Property Name="PowerOn" Type="Boolean" />
+          <Property Name="Blocked" Type="Boolean" />
+          <Property Name="TurnOn" Type="Boolean" />
+          <Property Name="AutoMode" Type="Boolean" />
+          <Property Name="Error" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="fvp">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="DB" Type="Int32" Nullable="false" />
+          <Property Name="DBB" Type="Int32" Nullable="false" />
+          <Property Name="Remote" Type="Boolean" />
+          <Property Name="AutoMode" Type="Boolean" />
+          <Property Name="Start" Type="Boolean" />
+          <Property Name="ManualStart" Type="Boolean" />
+          <Property Name="PowerOn" Type="Boolean" />
+          <Property Name="TurnOn" Type="Boolean" />
+          <Property Name="Block" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="process">
+          <Key>
+            <PropertyRef Name="idprocess" />
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="idprocess" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="DB" Type="Int32" Nullable="false" />
+          <Property Name="DBB" Type="Int32" Nullable="false" />
+          <Property Name="value" Type="Int16" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -132,6 +222,47 @@
                 <ScalarProperty Name="DBB" ColumnName="DBB" />
                 <ScalarProperty Name="DB" ColumnName="DB" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="crio">
+            <EntityTypeMapping TypeName="kvantModel.crio">
+              <MappingFragment StoreEntitySet="crio">
+                <ScalarProperty Name="Error" ColumnName="Error" />
+                <ScalarProperty Name="AutoMode" ColumnName="AutoMode" />
+                <ScalarProperty Name="TurnOn" ColumnName="TurnOn" />
+                <ScalarProperty Name="Blocked" ColumnName="Blocked" />
+                <ScalarProperty Name="PowerOn" ColumnName="PowerOn" />
+                <ScalarProperty Name="DBB" ColumnName="DBB" />
+                <ScalarProperty Name="DB" ColumnName="DB" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fvp">
+            <EntityTypeMapping TypeName="kvantModel.fvp">
+              <MappingFragment StoreEntitySet="fvp">
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="TurnOn" ColumnName="TurnOn" />
+                <ScalarProperty Name="PowerOn" ColumnName="PowerOn" />
+                <ScalarProperty Name="ManualStart" ColumnName="ManualStart" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="AutoMode" ColumnName="AutoMode" />
+                <ScalarProperty Name="Remote" ColumnName="Remote" />
+                <ScalarProperty Name="DBB" ColumnName="DBB" />
+                <ScalarProperty Name="DB" ColumnName="DB" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="process">
+            <EntityTypeMapping TypeName="kvantModel.process">
+              <MappingFragment StoreEntitySet="process">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="DBB" ColumnName="DBB" />
+                <ScalarProperty Name="DB" ColumnName="DB" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idprocess" ColumnName="idprocess" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

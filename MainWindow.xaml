@@ -7,12 +7,23 @@
         mc:Ignorable="d"
         Title="DanaEng D-1000" Height="768" Width="1024" Background="#FF95A8FF" WindowState="Maximized">
     <Grid>
-        <Grid HorizontalAlignment="Left" Height="73" Margin="10,654,0,0" VerticalAlignment="Top" Width="996"/>
+        <Grid HorizontalAlignment="Left" Height="73" Margin="10,654,0,0" VerticalAlignment="Top" Width="996">
+            <TabControl HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="996">
+                <TabItem x:Name="ToolBar" Header="Камера">
+                    <Grid Background="#FFE5E5E5">
+                        <Button x:Name="Stage_0_Crio_Start" Content="Старт &#xD;&#xA;Крионасоса" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Click="Stage_0_Crio_Start_Click"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="TabItem">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+            </TabControl>
+        </Grid>
         <Grid HorizontalAlignment="Left" Height="586" Margin="10,63,0,0" VerticalAlignment="Top" Width="996">
             <Image x:Name="Tech_cam" HorizontalAlignment="Left" Height="288" Margin="382,242,0,0" VerticalAlignment="Top" Width="278" Source="Tech_cam.png"/>
-            <Image HorizontalAlignment="Left" Height="37" Margin="470,212,0,0" VerticalAlignment="Top" Width="230" Source="Затвор шиберный.png"/>
+            <Image HorizontalAlignment="Left" Height="37" Margin="470,212,0,0" VerticalAlignment="Top" Width="230" Source="Затвор шиберный.png" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
             <Image x:Name="Crio_pump" HorizontalAlignment="Left" Height="148" Margin="448,68,0,0" VerticalAlignment="Top" Width="114" Source="Криогенный насос CryoTorr10.png" MouseLeftButtonUp="Crio_pump_MouseLeftButtonUp"/>
-            <Image HorizontalAlignment="Left" Height="127" Margin="86,187,0,0" VerticalAlignment="Top" Width="146" Source="Форвакуумный насос (Мнемосхема).png"/>
+            <Image HorizontalAlignment="Left" Height="127" Margin="86,187,0,0" VerticalAlignment="Top" Width="146" Source="Форвакуумный насос (Мнемосхема).png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
             <Image x:Name="Circle" HorizontalAlignment="Left" Height="93" Margin="474,324,0,0" VerticalAlignment="Top" Width="92" Source="Карусель.png" RenderTransformOrigin="0.505,0.441"/>
             <Image x:Name="ELI" HorizontalAlignment="Left" Height="80" Margin="571,356,0,0" VerticalAlignment="Top" Width="53" Source="Тигель.png"/>
             <Image x:Name="Ion" HorizontalAlignment="Left" Height="45" Margin="415,391,0,0" VerticalAlignment="Top" Width="59" Source="ИИ.png"/>
@@ -35,7 +46,7 @@
                 <Label x:Name="Crio_temp" Content="Температура Крионасоса" HorizontalAlignment="Left" Margin="0,32,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="152"/>
                 <TextBox x:Name="Crio_temperature" HorizontalAlignment="Left" Height="21" Margin="6,36,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="90" Grid.Column="1"/>
             </Grid>
-            <Image x:Name="FVV_B"  HorizontalAlignment="Left" Height="55" Margin="294,394,0,0" VerticalAlignment="Top" Width="36" Source="Клапан_XMA-40-M9.png" RenderTransformOrigin="0.5,0.5">
+            <Image x:Name="FVV_B"  HorizontalAlignment="Left" Height="55" Margin="294,394,0,0" VerticalAlignment="Top" Width="36" Source="Клапан_XMA-40-M9.png" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="FVV_B_MouseLeftButtonDown">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -83,6 +94,10 @@
                     </TransformGroup>
                 </Image.LayoutTransform>
             </Image>
+            <Label Content="FVV_S" HorizontalAlignment="Left" Margin="296,325,0,0" VerticalAlignment="Top" Height="24"/>
+            <Label Content="FVV_B" HorizontalAlignment="Left" Margin="296,443,0,0" VerticalAlignment="Top" Height="24"/>
+            <Label Content="CPV" HorizontalAlignment="Left" Margin="346,117,0,0" VerticalAlignment="Top" Height="24"/>
+            <Label Content="BAV_3" HorizontalAlignment="Left" Margin="681,343,0,0" VerticalAlignment="Top" Height="24"/>
         </Grid>
 
     </Grid>

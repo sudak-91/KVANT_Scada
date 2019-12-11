@@ -27,6 +27,9 @@ namespace KVANT_Scada
         private GUI.BAV_3 wBAV_3;
         private GUI.CPV wCPV;
         private GUI.FVV_S wFVV_S;
+        private GUI.FVV_B wFVV_B;
+        private GUI.Crio wCrio;
+        private GUI.FVP wFVP;
         public MainWindow()
         {
             this.Topmost = true;
@@ -68,8 +71,8 @@ namespace KVANT_Scada
 
         private void Crio_pump_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            wSHV = new GUI.SHV(Tags);
-            wSHV.ShowDialog();
+            wCrio = new GUI.Crio(Tags);
+            wCrio.ShowDialog();
             
         }
 
@@ -92,6 +95,31 @@ namespace KVANT_Scada
             wFVV_S = new GUI.FVV_S(Tags);
             wFVV_S.ShowDialog();
 
+        }
+
+        private void FVV_B_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            wFVV_B = new GUI.FVV_B(Tags);
+            wFVV_B.ShowDialog();
+
+        }
+
+        private void Image_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            wSHV = new GUI.SHV(Tags);
+            wSHV.ShowDialog();
+        }
+
+        private void Image_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            wFVP = new GUI.FVP(Tags);
+            wFVP.ShowDialog();
+
+        }
+
+        private void Stage_0_Crio_Start_Click(object sender, RoutedEventArgs e)
+        {
+            Tags.Tech_Cam_PRocess(1);
         }
     }
 }

@@ -28,5 +28,8 @@ namespace KVANT_Scada.Data
         public virtual DbSet<real> real { get; set; }
         public virtual DbSet<valves> valves { get; set; }
         public virtual DbSet<command_bit> command_bit { get; set; }
+        public virtual DbSet<crio> crio { get; set; }
+        public virtual DbSet<fvp> fvp { get; set; }
+        public virtual DbSet<process> process { get; set; }
     }
 }
