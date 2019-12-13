@@ -49,15 +49,13 @@
         </EntityType>
         <EntityType Name="process">
           <Key>
-            <PropertyRef Name="idprocess" />
             <PropertyRef Name="DB" />
             <PropertyRef Name="DBB" />
           </Key>
-          <Property Name="idprocess" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="45" />
           <Property Name="DB" Type="int" Nullable="false" />
           <Property Name="DBB" Type="int" Nullable="false" />
-          <Property Name="value" Type="int" />
+          <Property Name="value" Type="smallint" />
         </EntityType>
         <EntityType Name="real">
           <Key>
@@ -173,11 +171,9 @@
         </EntityType>
         <EntityType Name="process">
           <Key>
-            <PropertyRef Name="idprocess" />
             <PropertyRef Name="DB" />
             <PropertyRef Name="DBB" />
           </Key>
-          <Property Name="idprocess" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="DB" Type="Int32" Nullable="false" />
           <Property Name="DBB" Type="Int32" Nullable="false" />
@@ -262,7 +258,6 @@
                 <ScalarProperty Name="DBB" ColumnName="DBB" />
                 <ScalarProperty Name="DB" ColumnName="DB" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="idprocess" ColumnName="idprocess" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -45,27 +45,27 @@ namespace KVANT_Scada.UDT
                 }
             }
         }
-        public void Write(uint value)
+        public void Write(int value)
         {
-            PLC.Write(DataType.DataBlock, this.DB, this.DBB, value);
-            if (this.rte.process.Find(this.DB, this.DBB) == null)
-            {
-                try
-                {
-                    process vProcess = new process
-                    {
-                       value =(short)value,
-                    };
+            PLC.Write(DataType.DataBlock,this.DB,this.DBB,value);
+            //if (this.rte.process.Find(this.DB, this.DBB) == null)
+            //{
+            //    try
+            //    {
+            //        process vProcess = new process
+            //        {
+            //           value =(short)value,
+            //        };
 
-                    this.rte.process.Add(vProcess);
-                    this.rte.SaveChanges();
+            //        this.rte.process.Add(vProcess);
+            //        this.rte.SaveChanges();
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.InnerException.ToString());
-                }
-            }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.InnerException.ToString());
+            //    }
+            //}
         }
 
     }

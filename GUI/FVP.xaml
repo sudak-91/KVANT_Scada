@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KVANT_Scada.GUI"
         mc:Ignorable="d"
-        Title="FVP" Height="390" Width="230" Background="#FF80BAFF">
+        Title="FVP" Height="390" Width="230" Background="#FF80BAFF" Topmost="True">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

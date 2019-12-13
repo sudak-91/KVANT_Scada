@@ -12,6 +12,10 @@
                 <TabItem x:Name="ToolBar" Header="Камера">
                     <Grid Background="#FFE5E5E5">
                         <Button x:Name="Stage_0_Crio_Start" Content="Старт &#xD;&#xA;Крионасоса" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Click="Stage_0_Crio_Start_Click"/>
+                        <Button x:Name="Stage_1_Prepare_Cam" Content="Откачка&#xD;&#xA;камеры" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Click="Stage_1_Prepare_Cam_Click" Margin="116,0,0,0"/>
+                        <Button x:Name="Stage_2_Open_Cam" Content="Открытие&#xA;камеры" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Click="Stage_2_Open_Cam_Click" Margin="232,0,0,0"/>
+                        <Button x:Name="Stage_2_Open_Cam_Copy" Content="Закрытие&#xD;&#xA;смены" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Margin="348,0,0,0" Click="Stage_2_Open_Cam_Copy_Click"/>
+                        <Button x:Name="Stage_2_Open_Cam_Copy1" Content="Стоп&#xD;&#xA;Крионасоса" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Margin="464,0,0,0" Click="Stage_2_Open_Cam_Copy1_Click"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="TabItem">
@@ -19,34 +23,43 @@
                 </TabItem>
             </TabControl>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="586" Margin="10,63,0,0" VerticalAlignment="Top" Width="996">
-            <Image x:Name="Tech_cam" HorizontalAlignment="Left" Height="288" Margin="382,242,0,0" VerticalAlignment="Top" Width="278" Source="Tech_cam.png"/>
-            <Image HorizontalAlignment="Left" Height="37" Margin="470,212,0,0" VerticalAlignment="Top" Width="230" Source="Затвор шиберный.png" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
-            <Image x:Name="Crio_pump" HorizontalAlignment="Left" Height="148" Margin="448,68,0,0" VerticalAlignment="Top" Width="114" Source="Криогенный насос CryoTorr10.png" MouseLeftButtonUp="Crio_pump_MouseLeftButtonUp"/>
+        <Grid HorizontalAlignment="Left" Height="586" Margin="10,68,0,0" VerticalAlignment="Top" Width="996">
+            <Image x:Name="Tech_cam" HorizontalAlignment="Left" Height="334" Margin="382,242,0,0" VerticalAlignment="Top" Width="318" Source="Tech_cam.png"/>
+            <Image HorizontalAlignment="Left" Height="38" Margin="485,207,0,0" VerticalAlignment="Top" Width="262" Source="Затвор шиберный.png" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
+            <Image x:Name="Crio_pump" HorizontalAlignment="Left" Height="167" Margin="462,43,0,0" VerticalAlignment="Top" Width="135" Source="Криогенный насос CryoTorr10.png" MouseLeftButtonUp="Crio_pump_MouseLeftButtonUp"/>
             <Image HorizontalAlignment="Left" Height="127" Margin="86,187,0,0" VerticalAlignment="Top" Width="146" Source="Форвакуумный насос (Мнемосхема).png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-            <Image x:Name="Circle" HorizontalAlignment="Left" Height="93" Margin="474,324,0,0" VerticalAlignment="Top" Width="92" Source="Карусель.png" RenderTransformOrigin="0.505,0.441"/>
-            <Image x:Name="ELI" HorizontalAlignment="Left" Height="80" Margin="571,356,0,0" VerticalAlignment="Top" Width="53" Source="Тигель.png"/>
-            <Image x:Name="Ion" HorizontalAlignment="Left" Height="45" Margin="415,391,0,0" VerticalAlignment="Top" Width="59" Source="ИИ.png"/>
-            <Image x:Name="Heather" HorizontalAlignment="Left" Height="72" Margin="434,286,0,0" VerticalAlignment="Top" Width="100" Source="Нагреватель.png"/>
-            <Grid HorizontalAlignment="Left" Height="37" Margin="644,306,0,0" VerticalAlignment="Top" Width="216">
+            <Image x:Name="Circle" HorizontalAlignment="Left" Height="110" Margin="485,339,0,0" VerticalAlignment="Top" Width="109" Source="Circle.png" RenderTransformOrigin="0.5,0.446">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="ELI" HorizontalAlignment="Left" Height="80" Margin="609,389,0,0" VerticalAlignment="Top" Width="53" Source="Тигель.png"/>
+            <Image x:Name="Ion" HorizontalAlignment="Left" Height="45" Margin="418,424,0,0" VerticalAlignment="Top" Width="58" Source="ИИ.png"/>
+            <Image x:Name="Heather" HorizontalAlignment="Left" Height="72" Margin="452,291,0,0" VerticalAlignment="Top" Width="100" Source="Нагреватель.png"/>
+            <Grid HorizontalAlignment="Left" Height="40" Margin="668,300,0,0" VerticalAlignment="Top" Width="205">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="127*"/>
                     <ColumnDefinition Width="90*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="Main_pressure" HorizontalAlignment="Left" Height="21" Margin="117,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="96" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="Main_pressure" HorizontalAlignment="Left" Height="21" Margin="117,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="88" Grid.ColumnSpan="2" Background="White" SelectionOpacity="-2" SelectionBrush="White" Focusable="False"/>
                 <Label x:Name="Main_press_label" Content="Давление в камере" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top"/>
             </Grid>
-            <Grid x:Name="Crio_Grid" HorizontalAlignment="Left" Height="84" Margin="553,123,0,0" VerticalAlignment="Top" Width="249">
+            <Grid x:Name="Crio_Grid" HorizontalAlignment="Left" Height="84" Margin="583,126,0,0" VerticalAlignment="Top" Width="249">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="127*"/>
                     <ColumnDefinition Width="90*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="Crio_pressure" HorizontalAlignment="Left" Height="21" Margin="0,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="96" Grid.Column="1"/>
+                <TextBox x:Name="Crio_pressure" HorizontalAlignment="Left" Height="21" Margin="0,06,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="96" Grid.Column="1" Focusable="False"/>
                 <Label x:Name="Crio_press_label" Content="Давление в Крионасосе" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="Crio_temp" Content="Температура Крионасоса" HorizontalAlignment="Left" Margin="0,32,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="152"/>
-                <TextBox x:Name="Crio_temperature" HorizontalAlignment="Left" Height="21" Margin="6,36,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="90" Grid.Column="1"/>
+                <TextBox x:Name="Crio_temperature" HorizontalAlignment="Left" Height="21" Margin="6,36,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="90" Grid.Column="1" Focusable="False"/>
             </Grid>
-            <Image x:Name="FVV_B"  HorizontalAlignment="Left" Height="55" Margin="294,394,0,0" VerticalAlignment="Top" Width="36" Source="Клапан_XMA-40-M9.png" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="FVV_B_MouseLeftButtonDown">
+            <Image x:Name="FVV_B"  HorizontalAlignment="Left" Height="51" Margin="302,433,0,0" VerticalAlignment="Top" Width="25" Source="Valve_v3.png" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="FVV_B_MouseLeftButtonDown">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -56,17 +69,17 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Image x:Name="FVV_S"  HorizontalAlignment="Left" Height="55" Margin="294,340,0,0" VerticalAlignment="Top" Width="36" Source="Клапан_XMA-40-M9.png" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="FVV_S_MouseLeftButtonDown">
+            <Image x:Name="FVV_S"  HorizontalAlignment="Left" Height="51" Margin="302,396,0,0" VerticalAlignment="Top" Width="25" Source="Valve_v3.png" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="FVV_S_MouseLeftButtonDown">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1" ScaleX="1"/>
                         <SkewTransform AngleY="0" AngleX="0"/>
-                        <RotateTransform Angle="89.783"/>
+                        <RotateTransform Angle="90.193"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Image x:Name="CPV"  HorizontalAlignment="Left" Height="55" Margin="361,154,0,0" VerticalAlignment="Top" Width="36" Source="Клапан_XMA-40-M9.png" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="CPV_MouseLeftButtonDown">
+            <Image x:Name="CPV"  HorizontalAlignment="Left" Height="51" Margin="288,162,0,0" VerticalAlignment="Top" Width="25" Source="Valve_v3.png" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="CPV_MouseLeftButtonDown">
                 <Image.LayoutTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -79,12 +92,12 @@
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
-                        <RotateTransform Angle="-89.783"/>
+                        <RotateTransform Angle="-0.123"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Image x:Name="BAV_3"  HorizontalAlignment="Left" Height="55" Margin="672,366,0,0" VerticalAlignment="Top" Width="36" Source="Клапан_XMA-40-M9.png" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="BAV_3_MouseLeftButtonDown">
+            <Image x:Name="BAV_3"  HorizontalAlignment="Left" Height="51" Margin="723,409,0,0" VerticalAlignment="Top" Width="25" Source="Valve_v3.png" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="BAV_3_MouseLeftButtonDown">
                 <Image.LayoutTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -94,10 +107,34 @@
                     </TransformGroup>
                 </Image.LayoutTransform>
             </Image>
-            <Label Content="FVV_S" HorizontalAlignment="Left" Margin="296,325,0,0" VerticalAlignment="Top" Height="24"/>
-            <Label Content="FVV_B" HorizontalAlignment="Left" Margin="296,443,0,0" VerticalAlignment="Top" Height="24"/>
-            <Label Content="CPV" HorizontalAlignment="Left" Margin="346,117,0,0" VerticalAlignment="Top" Height="24"/>
-            <Label Content="BAV_3" HorizontalAlignment="Left" Margin="681,343,0,0" VerticalAlignment="Top" Height="24"/>
+            <Label Content="FVV_S" HorizontalAlignment="Left" Margin="296,387,0,0" VerticalAlignment="Top" Height="24"/>
+            <Label Content="FVV_B" HorizontalAlignment="Left" Margin="296,467,0,0" VerticalAlignment="Top" Height="24"/>
+            <Label Content="CPV" HorizontalAlignment="Left" Margin="296,132,0,0" VerticalAlignment="Top" Height="24"/>
+            <Label Content="BAV_3" HorizontalAlignment="Left" Margin="727,387,0,0" VerticalAlignment="Top" Height="24"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="340,421,0,0" Stroke="Black" VerticalAlignment="Top" Width="58" RenderTransformOrigin="0.5,0.5">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="4.764"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0.042"/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="340,458,0,0" Stroke="Black" VerticalAlignment="Top" Width="58"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="285" Margin="267,174,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="267,421,0,0" Stroke="Black" VerticalAlignment="Top" Width="22"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="267,458,0,0" Stroke="Black" VerticalAlignment="Top" Width="22"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="339,174,0,0" Stroke="Black" VerticalAlignment="Top" Width="159"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="268,174,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="228,231,0,0" Stroke="Black" VerticalAlignment="Top" Width="40"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="681,421,0,0" Stroke="Black" VerticalAlignment="Top" Width="42"/>
+            <Ellipse x:Name="CPV_opened" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="21" Margin="303,164,0,0" Stroke="Black" VerticalAlignment="Top" Width="21"/>
+            <Ellipse x:Name="FVV_S_opened" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="21" Margin="304,411,0,0" Stroke="Black" VerticalAlignment="Top" Width="21"/>
+            <Ellipse x:Name="FVV_B_opened" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="21" Margin="304,448,0,0" Stroke="Black" VerticalAlignment="Top" Width="21"/>
+            <Ellipse x:Name="BAV_3_opened" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="21" Margin="739,411,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+            <Ellipse x:Name="SHV_opened" Fill="#FF4D4DFF" HorizontalAlignment="Left" Height="32" Margin="592,209,0,0" Stroke="Black" VerticalAlignment="Top" Width="32"/>
+            <Ellipse x:Name="Crio_Turn_On" Fill="#FF4D4DFF" HorizontalAlignment="Left" Height="35" Margin="521,132,0,0" Stroke="Black" VerticalAlignment="Top" Width="35"/>
         </Grid>
 
     </Grid>

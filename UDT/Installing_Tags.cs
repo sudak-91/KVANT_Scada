@@ -73,6 +73,11 @@ namespace KVANT_Scada.UDT
             SHV.Read_type();
             Crio.Read_type();
             FVP.Read_type();
+            CPV.Read_type();
+            BAV_3.Read_type();
+            FVV_B.Read_type();
+            FVV_S.Read_type();
+
 
 
         }
@@ -352,7 +357,7 @@ namespace KVANT_Scada.UDT
         }
 
         #endregion
-        public void Tech_Cam_PRocess(uint value)
+        public void Tech_Cam_PRocess(int value)
         {
             this.Tech_Cam.Write(value);
         }

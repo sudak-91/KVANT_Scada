@@ -14,7 +14,6 @@ namespace KVANT_Scada.Data
     
     public partial class process
     {
-        public int idprocess { get; set; }
         public string name { get; set; }
         public int DB { get; set; }
         public int DBB { get; set; }
