@@ -32,9 +32,11 @@ namespace KVANT_Scada
         private GUI.Crio wCrio;
         private GUI.FVP wFVP;
         private RotateTransform rt;
+        private udtIONWrite udtIONWrite;
        
         public MainWindow()
         {
+          
             this.Topmost = true;
             InitializeComponent();
             real_Tag_Entitys = new Real_Tag_Entitys();
@@ -50,7 +52,8 @@ namespace KVANT_Scada
             on = new SolidColorBrush(Color.FromRgb( 0, 255, 0));
             off = new SolidColorBrush(Color.FromRgb(255, 0, 0));
             neutral = new SolidColorBrush(Color.FromRgb( 221, 221, 221));
-            
+      
+
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Interval = new System.TimeSpan(0,0,1);
             dispatcherTimer.Tick += new EventHandler(Count);
@@ -72,6 +75,12 @@ namespace KVANT_Scada
             Main_pressure.Text = Tags.get_cam_pressure().ToString("E1") + "mbar";
             Crio_pressure.Text = Tags.get_crio_pressure().ToString("E1")+ "mbar";
             Crio_temperature.Text = Tags.get_crio_temperature().ToString("F1")+"K";
+            Anod_I.Text = Tags.GetAnodI();
+            Anod_U.Text = Tags.GetAnodU();
+            Anod_P.Text = Tags.GetAnodP();
+            Heat_I.Text = Tags.GetHeatI();
+            Heat_U.Text = Tags.GetHeatU();
+            Heat_P.Text = Tags.GetHeatP();
             
             if(Tags.get_CPV_opened())
             {
@@ -198,17 +207,63 @@ namespace KVANT_Scada
         {
             Main.Visibility = Visibility.Hidden;
             ION_Screen.Visibility = Visibility.Visible;
+            Tags.GetInitValue();
+            Anod_I_SP.Text = Tags.GetAnodISp();
+            Anod_U_SP.Text = Tags.GetAnodUSp();
+            Anod_P_SP.Text = Tags.GetAnodPSp();
+            Heat_I_SP.Text = Tags.GetHeatISp();
+            Heat_U_SP.Text = Tags.GetHeatUSp();
+            Heat_P_SP.Text = Tags.GetHeatPSp();
 
         }
 
         private void Anod_I_SP_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-
+            
+            
         }
 
         private void TextBox_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             
+        }
+
+        private void btnMainScreen_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Visibility = Visibility.Visible;
+            ION_Screen.Visibility = Visibility.Hidden;
+        }
+
+ 
+
+        private void Anod_I_SP_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Rest_Cliker_Click(object sender, RoutedEventArgs e)
+        {
+            //double k = Convert.ToDouble(Anod_I_SP.Text.ToString());
+            string i =  Anod_I_SP.Text.Replace('.', ',');
+            string u =  Anod_U_SP.Text.Replace('.', ',');
+            string p = Anod_P_SP.Text.Replace('.', ',');
+            string hi = Heat_I_SP.Text.Replace('.', ',');
+            string hu = Heat_U_SP.Text.Replace('.', ',');
+            string hp = Heat_P_SP.Text.Replace('.', ',');
+
+            double di = Convert.ToDouble(i);
+            double du = Convert.ToDouble(u);
+            double dp = Convert.ToDouble(p);
+            double dhi = Convert.ToDouble(hi);
+            double dhu = Convert.ToDouble(hu);
+            double dhp = Convert.ToDouble(hp);
+            
+            Tags.WriteToDbISp(di,du,dp,dhi,dhu,dhp);
+        }
+
+        private void Screens_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+          
         }
 
         private void Stage_0_Crio_Start_Click(object sender, RoutedEventArgs e)

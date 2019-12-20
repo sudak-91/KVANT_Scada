@@ -49,7 +49,8 @@
         </EntityType>
         <EntityType Name="ion_read">
           <Key>
-            <PropertyRef Name="name" />
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
           </Key>
           <Property Name="Anod_I" Type="double" />
           <Property Name="Anod_U" Type="double" />
@@ -252,7 +253,8 @@
         </EntityType>
         <EntityType Name="ion_read">
           <Key>
-            <PropertyRef Name="name" />
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
           </Key>
           <Property Name="Anod_I" Type="Double" />
           <Property Name="Anod_U" Type="Double" />

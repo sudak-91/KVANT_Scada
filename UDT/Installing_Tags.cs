@@ -62,7 +62,8 @@ namespace KVANT_Scada.UDT
             FVP = new udtFVP(plc, 22, 0, real_Tag_Entitys, "FVP");
             Tech_Cam = new udtProcess(plc, 24, 0, real_Tag_Entitys, "Tech_Cam");
           
-            Ion_SP = new udtIONWrite(plc, 20, 80, real_Tag_Entitys, "ION_Write");
+            Ion_SP = new udtIONWrite(plc, 20, 32, real_Tag_Entitys, "ION_Write");
+            Ion = new udtION(plc, 20, 56, real_Tag_Entitys, "ION");
         }
 
         public void Update_Read()
@@ -79,6 +80,7 @@ namespace KVANT_Scada.UDT
             BAV_3.Read_type();
             FVV_B.Read_type();
             FVV_S.Read_type();
+            Ion.Read_type();
 
 
 
@@ -363,9 +365,70 @@ namespace KVANT_Scada.UDT
         {
             this.Tech_Cam.Write(value);
         }
-        
-
-
+        public void WriteToDbISp(double i, double u, double p, double hi, double hu, double hp)
+        {
+            this.Ion_SP.Anod_I_SP = i;
+            this.Ion_SP.Anod_U_SP = u;
+            this.Ion_SP.Anod_P_SP = p;
+            this.Ion_SP.Heat_I_SP = hi;
+            this.Ion_SP.Heat_U_SP = hu;
+            this.Ion_SP.Heat_P_SP = hp;
+            this.Ion_SP.WriteToDB();
+        }
+        public void GetInitValue()
+        {
+            this.Ion_SP.ReadFromDB();
+            
+        }
+        public string GetAnodISp()
+        {
+            return this.Ion_SP.Anod_I_SP.ToString();
+        }
+        public string GetAnodUSp()
+        {
+            return this.Ion_SP.Anod_U_SP.ToString();
+        }
+        public string GetAnodPSp()
+        {
+            return this.Ion_SP.Anod_P_SP.ToString();
+        }
+        public string GetHeatISp()
+        {
+            return this.Ion_SP.Heat_I_SP.ToString();
+        }
+        public string GetHeatUSp()
+        {
+            string a = this.Ion_SP.Heat_U_SP.ToString();
+            return a;
+        }
+        public string GetHeatPSp()
+        {
+            return this.Ion_SP.Heat_P_SP.ToString();
+        }
+        public string GetAnodI()
+        {
+            return this.Ion.Anod_I.ToString();
+        }
+        public string GetAnodU()
+        {
+            return this.Ion.Anod_U.ToString();
+        }
+        public string GetAnodP()
+        {
+            return this.Ion.Anod_P.ToString();
+        }
+        public string GetHeatI()
+        {
+            return this.Ion.Heat_I.ToString();
+        }
+        public string GetHeatU()
+        {
+            return this.Ion.Heat_U.ToString();
+        }
+        public string GetHeatP()
+        {
+            return this.Ion.Heat_P.ToString();
+        }
     }
 
 
