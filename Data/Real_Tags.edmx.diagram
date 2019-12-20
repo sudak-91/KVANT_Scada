@@ -11,6 +11,9 @@
         <EntityTypeShape EntityType="kvantModel.crio" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="kvantModel.fvp" Width="1.5" PointX="3.375" PointY="3.75" />
         <EntityTypeShape EntityType="kvantModel.process" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="kvantModel.valve_log" Width="1.5" PointX="11.5" PointY="1.125" />
+        <EntityTypeShape EntityType="kvantModel.ion_read" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="kvantModel.ion_sp" Width="1.5" PointX="0.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

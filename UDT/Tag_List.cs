@@ -57,5 +57,6 @@ namespace KVANT_Scada.UDT
         #region udtProcess
         private udtProcess Tech_Cam;
         #endregion
+        private udtIONWrite Ion_SP { get; set; }
     }
 }

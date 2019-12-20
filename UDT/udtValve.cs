@@ -68,7 +68,15 @@ namespace KVANT_Scada.UDT
                     valve.Closing = this.bClosing;
                     valve.Blocked = this.bBlocked;
                     valve.Serviced = this.bServiced;
-
+                    valve_log vl = new valve_log
+                    {
+                        name = this.name,
+                        opened = this.bOpened,
+                        closed = this.bClosed,
+                        block = this.bBlocked,
+                        TIME = System.DateTime.Now
+                    };
+                    rte.valve_log.Add(vl);
                     this.rte.SaveChanges();
                 }
 

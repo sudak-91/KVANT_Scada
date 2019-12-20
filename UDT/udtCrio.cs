@@ -49,7 +49,8 @@ namespace KVANT_Scada.UDT
 
                     this.rte.crio.Add(vCrio);
                     this.rte.SaveChanges();
-
+                   
+                   
                 }
                 catch (Exception ex)
                 {

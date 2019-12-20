@@ -31,5 +31,8 @@ namespace KVANT_Scada.Data
         public virtual DbSet<crio> crio { get; set; }
         public virtual DbSet<fvp> fvp { get; set; }
         public virtual DbSet<process> process { get; set; }
+        public virtual DbSet<valve_log> valve_log { get; set; }
+        public virtual DbSet<ion_read> ion_read { get; set; }
+        public virtual DbSet<ion_sp> ion_sp { get; set; }
     }
 }

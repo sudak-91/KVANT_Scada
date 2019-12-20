@@ -47,6 +47,49 @@
           <Property Name="TurnOn" Type="bool" />
           <Property Name="Block" Type="bool" />
         </EntityType>
+        <EntityType Name="ion_read">
+          <Key>
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="Anod_I" Type="double" />
+          <Property Name="Anod_U" Type="double" />
+          <Property Name="Anod_P" Type="double" />
+          <Property Name="Heat_I" Type="double" />
+          <Property Name="Heat_U" Type="double" />
+          <Property Name="Heat_P" Type="double" />
+          <Property Name="Auto_mode" Type="bool" />
+          <Property Name="Power_on" Type="bool" />
+          <Property Name="Turn_On" Type="bool" />
+          <Property Name="Interlock" Type="bool" />
+          <Property Name="Failure" Type="bool" />
+          <Property Name="Power_Failure" Type="bool" />
+          <Property Name="Temperature_Failure" Type="bool" />
+          <Property Name="Repeat_Failure" Type="bool" />
+          <Property Name="Filament_Failure" Type="bool" />
+          <Property Name="Turn_Off" Type="bool" />
+          <Property Name="Emergency_Stop" Type="bool" />
+          <Property Name="Power_Stop" Type="bool" />
+          <Property Name="Temperature_Stop" Type="bool" />
+          <Property Name="Other_Failure" Type="bool" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="DB" Type="int" Nullable="false" />
+          <Property Name="DBB" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ion_sp">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="DB" Type="int" Nullable="false" />
+          <Property Name="DBB" Type="int" Nullable="false" />
+          <Property Name="Anod_I_SP" Type="double" />
+          <Property Name="Anod_U_SP" Type="double" />
+          <Property Name="Anod_P_SP" Type="double" />
+          <Property Name="Heat_I_SP" Type="double" />
+          <Property Name="Heat_U_SP" Type="double" />
+          <Property Name="Heat_P_SP" Type="double" />
+        </EntityType>
         <EntityType Name="process">
           <Key>
             <PropertyRef Name="DB" />
@@ -67,6 +110,17 @@
           <Property Name="DBB" Type="int" Nullable="false" />
           <Property Name="Value" Type="double" />
         </EntityType>
+        <EntityType Name="valve_log">
+          <Key>
+            <PropertyRef Name="valve_logcol" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="opened" Type="bool" />
+          <Property Name="closed" Type="bool" />
+          <Property Name="block" Type="bool" />
+          <Property Name="TIME" Type="datetime" Precision="0" />
+          <Property Name="valve_logcol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="valves">
           <Key>
             <PropertyRef Name="DB" />
@@ -86,8 +140,11 @@
           <EntitySet Name="command_bit" EntityType="Self.command_bit" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="crio" EntityType="Self.crio" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="fvp" EntityType="Self.fvp" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="ion_read" EntityType="Self.ion_read" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="ion_sp" EntityType="Self.ion_sp" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="process" EntityType="Self.process" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="real" EntityType="Self.real" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="valve_log" EntityType="Self.valve_log" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="valves" EntityType="Self.valves" Schema="kvant" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -111,6 +168,9 @@
           <EntitySet Name="crio" EntityType="kvantModel.crio" />
           <EntitySet Name="fvp" EntityType="kvantModel.fvp" />
           <EntitySet Name="process" EntityType="kvantModel.process" />
+          <EntitySet Name="valve_log" EntityType="kvantModel.valve_log" />
+          <EntitySet Name="ion_read" EntityType="kvantModel.ion_read" />
+          <EntitySet Name="ion_sp" EntityType="kvantModel.ion_sp" />
         </EntityContainer>
         <EntityType Name="valves">
           <Key>
@@ -178,6 +238,60 @@
           <Property Name="DB" Type="Int32" Nullable="false" />
           <Property Name="DBB" Type="Int32" Nullable="false" />
           <Property Name="value" Type="Int16" />
+        </EntityType>
+        <EntityType Name="valve_log">
+          <Key>
+            <PropertyRef Name="valve_logcol" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="opened" Type="Boolean" />
+          <Property Name="closed" Type="Boolean" />
+          <Property Name="block" Type="Boolean" />
+          <Property Name="TIME" Type="DateTime" />
+          <Property Name="valve_logcol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="ion_read">
+          <Key>
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="Anod_I" Type="Double" />
+          <Property Name="Anod_U" Type="Double" />
+          <Property Name="Anod_P" Type="Double" />
+          <Property Name="Heat_I" Type="Double" />
+          <Property Name="Heat_U" Type="Double" />
+          <Property Name="Heat_P" Type="Double" />
+          <Property Name="Auto_mode" Type="Boolean" />
+          <Property Name="Power_on" Type="Boolean" />
+          <Property Name="Turn_On" Type="Boolean" />
+          <Property Name="Interlock" Type="Boolean" />
+          <Property Name="Failure" Type="Boolean" />
+          <Property Name="Power_Failure" Type="Boolean" />
+          <Property Name="Temperature_Failure" Type="Boolean" />
+          <Property Name="Repeat_Failure" Type="Boolean" />
+          <Property Name="Filament_Failure" Type="Boolean" />
+          <Property Name="Turn_Off" Type="Boolean" />
+          <Property Name="Emergency_Stop" Type="Boolean" />
+          <Property Name="Power_Stop" Type="Boolean" />
+          <Property Name="Temperature_Stop" Type="Boolean" />
+          <Property Name="Other_Failure" Type="Boolean" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="DB" Type="Int32" Nullable="false" />
+          <Property Name="DBB" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ion_sp">
+          <Key>
+            <PropertyRef Name="DB" />
+            <PropertyRef Name="DBB" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="DB" Type="Int32" Nullable="false" />
+          <Property Name="DBB" Type="Int32" Nullable="false" />
+          <Property Name="Anod_I_SP" Type="Double" />
+          <Property Name="Anod_U_SP" Type="Double" />
+          <Property Name="Anod_P_SP" Type="Double" />
+          <Property Name="Heat_I_SP" Type="Double" />
+          <Property Name="Heat_U_SP" Type="Double" />
+          <Property Name="Heat_P_SP" Type="Double" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -255,6 +369,62 @@
             <EntityTypeMapping TypeName="kvantModel.process">
               <MappingFragment StoreEntitySet="process">
                 <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="DBB" ColumnName="DBB" />
+                <ScalarProperty Name="DB" ColumnName="DB" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="valve_log">
+            <EntityTypeMapping TypeName="kvantModel.valve_log">
+              <MappingFragment StoreEntitySet="valve_log">
+                <ScalarProperty Name="valve_logcol" ColumnName="valve_logcol" />
+                <ScalarProperty Name="TIME" ColumnName="TIME" />
+                <ScalarProperty Name="block" ColumnName="block" />
+                <ScalarProperty Name="closed" ColumnName="closed" />
+                <ScalarProperty Name="opened" ColumnName="opened" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ion_read">
+            <EntityTypeMapping TypeName="kvantModel.ion_read">
+              <MappingFragment StoreEntitySet="ion_read">
+                <ScalarProperty Name="DBB" ColumnName="DBB" />
+                <ScalarProperty Name="DB" ColumnName="DB" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Other_Failure" ColumnName="Other_Failure" />
+                <ScalarProperty Name="Temperature_Stop" ColumnName="Temperature_Stop" />
+                <ScalarProperty Name="Power_Stop" ColumnName="Power_Stop" />
+                <ScalarProperty Name="Emergency_Stop" ColumnName="Emergency_Stop" />
+                <ScalarProperty Name="Turn_Off" ColumnName="Turn_Off" />
+                <ScalarProperty Name="Filament_Failure" ColumnName="Filament_Failure" />
+                <ScalarProperty Name="Repeat_Failure" ColumnName="Repeat_Failure" />
+                <ScalarProperty Name="Temperature_Failure" ColumnName="Temperature_Failure" />
+                <ScalarProperty Name="Power_Failure" ColumnName="Power_Failure" />
+                <ScalarProperty Name="Failure" ColumnName="Failure" />
+                <ScalarProperty Name="Interlock" ColumnName="Interlock" />
+                <ScalarProperty Name="Turn_On" ColumnName="Turn_On" />
+                <ScalarProperty Name="Power_on" ColumnName="Power_on" />
+                <ScalarProperty Name="Auto_mode" ColumnName="Auto_mode" />
+                <ScalarProperty Name="Heat_P" ColumnName="Heat_P" />
+                <ScalarProperty Name="Heat_U" ColumnName="Heat_U" />
+                <ScalarProperty Name="Heat_I" ColumnName="Heat_I" />
+                <ScalarProperty Name="Anod_P" ColumnName="Anod_P" />
+                <ScalarProperty Name="Anod_U" ColumnName="Anod_U" />
+                <ScalarProperty Name="Anod_I" ColumnName="Anod_I" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ion_sp">
+            <EntityTypeMapping TypeName="kvantModel.ion_sp">
+              <MappingFragment StoreEntitySet="ion_sp">
+                <ScalarProperty Name="Heat_P_SP" ColumnName="Heat_P_SP" />
+                <ScalarProperty Name="Heat_U_SP" ColumnName="Heat_U_SP" />
+                <ScalarProperty Name="Heat_I_SP" ColumnName="Heat_I_SP" />
+                <ScalarProperty Name="Anod_P_SP" ColumnName="Anod_P_SP" />
+                <ScalarProperty Name="Anod_U_SP" ColumnName="Anod_U_SP" />
+                <ScalarProperty Name="Anod_I_SP" ColumnName="Anod_I_SP" />
                 <ScalarProperty Name="DBB" ColumnName="DBB" />
                 <ScalarProperty Name="DB" ColumnName="DB" />
                 <ScalarProperty Name="name" ColumnName="name" />

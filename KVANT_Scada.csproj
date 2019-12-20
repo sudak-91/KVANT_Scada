@@ -16,20 +16,22 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Sample\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>http://localhost/KVANT_Scada/</UpdateUrl>
     <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -85,6 +87,24 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E951EC58C66FDE895DA945F6F5BEE06C8F837230</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>KVANT_Scada_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -382,6 +402,12 @@
     <Compile Include="Data\fvp.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ion_read.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ion_sp.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Model1.cs">
       <DependentUpon>Model1.tt</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -416,6 +442,9 @@
     <Compile Include="Data\valves.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\valve_log.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Crio.xaml.cs">
       <DependentUpon>Crio.xaml</DependentUpon>
     </Compile>
@@ -437,12 +466,15 @@
     <Compile Include="GUI\SHV.xaml.cs">
       <DependentUpon>SHV.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Log_Sub_System\Log-Sub_System.cs" />
     <Compile Include="UDT\Installing_Tags.cs" />
     <Compile Include="UDT\Real_type.cs" />
     <Compile Include="UDT\Tag_List.cs" />
     <Compile Include="UDT\udtCommandBit.cs" />
     <Compile Include="UDT\udtCrio.cs" />
     <Compile Include="UDT\udtFVP.cs" />
+    <Compile Include="UDT\udtION.cs" />
+    <Compile Include="UDT\udtIONWrite.cs" />
     <Compile Include="UDT\udtProcess.cs" />
     <Compile Include="UDT\udtValve.cs" />
     <Page Include="GUI\Crio.xaml">
@@ -519,7 +551,9 @@
     <None Include="Data\Real_Tags.edmx.diagram">
       <DependentUpon>Real_Tags.edmx</DependentUpon>
     </None>
+    <None Include="KVANT_Scada_TemporaryKey.pfx" />
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -531,9 +565,7 @@
   <ItemGroup>
     <Resource Include="Вакуумная камера.tif" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UDT\Update\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Вакуумная камера.png" />
   </ItemGroup>

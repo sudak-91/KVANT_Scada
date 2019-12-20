@@ -61,6 +61,8 @@ namespace KVANT_Scada.UDT
             Crio = new udtCrio(plc, 8, 4, real_Tag_Entitys, "Crio");
             FVP = new udtFVP(plc, 22, 0, real_Tag_Entitys, "FVP");
             Tech_Cam = new udtProcess(plc, 24, 0, real_Tag_Entitys, "Tech_Cam");
+          
+            Ion_SP = new udtIONWrite(plc, 20, 80, real_Tag_Entitys, "ION_Write");
         }
 
         public void Update_Read()
@@ -361,6 +363,7 @@ namespace KVANT_Scada.UDT
         {
             this.Tech_Cam.Write(value);
         }
+        
 
 
     }

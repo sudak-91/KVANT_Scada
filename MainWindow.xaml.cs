@@ -6,8 +6,6 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
-using UDT_DLL;
-
 
 
 namespace KVANT_Scada
@@ -34,6 +32,7 @@ namespace KVANT_Scada
         private GUI.Crio wCrio;
         private GUI.FVP wFVP;
         private RotateTransform rt;
+       
         public MainWindow()
         {
             this.Topmost = true;
@@ -51,7 +50,7 @@ namespace KVANT_Scada
             on = new SolidColorBrush(Color.FromRgb( 0, 255, 0));
             off = new SolidColorBrush(Color.FromRgb(255, 0, 0));
             neutral = new SolidColorBrush(Color.FromRgb( 221, 221, 221));
-
+            
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Interval = new System.TimeSpan(0,0,1);
             dispatcherTimer.Tick += new EventHandler(Count);
@@ -73,7 +72,7 @@ namespace KVANT_Scada
             Main_pressure.Text = Tags.get_cam_pressure().ToString("E1") + "mbar";
             Crio_pressure.Text = Tags.get_crio_pressure().ToString("E1")+ "mbar";
             Crio_temperature.Text = Tags.get_crio_temperature().ToString("F1")+"K";
-
+            
             if(Tags.get_CPV_opened())
             {
                 CPV_opened.Fill = on;
@@ -193,6 +192,23 @@ namespace KVANT_Scada
         private void Stage_2_Open_Cam_Copy1_Click(object sender, RoutedEventArgs e)
         {
             Tags.Tech_Cam_PRocess(4);
+        }
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Visibility = Visibility.Hidden;
+            ION_Screen.Visibility = Visibility.Visible;
+
+        }
+
+        private void Anod_I_SP_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            
         }
 
         private void Stage_0_Crio_Start_Click(object sender, RoutedEventArgs e)
