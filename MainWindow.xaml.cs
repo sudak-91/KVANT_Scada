@@ -33,12 +33,14 @@ namespace KVANT_Scada
         private GUI.FVP wFVP;
         private RotateTransform rt;
         private udtIONWrite udtIONWrite;
+        public int userPolicy =0;
        
         public MainWindow()
         {
-          
+           
             this.Topmost = true;
             InitializeComponent();
+
             real_Tag_Entitys = new Real_Tag_Entitys();
             
            
@@ -264,6 +266,16 @@ namespace KVANT_Scada
         private void Screens_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
           
+        }
+
+        private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Main_Screen_Initialized(object sender, EventArgs e)
+        {
+
         }
 
         private void Stage_0_Crio_Start_Click(object sender, RoutedEventArgs e)

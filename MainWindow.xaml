@@ -6,9 +6,14 @@
         xmlns:local="clr-namespace:KVANT_Scada"
         xmlns:Data="clr-namespace:KVANT_Scada.Data" x:Name="Main_Screen" x:Class="KVANT_Scada.MainWindow"
         mc:Ignorable="d"
-        Title="DanaEng D-1000" Height="768" Width="1024" Background="#FF95A8FF" WindowState="Maximized">
+        Title="DanaEng D-1000" Height="768" Width="1024" Background="#FF95A8FF" WindowState="Maximized" Initialized="Main_Screen_Initialized">
     <Grid x:Name="MainScreen">
-        <Grid x:Name="ION_Screen" HorizontalAlignment="Left" Height="583" Margin="-2,68,0,0" VerticalAlignment="Top" Width="995">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="331*"/>
+            <ColumnDefinition Width="138*"/>
+            <ColumnDefinition Width="39*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="ION_Screen" HorizontalAlignment="Left" Height="583" Margin="10,68,0,0" VerticalAlignment="Top" Width="995" Visibility="Hidden" Grid.ColumnSpan="3">
             <TextBox x:Name="Anod_I_SP" HorizontalAlignment="Left" Height="32" Margin="623,26,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
             <Button x:Name="Rest_Cliker" Content="Сохранить&#xD;&#xA;изменения" HorizontalAlignment="Left" Height="41" Margin="623,205,0,0" VerticalAlignment="Top" Width="103" Click="Rest_Cliker_Click"/>
             <TextBox x:Name="Anod_U_SP" HorizontalAlignment="Left" Height="32" Margin="623,84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
@@ -36,7 +41,7 @@
             <Label Content="Мощность нагрева" HorizontalAlignment="Left" Margin="236,116,0,0" VerticalAlignment="Top"/>
         </Grid>
 
-        <Grid x:Name="Main" HorizontalAlignment="Left" Height="585" Margin="10,68,0,0" VerticalAlignment="Top" Width="995" d:IsHidden="True">
+        <Grid x:Name="Main" HorizontalAlignment="Left" Height="585" Margin="10,68,0,0" VerticalAlignment="Top" Width="995" d:IsHidden="True" Grid.ColumnSpan="3">
             <Image x:Name="Tech_cam" HorizontalAlignment="Left" Height="334" Margin="382,242,0,0" VerticalAlignment="Top" Width="318" Source="Tech_cam.png"/>
             <Image HorizontalAlignment="Left" Height="38" Margin="485,207,0,0" VerticalAlignment="Top" Width="262" Source="Затвор шиберный.png" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
             <Image x:Name="Crio_pump" HorizontalAlignment="Left" Height="167" Margin="462,43,0,0" VerticalAlignment="Top" Width="135" Source="Криогенный насос CryoTorr10.png" MouseLeftButtonUp="Crio_pump_MouseLeftButtonUp"/>
@@ -150,8 +155,8 @@
             <Ellipse x:Name="Crio_Turn_On" Fill="#FF4D4DFF" HorizontalAlignment="Left" Height="35" Margin="521,132,0,0" Stroke="Black" VerticalAlignment="Top" Width="35"/>
         </Grid>
 
-        <Grid x:Name="ToolBox" HorizontalAlignment="Left" Height="73" Margin="10,654,0,0" VerticalAlignment="Top" Width="996">
-            <TabControl HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="996">
+        <Grid x:Name="ToolBox" HorizontalAlignment="Left" Height="73" Margin="10,654,0,0" VerticalAlignment="Top" Width="996" Grid.ColumnSpan="3">
+            <TabControl HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="996" SelectionChanged="TabControl_SelectionChanged">
                 <TabItem x:Name="ToolBar" Header="Камера" Margin="58,0,-61,-2">
                     <Grid Background="#FFE5E5E5">
                         <Button x:Name="Stage_0_Crio_Start" Content="Старт &#xA;Крионасоса" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Click="Stage_0_Crio_Start_Click"/>
