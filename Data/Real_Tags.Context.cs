@@ -35,5 +35,6 @@ namespace KVANT_Scada.Data
         public virtual DbSet<ion_read> ion_read { get; set; }
         public virtual DbSet<ion_sp> ion_sp { get; set; }
         public virtual DbSet<users> users { get; set; }
+        public virtual DbSet<real_log> real_log { get; set; }
     }
 }

@@ -424,6 +424,9 @@
     <Compile Include="Data\real.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\real_log.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Real_Tags.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

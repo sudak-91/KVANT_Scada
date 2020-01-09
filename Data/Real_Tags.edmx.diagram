@@ -15,6 +15,7 @@
         <EntityTypeShape EntityType="kvantModel.ion_read" Width="1.5" PointX="5.75" PointY="3.75" />
         <EntityTypeShape EntityType="kvantModel.ion_sp" Width="1.5" PointX="0.75" PointY="7.75" />
         <EntityTypeShape EntityType="kvantModel.users" Width="1.5" PointX="8.375" PointY="5.625" />
+        <EntityTypeShape EntityType="kvantModel.real_log" Width="1.5" PointX="8.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

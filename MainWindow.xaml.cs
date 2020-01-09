@@ -1,4 +1,5 @@
-﻿using KVANT_Scada.Data;
+﻿using KVANT_Scada.Config;
+using KVANT_Scada.Data;
 using KVANT_Scada.UDT;
 using S7.Net;
 using System;
@@ -66,18 +67,18 @@ namespace KVANT_Scada
 
 
         }
-        private bool ConnectToPlc()
+        public void ConnectToPlc()
         {
             plc.Open();
             if (plc.IsConnected)
             {
                 Tags = new Installing_Tags(plc, real_Tag_Entitys);
-                return true;
+                
 
             }
             else
             {
-                return false;
+                
             }
 
         }
@@ -94,6 +95,13 @@ namespace KVANT_Scada
             Heat_I.Text = Tags.GetHeatI();
             Heat_U.Text = Tags.GetHeatU();
             Heat_P.Text = Tags.GetHeatP();
+            if(User.Policy!=0)
+            {
+                control_toolbar.IsEnabled = true;
+            }else
+            {
+                control_toolbar.IsEnabled = false;
+            }
             
             if(Tags.get_CPV_opened())
             {
@@ -291,7 +299,7 @@ namespace KVANT_Scada
 
         private void Main_Screen_Loaded(object sender, RoutedEventArgs e)
         {
-            GUI.auth.auth_form af = new GUI.auth.auth_form(real_Tag_Entitys);
+            GUI.auth.auth_form af = new GUI.auth.auth_form(real_Tag_Entitys,this);
             af.Topmost = true;
             af.Show();
            

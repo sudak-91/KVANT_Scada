@@ -22,10 +22,12 @@ namespace KVANT_Scada.GUI.auth
     {
         private Real_Tag_Entitys rte { get; set; }
         users lUser;
-        public auth_form(Real_Tag_Entitys rte)
+        MainWindow mw;
+        public auth_form(Real_Tag_Entitys rte, MainWindow mainWindow)
         {
             InitializeComponent();
             this.rte = rte;
+            mw = mainWindow;
 
         }
 
@@ -40,7 +42,9 @@ namespace KVANT_Scada.GUI.auth
                 if (lUser.PassWord == strPass)
                 {
                      MainWindow.User = lUser;
+                     mw.ConnectToPlc();
                      this.Close();
+                   
                 }
                 else
                 {
