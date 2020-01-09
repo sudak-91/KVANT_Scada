@@ -439,11 +439,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Real_Tags.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\users.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\valves.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\valve_log.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\auth\auth_form.xaml.cs">
+      <DependentUpon>auth_form.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Crio.xaml.cs">
       <DependentUpon>Crio.xaml</DependentUpon>
@@ -477,6 +483,10 @@
     <Compile Include="UDT\udtIONWrite.cs" />
     <Compile Include="UDT\udtProcess.cs" />
     <Compile Include="UDT\udtValve.cs" />
+    <Page Include="GUI\auth\auth_form.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Crio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

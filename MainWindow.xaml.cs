@@ -33,7 +33,8 @@ namespace KVANT_Scada
         private GUI.FVP wFVP;
         private RotateTransform rt;
         private udtIONWrite udtIONWrite;
-        public int userPolicy =0;
+        public int userPolicy = 0;
+        public static users User;
        
         public MainWindow()
         {
@@ -45,21 +46,16 @@ namespace KVANT_Scada
             
            
             plc = new Plc (CpuType.S71500, "192.168.1.122", 0, 1);
-            plc.Open();
-            if (plc.IsConnected)
-            {
-                Tags = new Installing_Tags(plc, real_Tag_Entitys);
-                
-            }
             on = new SolidColorBrush(Color.FromRgb( 0, 255, 0));
             off = new SolidColorBrush(Color.FromRgb(255, 0, 0));
             neutral = new SolidColorBrush(Color.FromRgb( 221, 221, 221));
+            
       
 
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Interval = new System.TimeSpan(0,0,1);
-            dispatcherTimer.Tick += new EventHandler(Count);
-            dispatcherTimer.Start();
+            //dispatcherTimer.Interval = new System.TimeSpan(0,0,1);
+            //dispatcherTimer.Tick += new EventHandler(Count);
+            //dispatcherTimer.Start();
 
             rt = new RotateTransform();
           
@@ -68,6 +64,21 @@ namespace KVANT_Scada
 
 
 
+
+        }
+        private bool ConnectToPlc()
+        {
+            plc.Open();
+            if (plc.IsConnected)
+            {
+                Tags = new Installing_Tags(plc, real_Tag_Entitys);
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
 
         }
         public  void Count(object sender, EventArgs e)
@@ -275,6 +286,16 @@ namespace KVANT_Scada
 
         private void Main_Screen_Initialized(object sender, EventArgs e)
         {
+            
+        }
+
+        private void Main_Screen_Loaded(object sender, RoutedEventArgs e)
+        {
+            GUI.auth.auth_form af = new GUI.auth.auth_form(real_Tag_Entitys);
+            af.Topmost = true;
+            af.Show();
+           
+
 
         }
 

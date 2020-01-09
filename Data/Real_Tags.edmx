@@ -111,6 +111,15 @@
           <Property Name="DBB" Type="int" Nullable="false" />
           <Property Name="Value" Type="double" />
         </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="PassWord" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Policy" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
         <EntityType Name="valve_log">
           <Key>
             <PropertyRef Name="valve_logcol" />
@@ -145,6 +154,7 @@
           <EntitySet Name="ion_sp" EntityType="Self.ion_sp" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="process" EntityType="Self.process" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="real" EntityType="Self.real" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="valve_log" EntityType="Self.valve_log" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="valves" EntityType="Self.valves" Schema="kvant" store:Type="Tables" />
         </EntityContainer>
@@ -172,6 +182,7 @@
           <EntitySet Name="valve_log" EntityType="kvantModel.valve_log" />
           <EntitySet Name="ion_read" EntityType="kvantModel.ion_read" />
           <EntitySet Name="ion_sp" EntityType="kvantModel.ion_sp" />
+          <EntitySet Name="users" EntityType="kvantModel.users" />
         </EntityContainer>
         <EntityType Name="valves">
           <Key>
@@ -294,6 +305,15 @@
           <Property Name="Heat_I_SP" Type="Double" />
           <Property Name="Heat_U_SP" Type="Double" />
           <Property Name="Heat_P_SP" Type="Double" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Policy" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -430,6 +450,16 @@
                 <ScalarProperty Name="DBB" ColumnName="DBB" />
                 <ScalarProperty Name="DB" ColumnName="DB" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="kvantModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Policy" ColumnName="Policy" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

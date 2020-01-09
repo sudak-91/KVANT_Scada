@@ -1,0 +1,21 @@
+﻿<Window x:Class="KVANT_Scada.GUI.auth.auth_form"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KVANT_Scada.GUI.auth"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="311" Width="491">
+    <Grid Margin="10,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="login" HorizontalAlignment="Left" Height="50" Margin="215,75,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="200" TextAlignment="Center"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="130,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.659,-0.096" Height="26" Width="44"/>
+        <TextBox x:Name="pass" HorizontalAlignment="Left" Height="50" Margin="215,130,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="200" TextAlignment="Center"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="130,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.659,-0.096" Height="26" Width="51"/>
+        <Button Content="Авторизация" HorizontalAlignment="Left" Height="40" Margin="255,217,0,0" VerticalAlignment="Top" Width="138" Click="Button_Click"/>
+
+    </Grid>
+</Window>

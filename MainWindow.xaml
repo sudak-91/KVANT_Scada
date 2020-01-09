@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KVANT_Scada"
         xmlns:Data="clr-namespace:KVANT_Scada.Data" x:Name="Main_Screen" x:Class="KVANT_Scada.MainWindow"
         mc:Ignorable="d"
-        Title="DanaEng D-1000" Height="768" Width="1024" Background="#FF95A8FF" WindowState="Maximized" Initialized="Main_Screen_Initialized">
+        Title="DanaEng D-1000" Height="768" Width="1024" Background="#FF95A8FF" WindowState="Maximized" Initialized="Main_Screen_Initialized" Loaded="Main_Screen_Loaded">
     <Grid x:Name="MainScreen">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="331*"/>
