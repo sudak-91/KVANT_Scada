@@ -52,6 +52,13 @@ namespace KVANT_Scada.UDT
             FvpAutoModeSwitchOn = new udtCommandBit(plc, 22, 0, 1, real_Tag_Entitys, "FVP_Auto_Mode_Switch_On");
             FvpRemoteSwitchOn = new udtCommandBit(plc, 22, 0, 0, real_Tag_Entitys, "FVP_Remote_Switch_on");
             FvpManualStart = new udtCommandBit(plc, 22, 0, 3, real_Tag_Entitys, "FVP_Manual_Start");
+            CamHeatOpen = new udtCommandBit(plc, 24, 44, 3, real_Tag_Entitys, "Cam_Heat_Open");
+            IONManStart = new udtCommandBit(plc, 20, 30, 2, real_Tag_Entitys, "IonManStart");
+            IONManStop = new udtCommandBit(plc, 20, 30, 3, real_Tag_Entitys, "IonManStop");
+            IONAuto = new udtCommandBit(plc, 20, 30, 4, real_Tag_Entitys, "IonAutoMod");
+            IONReset = new udtCommandBit(plc, 20, 30, 5, real_Tag_Entitys, "IonReset");
+            ELIStart = new udtCommandBit(plc, 40, 0, 0, real_Tag_Entitys, "ELI Start");
+            ELIProcessComplete = new udtCommandBit(plc, 3, 104, 4, real_Tag_Entitys, "ELI_Process_Complete");
 
 
 
@@ -81,10 +88,13 @@ namespace KVANT_Scada.UDT
             FVV_B.Read_type();
             FVV_S.Read_type();
             Ion.Read_type();
+            ELIProcessComplete.Read();
+
 
 
 
         }
+
 
 
         public double get_cam_pressure ()
@@ -99,6 +109,10 @@ namespace KVANT_Scada.UDT
         {
             return this.Crio_temperature.value;
         }
+        public double get_FV_pressure()
+        {
+            return this.FV_presure.value;
+        }
          public bool get_SHV_opened()
         {
             return this.SHV.bOpened;
@@ -112,6 +126,14 @@ namespace KVANT_Scada.UDT
             return this.SHV.bAutoMode;
                 
         }
+        public bool get_Cam_Heat_Open()
+        {
+            return this.CamHeatOpen.value;
+        } 
+        public void set_Cam_Heat_Open(bool vl)
+        {
+            this.CamHeatOpen.value = vl;
+        }
         public bool get_SHV_blocked()
         {
             return this.SHV.bBlocked;
@@ -119,6 +141,14 @@ namespace KVANT_Scada.UDT
         public bool get_SHV_service()
         {
             return this.SHV.bServiced;
+        }
+        public bool get_Process_compite()
+        {
+            return  this.ELIProcessComplete.value;
+        }
+        public void set_ELI_Start(bool value)
+        {
+            this.ELIStart.Write(value);
         }
 
          public void SHV_auto_mode_on(bool value)
@@ -133,6 +163,10 @@ namespace KVANT_Scada.UDT
         {
             this.ShvOpen.Write(value);
 
+        }
+        public void setELIStart(bool value)
+        {
+            this.ELIStart.Write(value);
         }
 
         #region BAV_3
@@ -314,7 +348,27 @@ namespace KVANT_Scada.UDT
         {
             this.CrioManStart.Write(value);
         }
-
+        public void setIONManStart(bool value)
+        {
+            this.IONManStart.value = value;
+            
+        }
+        public void setIONManStop(bool value)
+        {
+            this.IONManStop.value = value;
+        }
+        public void setIONAutoMode(bool value)
+        {
+            this.IONAuto.value = value;
+        }
+        public void setIONReset(bool value)
+        {
+            this.IONReset.value = value;
+        }
+        public bool getIONAuto()
+        {
+            return this.IONAuto.value;
+        }
         #endregion
 
         #region FVP
@@ -428,6 +482,23 @@ namespace KVANT_Scada.UDT
         public string GetHeatP()
         {
             return this.Ion.Heat_P.ToString();
+        }
+        public bool GetIonPowerOn()
+        {
+            return this.Ion.Power_On;
+        }
+        public bool GetIonTurnOn()
+        {
+            return this.Ion.Turn_On;
+        }
+        public bool GetIonFailure()
+        {
+            return this.Ion.Failure;
+
+        }
+        public bool GetIonAutoMode()
+        {
+            return this.Ion.Auto_mode;
         }
     }
 

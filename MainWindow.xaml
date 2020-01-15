@@ -9,39 +9,36 @@
         Title="DanaEng D-1000" Height="768" Width="1024" Background="#FF95A8FF" WindowState="Maximized" Initialized="Main_Screen_Initialized" Loaded="Main_Screen_Loaded">
     <Grid x:Name="MainScreen">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="331*"/>
-            <ColumnDefinition Width="138*"/>
+            <ColumnDefinition Width="469*"/>
+            <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="39*"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="ION_Screen" HorizontalAlignment="Left" Height="583" Margin="10,68,0,0" VerticalAlignment="Top" Width="995" Visibility="Hidden" Grid.ColumnSpan="3">
-            <TextBox x:Name="Anod_I_SP" HorizontalAlignment="Left" Height="32" Margin="623,26,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
-            <Button x:Name="Rest_Cliker" Content="Сохранить&#xD;&#xA;изменения" HorizontalAlignment="Left" Height="41" Margin="623,205,0,0" VerticalAlignment="Top" Width="103" Click="Rest_Cliker_Click"/>
-            <TextBox x:Name="Anod_U_SP" HorizontalAlignment="Left" Height="32" Margin="623,84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
-            <TextBox x:Name="Anod_P_SP" HorizontalAlignment="Left" Height="32" Margin="623,142,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
-            <Label Content="Уставка силы тока анода" HorizontalAlignment="Left" Margin="623,0,0,0" VerticalAlignment="Top"/>
-            <Label Content="Уставка напряжения анода" HorizontalAlignment="Left" Margin="623,58,0,0" VerticalAlignment="Top"/>
-            <Label Content="Уставка мощности анода" HorizontalAlignment="Left" Margin="623,116,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="Heat_I_SP" HorizontalAlignment="Left" Height="32" Margin="808,26,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
-            <TextBox x:Name="Heat_U_SP" HorizontalAlignment="Left" Height="32" Margin="808,84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
-            <TextBox x:Name="Heat_P_SP" HorizontalAlignment="Left" Height="32" Margin="808,142,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
-            <Label Content="Уставка силы тока нагрева" HorizontalAlignment="Left" Margin="808,0,0,0" VerticalAlignment="Top"/>
-            <Label Content="Уставка напряжения нагрева" HorizontalAlignment="Left" Margin="808,58,0,0" VerticalAlignment="Top"/>
-            <Label Content="Уставка мощности нагрева" HorizontalAlignment="Left" Margin="808,116,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="Anod_I" HorizontalAlignment="Left" Height="32" Margin="58,26,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
-            <TextBox x:Name="Anod_U" HorizontalAlignment="Left" Height="32" Margin="58,84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
-            <TextBox x:Name="Anod_P" HorizontalAlignment="Left" Height="32" Margin="58,142,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
-            <Label Content="Cила тока анода" HorizontalAlignment="Left" Margin="58,0,0,0" VerticalAlignment="Top"/>
-            <Label Content="Напряжение анода" HorizontalAlignment="Left" Margin="58,58,0,0" VerticalAlignment="Top"/>
-            <Label Content="Мощность анода" HorizontalAlignment="Left" Margin="58,116,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="Heat_I" HorizontalAlignment="Left" Height="32" Margin="236,26,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
-            <TextBox x:Name="Heat_P" HorizontalAlignment="Left" Height="32" Margin="236,142,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
-            <TextBox x:Name="Heat_U" HorizontalAlignment="Left" Height="32" Margin="236,84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
-            <Label Content="Cилa тока нагрева" HorizontalAlignment="Left" Margin="236,0,0,0" VerticalAlignment="Top"/>
-            <Label Content="Напряжение нагрева" HorizontalAlignment="Left" Margin="236,58,0,0" VerticalAlignment="Top"/>
-            <Label Content="Мощность нагрева" HorizontalAlignment="Left" Margin="236,116,0,0" VerticalAlignment="Top"/>
-        </Grid>
 
-        <Grid x:Name="Main" HorizontalAlignment="Left" Height="585" Margin="10,68,0,0" VerticalAlignment="Top" Width="995" d:IsHidden="True" Grid.ColumnSpan="3">
+        <Grid x:Name="ToolBox" HorizontalAlignment="Left" Height="73" Margin="10,654,0,0" VerticalAlignment="Top" Width="996" Grid.ColumnSpan="3">
+            <TabControl x:Name="control_toolbar" HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="996" SelectionChanged="TabControl_SelectionChanged">
+                <TabItem x:Name="ToolBar" Header="Камера" Margin="58,0,-61,-2">
+                    <Grid Background="#FFE5E5E5">
+                        <Button x:Name="Stage_0_Crio_Start" Content="Старт &#xA;Крионасоса" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Click="Stage_0_Crio_Start_Click"/>
+                        <Button x:Name="Stage_1_Prepare_Cam" Content="Откачка&#xA;камеры" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Click="Stage_1_Prepare_Cam_Click" Margin="116,0,0,0"/>
+                        <Button x:Name="Stage_2_Open_Cam" Content="Открытие&#xA;камеры" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Click="Stage_2_Open_Cam_Click" Margin="232,0,0,0"/>
+                        <Button x:Name="Stage_2_Open_Cam_Copy" Content="Закрытие&#xA;смены" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Margin="348,0,0,0" Click="Stage_2_Open_Cam_Copy_Click"/>
+                        <Button x:Name="Stage_2_Open_Cam_Copy1" Content="Стоп&#xA;Крионасоса" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Margin="464,0,0,0" Click="Stage_2_Open_Cam_Copy1_Click"/>
+                        <Button x:Name="Start_process" Content="Старт Напыления" HorizontalAlignment="Left" Height="25" Margin="864,10,0,0" VerticalAlignment="Top" Width="116" Click="Start_process_Click"/>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="Screens" Header="Экраны" Margin="-53,0,49,-2">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="29*"/>
+                            <ColumnDefinition Width="81*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="Test" Content="Ионный&#xA;источник" HorizontalAlignment="Left" Height="35" Margin="83,6,0,0" VerticalAlignment="Top" Width="72" Click="Test_Click"/>
+                        <Button x:Name="btnMainScreen" Content="Главный &#xA;экран" HorizontalAlignment="Left" Height="35" Margin="3,6,0,0" VerticalAlignment="Top" Width="75" Click="btnMainScreen_Click"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+        <Grid x:Name="Main" HorizontalAlignment="Left" Height="585" Margin="10,68,0,0" VerticalAlignment="Top" Width="995" Grid.ColumnSpan="3">
             <Image x:Name="Tech_cam" HorizontalAlignment="Left" Height="334" Margin="382,242,0,0" VerticalAlignment="Top" Width="318" Source="Tech_cam.png"/>
             <Image HorizontalAlignment="Left" Height="38" Margin="485,207,0,0" VerticalAlignment="Top" Width="262" Source="Затвор шиберный.png" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
             <Image x:Name="Crio_pump" HorizontalAlignment="Left" Height="167" Margin="462,43,0,0" VerticalAlignment="Top" Width="135" Source="Криогенный насос CryoTorr10.png" MouseLeftButtonUp="Crio_pump_MouseLeftButtonUp"/>
@@ -57,7 +54,7 @@
                 </Image.RenderTransform>
             </Image>
             <Image x:Name="ELI" HorizontalAlignment="Left" Height="80" Margin="609,389,0,0" VerticalAlignment="Top" Width="53" Source="Тигель.png"/>
-            <Image x:Name="Ion" HorizontalAlignment="Left" Height="45" Margin="418,424,0,0" VerticalAlignment="Top" Width="58" Source="ИИ.png"/>
+            <Image x:Name="Ion" HorizontalAlignment="Left" Height="45" Margin="418,424,0,0" VerticalAlignment="Top" Width="58" Source="ИИ.png" MouseLeftButtonDown="Ion_MouseLeftButtonDown"/>
             <Image x:Name="Heather" HorizontalAlignment="Left" Height="72" Margin="452,291,0,0" VerticalAlignment="Top" Width="100" Source="Нагреватель.png"/>
             <Grid HorizontalAlignment="Left" Height="40" Margin="668,300,0,0" VerticalAlignment="Top" Width="205">
                 <Grid.ColumnDefinitions>
@@ -153,31 +150,39 @@
             <Ellipse x:Name="BAV_3_opened" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="21" Margin="739,411,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
             <Ellipse x:Name="SHV_opened" Fill="#FF4D4DFF" HorizontalAlignment="Left" Height="32" Margin="592,209,0,0" Stroke="Black" VerticalAlignment="Top" Width="32"/>
             <Ellipse x:Name="Crio_Turn_On" Fill="#FF4D4DFF" HorizontalAlignment="Left" Height="35" Margin="521,132,0,0" Stroke="Black" VerticalAlignment="Top" Width="35"/>
+            <CheckBox x:Name="Heat_open_cam" Content="Нагрев камеры при открытии" HorizontalAlignment="Left" Margin="47,43,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+            <TextBox x:Name="txtbox_FV_pressure" HorizontalAlignment="Left" Height="23" Margin="59,345,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="86"/>
+            <Label Content="Давление в форвакуумной линии" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.105,-0.115"/>
         </Grid>
-
-        <Grid x:Name="ToolBox" HorizontalAlignment="Left" Height="73" Margin="10,654,0,0" VerticalAlignment="Top" Width="996" Grid.ColumnSpan="3">
-            <TabControl x:Name="control_toolbar" HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="996" SelectionChanged="TabControl_SelectionChanged">
-                <TabItem x:Name="ToolBar" Header="Камера" Margin="58,0,-61,-2">
-                    <Grid Background="#FFE5E5E5">
-                        <Button x:Name="Stage_0_Crio_Start" Content="Старт &#xA;Крионасоса" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Click="Stage_0_Crio_Start_Click"/>
-                        <Button x:Name="Stage_1_Prepare_Cam" Content="Откачка&#xA;камеры" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Click="Stage_1_Prepare_Cam_Click" Margin="116,0,0,0"/>
-                        <Button x:Name="Stage_2_Open_Cam" Content="Открытие&#xA;камеры" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Click="Stage_2_Open_Cam_Click" Margin="232,0,0,0"/>
-                        <Button x:Name="Stage_2_Open_Cam_Copy" Content="Закрытие&#xA;смены" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Margin="348,0,0,0" Click="Stage_2_Open_Cam_Copy_Click"/>
-                        <Button x:Name="Stage_2_Open_Cam_Copy1" Content="Стоп&#xA;Крионасоса" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="111" Margin="464,0,0,0" Click="Stage_2_Open_Cam_Copy1_Click"/>
-                    </Grid>
-                </TabItem>
-                <TabItem x:Name="Screens" Header="Экраны" Margin="-53,0,49,-2">
-                    <Grid Background="#FFE5E5E5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="29*"/>
-                            <ColumnDefinition Width="81*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="Test" Content="Ионный&#xA;источник" HorizontalAlignment="Left" Height="35" Margin="83,6,0,0" VerticalAlignment="Top" Width="72" Click="Test_Click"/>
-                        <Button x:Name="btnMainScreen" Content="Главный &#xA;экран" HorizontalAlignment="Left" Height="35" Margin="3,6,0,0" VerticalAlignment="Top" Width="75" Click="btnMainScreen_Click"/>
-                    </Grid>
-                </TabItem>
-            </TabControl>
+        <Grid x:Name="ION_Screen" HorizontalAlignment="Left" Height="576" Margin="10,70,0,0" VerticalAlignment="Top" Width="995"  Grid.ColumnSpan="3" Visibility="Hidden">
+            <TextBox x:Name="Anod_I_SP" HorizontalAlignment="Left" Height="32" Margin="623,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
+            <Button x:Name="Rest_Cliker" Content="Сохранить&#xA;изменения" HorizontalAlignment="Left" Height="41" Margin="623,221,0,0" VerticalAlignment="Top" Width="103" Click="Rest_Cliker_Click"/>
+            <TextBox x:Name="Anod_U_SP" HorizontalAlignment="Left" Height="32" Margin="623,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
+            <TextBox x:Name="Anod_P_SP" HorizontalAlignment="Left" Height="32" Margin="623,158,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
+            <Label Content="Уставка силы тока анода" HorizontalAlignment="Left" Margin="623,16,0,0" VerticalAlignment="Top"/>
+            <Label Content="Уставка напряжения анода" HorizontalAlignment="Left" Margin="623,74,0,0" VerticalAlignment="Top"/>
+            <Label Content="Уставка мощности анода" HorizontalAlignment="Left" Margin="623,132,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="Heat_I_SP" HorizontalAlignment="Left" Height="32" Margin="808,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
+            <TextBox x:Name="Heat_U_SP" HorizontalAlignment="Left" Height="32" Margin="808,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
+            <TextBox x:Name="Heat_P_SP" HorizontalAlignment="Left" Height="32" Margin="808,158,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
+            <Label Content="Уставка силы тока нагрева" HorizontalAlignment="Left" Margin="808,16,0,0" VerticalAlignment="Top"/>
+            <Label Content="Уставка напряжения нагрева" HorizontalAlignment="Left" Margin="808,74,0,0" VerticalAlignment="Top"/>
+            <Label Content="Уставка мощности нагрева" HorizontalAlignment="Left" Margin="808,132,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="Anod_I" HorizontalAlignment="Left" Height="32" Margin="58,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
+            <TextBox x:Name="Anod_U" HorizontalAlignment="Left" Height="32" Margin="58,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
+            <TextBox x:Name="Anod_P" HorizontalAlignment="Left" Height="32" Margin="58,158,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
+            <Label Content="Cила тока анода" HorizontalAlignment="Left" Margin="58,16,0,0" VerticalAlignment="Top"/>
+            <Label Content="Напряжение анода" HorizontalAlignment="Left" Margin="58,74,0,0" VerticalAlignment="Top"/>
+            <Label Content="Мощность анода" HorizontalAlignment="Left" Margin="58,132,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="Heat_I" HorizontalAlignment="Left" Height="32" Margin="236,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
+            <TextBox x:Name="Heat_P" HorizontalAlignment="Left" Height="32" Margin="236,158,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
+            <TextBox x:Name="Heat_U" HorizontalAlignment="Left" Height="32" Margin="236,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
+            <Label Content="Cилa тока нагрева" HorizontalAlignment="Left" Margin="236,16,0,0" VerticalAlignment="Top"/>
+            <Label Content="Напряжение нагрева" HorizontalAlignment="Left" Margin="236,74,0,0" VerticalAlignment="Top"/>
+            <Label Content="Мощность нагрева" HorizontalAlignment="Left" Margin="236,132,0,0" VerticalAlignment="Top"/>
         </Grid>
+        <Ellipse x:Name="Process_complite" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="42" Margin="20,21,0,0" Stroke="Black" VerticalAlignment="Top" Width="42"/>
+        <Label Content="Процесс напыления завершен" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="67,29,0,0"/>
 
     </Grid>
 </Window>

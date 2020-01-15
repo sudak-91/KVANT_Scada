@@ -44,6 +44,15 @@ namespace KVANT_Scada.UDT
         private udtCommandBit FvpAutoModeSwitchOn;
         private udtCommandBit FvpRemoteSwitchOn;
         private udtCommandBit FvpManualStart;
+        private udtCommandBit CamHeatOpen;
+        private udtCommandBit IONManStart;
+        private udtCommandBit IONManStop;
+        private udtCommandBit IONAuto;
+        private udtCommandBit IONReset;
+        private udtCommandBit ELIStart;
+        private udtCommandBit ELIProcessComplete;
+
+
 
 
         #endregion
