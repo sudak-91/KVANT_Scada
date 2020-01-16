@@ -13,6 +13,10 @@ namespace KVANT_Scada.UDT
         private Real_type FV_presure;
         private Real_type Crio_pressure;
         private Real_type Crio_temperature;
+        private Real_type K_RRG_1, K_RRG_2,K_RRG_3;
+        private Real_type FB_RRG_1, FB_RRG_2, FB_RRG_3;
+        private Real_type SP_PID_RRG, ManVal_PID_RRG,Mode_RRG;
+        private Real_type Pne_press;
         #endregion
 
         #region udtValve

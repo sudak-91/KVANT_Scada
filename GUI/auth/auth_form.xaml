@@ -13,9 +13,10 @@
         </Grid.RowDefinitions>
         <TextBox x:Name="login" HorizontalAlignment="Left" Height="50" Margin="215,75,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="200" TextAlignment="Center"/>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="130,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.659,-0.096" Height="26" Width="44"/>
-        <TextBox x:Name="pass" HorizontalAlignment="Left" Height="50" Margin="215,130,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="200" TextAlignment="Center"/>
+
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="130,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.659,-0.096" Height="26" Width="51"/>
         <Button Content="Авторизация" HorizontalAlignment="Left" Height="40" Margin="255,217,0,0" VerticalAlignment="Top" Width="138" Click="Button_Click"/>
+        <PasswordBox x:Name="pass" HorizontalAlignment="Left" Margin="215,137,0,0" VerticalAlignment="Top" Width="201" Height="46"/>
 
     </Grid>
 </Window>

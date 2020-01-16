@@ -93,6 +93,7 @@ namespace KVANT_Scada
             Crio_pressure.Text = Tags.get_crio_pressure().ToString("E1")+ "mbar";
             Crio_temperature.Text = Tags.get_crio_temperature().ToString("F1")+"K";
             txtbox_FV_pressure.Text = Tags.get_FV_pressure().ToString("E1") + "mbar";
+            Pne_press.Text = Tags.get_Pne_Press().ToString("F1") + "bar";
             Anod_I.Text = Tags.GetAnodI();
             Anod_U.Text = Tags.GetAnodU();
             Anod_P.Text = Tags.GetAnodP();

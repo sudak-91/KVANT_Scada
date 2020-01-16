@@ -18,6 +18,16 @@ namespace KVANT_Scada.UDT
             FV_presure = new Real_type(plc, 14,22, real_Tag_Entitys, "FV_presure");
             Crio_pressure = new Real_type(plc, 14,8, real_Tag_Entitys, "Crio_presure");
             Crio_temperature = new Real_type(plc, 18, 16, real_Tag_Entitys,"Crio_temperature");
+            K_RRG_1 = new Real_type(plc, 21, 92, real_Tag_Entitys, "K_RRG_1");
+            K_RRG_2 = new Real_type(plc, 21, 96, real_Tag_Entitys, "K_RRG_2");
+            K_RRG_3 = new Real_type(plc, 21, 100, real_Tag_Entitys, "K_RRG_3");
+            FB_RRG_1 = new Real_type(plc, 21, 30, real_Tag_Entitys, "FB_RRG_1");
+            FB_RRG_2 = new Real_type(plc, 21, 52, real_Tag_Entitys, "FB_RRG_2");
+            FB_RRG_3 = new Real_type(plc, 21, 70, real_Tag_Entitys, "FB_RRG_3");
+            SP_PID_RRG = new Real_type(plc, 39, 0, real_Tag_Entitys, "SP_PID_RRG");
+            ManVal_PID_RRG = new Real_type(plc, 39, 4, real_Tag_Entitys, "ManVal_PID_RRG");
+            Mode_RRG = new Real_type(plc, 39, 12, real_Tag_Entitys, "Mode_RRG");
+            Pne_press = new Real_type(plc, 23, 0, real_Tag_Entitys, "Pne_Press");
             #endregion
             #region
             SHV = new udtValve(plc, 7, 28, real_Tag_Entitys, "SHV");
@@ -59,6 +69,7 @@ namespace KVANT_Scada.UDT
             IONReset = new udtCommandBit(plc, 20, 30, 5, real_Tag_Entitys, "IonReset");
             ELIStart = new udtCommandBit(plc, 40, 0, 0, real_Tag_Entitys, "ELI Start");
             ELIProcessComplete = new udtCommandBit(plc, 3, 104, 4, real_Tag_Entitys, "ELI_Process_Complete");
+            
 
 
 
@@ -89,6 +100,11 @@ namespace KVANT_Scada.UDT
             FVV_S.Read_type();
             Ion.Read_type();
             ELIProcessComplete.Read();
+            FB_RRG_1.Read_type();
+            FB_RRG_2.Read_type();
+            FB_RRG_3.Read_type();
+            Pne_press.Read_type();
+
 
 
 
@@ -100,6 +116,10 @@ namespace KVANT_Scada.UDT
         public double get_cam_pressure ()
         {
             return this.Cam_pressure.value;
+        }
+        public double get_Pne_Press()
+        {
+            return Pne_press.value;
         }
         public double get_crio_pressure ()
         {
@@ -126,6 +146,7 @@ namespace KVANT_Scada.UDT
             return this.SHV.bAutoMode;
                 
         }
+    
         public bool get_Cam_Heat_Open()
         {
             return this.CamHeatOpen.value;
@@ -501,6 +522,53 @@ namespace KVANT_Scada.UDT
         public bool GetIonAutoMode()
         {
             return this.Ion.Auto_mode;
+        }
+
+
+
+
+
+        public double get_FB_RRG_1()
+        {
+            return FB_RRG_1.value;
+        }
+        public double get_FB_RRG_2()
+        {
+            return FB_RRG_2.value;
+        }
+        public double get_FB_RRG_3()
+        {
+            return FB_RRG_3.value;
+        }
+        public double get_K_RRG_1()
+        {
+            return K_RRG_1.value;
+        }
+        public double get_K_RRG_2()
+        {
+            return K_RRG_2.value;
+        }
+        public double get_K_RRG_3()
+        {
+            return K_RRG_3.value;
+        }
+        public void set_K_RRG(float v1, float v2, float v3)
+        {
+            this.K_RRG_1.Write_type(v1);
+            this.K_RRG_2.Write_type(v2);
+            this.K_RRG_3.Write_type(v3);
+        }
+        public void set_SP_PID_RRG(float value)
+        {
+            SP_PID_RRG.Write_type(value);
+        }
+        public void set_ManVal_PID_RRG(float value)
+        {
+            ManVal_PID_RRG.Write_type(value);
+        }
+        public void set_MODE_PID (float value)
+        {
+            Mode_RRG.Write_type(value);
         }
     }
 

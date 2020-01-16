@@ -66,6 +66,25 @@ namespace KVANT_Scada.GUI
             }
         }
 
+        private void Save_K_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Tag.set_K_RRG(float.Parse(K_RRG__1.Text.ToString()), float.Parse(K_RRG_2.Text.ToString()), float.Parse(K_RRG_3.Text.ToString()));
+        }
+
+        private void PID_auto_Click(object sender, RoutedEventArgs e)
+        {
+            Tag.set_MODE_PID((float)3.0);
+            Tag.set_SP_PID_RRG(float.Parse(RRG_SP.Text.ToString()));
+        }
+
+        private void Manual_RRG_Click(object sender, RoutedEventArgs e)
+        {
+            Tag.set_MODE_PID((float)4.0);
+            Tag.set_ManVal_PID_RRG(float.Parse(RRG_ManVal.Text.ToString()));
+           
+        }
+
         public void Update_GUI(object sender, EventArgs e)
         {
             if (Tag.GetIonAutoMode())
@@ -109,6 +128,10 @@ namespace KVANT_Scada.GUI
                 {
                     Ion_Status_Failure.Fill = null;
                 }
+                FB_RRG_1.Text = Tag.get_FB_RRG_1().ToString();
+                FB_RRG_2.Text = Tag.get_FB_RRG_2().ToString();
+                FB_RRG_3.Text = Tag.get_FB_RRG_3().ToString();
+
 
 
 

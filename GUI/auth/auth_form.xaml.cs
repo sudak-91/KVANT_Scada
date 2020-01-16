@@ -34,7 +34,7 @@ namespace KVANT_Scada.GUI.auth
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string strLogin = login.Text.ToString();
-            string strPass = pass.Text.ToString();
+            string strPass = pass.Password.ToString();
 
             try
             {
