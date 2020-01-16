@@ -150,7 +150,7 @@
             <Ellipse x:Name="BAV_3_opened" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="21" Margin="739,411,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
             <Ellipse x:Name="SHV_opened" Fill="#FF4D4DFF" HorizontalAlignment="Left" Height="32" Margin="592,209,0,0" Stroke="Black" VerticalAlignment="Top" Width="32"/>
             <Ellipse x:Name="Crio_Turn_On" Fill="#FF4D4DFF" HorizontalAlignment="Left" Height="35" Margin="521,132,0,0" Stroke="Black" VerticalAlignment="Top" Width="35"/>
-            <CheckBox x:Name="Heat_open_cam" Content="Нагрев камеры при открытии" HorizontalAlignment="Left" Margin="47,43,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+            <CheckBox x:Name="Heat_open_cam" Content="Нагрев камеры при открытии" HorizontalAlignment="Left" Margin="47,43,0,0" VerticalAlignment="Top" Click="CheckBox_Checked"/>
             <TextBox x:Name="txtbox_FV_pressure" HorizontalAlignment="Left" Height="23" Margin="59,345,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="86"/>
             <Label Content="Давление в форвакуумной линии" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.105,-0.115"/>
         </Grid>

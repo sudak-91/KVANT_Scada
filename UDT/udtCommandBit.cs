@@ -63,10 +63,11 @@ namespace KVANT_Scada.UDT
             try
             {
                 command_bit vCommandBit = this.rte.command_bit.Find(this.DB, this.DBB, this.DBX);
-                vCommandBit.Value = (bool)this.PLC.Read(DataType.DataBlock, this.DB, this.DBB, VarType.Bit, 1, (byte)this.DBX);
+                vCommandBit.Value = (bool)this.PLC.Read(DataType.DataBlock, this.DB, this.DBB, VarType.Bit, 1,(byte)this.DBX);
 
                 this.rte.SaveChanges();
-                return (bool) vCommandBit.Value;
+                this.value = (bool)vCommandBit.Value;
+                return  this.value;
 
             }
             catch(Exception ex)

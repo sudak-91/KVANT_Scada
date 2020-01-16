@@ -53,8 +53,8 @@ namespace KVANT_Scada.UDT
             FvpRemoteSwitchOn = new udtCommandBit(plc, 22, 0, 0, real_Tag_Entitys, "FVP_Remote_Switch_on");
             FvpManualStart = new udtCommandBit(plc, 22, 0, 3, real_Tag_Entitys, "FVP_Manual_Start");
             CamHeatOpen = new udtCommandBit(plc, 24, 44, 3, real_Tag_Entitys, "Cam_Heat_Open");
-            IONManStart = new udtCommandBit(plc, 20, 30, 2, real_Tag_Entitys, "IonManStart");
-            IONManStop = new udtCommandBit(plc, 20, 30, 3, real_Tag_Entitys, "IonManStop");
+            IONManStart = new udtCommandBit(plc, 20, 30, 0, real_Tag_Entitys, "IonManStart");
+            IONManStop = new udtCommandBit(plc, 20, 30, 1, real_Tag_Entitys, "IonManStop");
             IONAuto = new udtCommandBit(plc, 20, 30, 4, real_Tag_Entitys, "IonAutoMod");
             IONReset = new udtCommandBit(plc, 20, 30, 5, real_Tag_Entitys, "IonReset");
             ELIStart = new udtCommandBit(plc, 40, 0, 0, real_Tag_Entitys, "ELI Start");
@@ -132,7 +132,7 @@ namespace KVANT_Scada.UDT
         } 
         public void set_Cam_Heat_Open(bool vl)
         {
-            this.CamHeatOpen.value = vl;
+            this.CamHeatOpen.Write(vl);
         }
         public bool get_SHV_blocked()
         {
@@ -350,20 +350,22 @@ namespace KVANT_Scada.UDT
         }
         public void setIONManStart(bool value)
         {
-            this.IONManStart.value = value;
+            this.IONManStart.Write(value);
+                
+                
             
         }
         public void setIONManStop(bool value)
         {
-            this.IONManStop.value = value;
+            this.IONManStop.Write(value);
         }
         public void setIONAutoMode(bool value)
         {
-            this.IONAuto.value = value;
+            this.IONAuto.Write(value);
         }
         public void setIONReset(bool value)
         {
-            this.IONReset.value = value;
+            this.IONReset.Write(value);
         }
         public bool getIONAuto()
         {

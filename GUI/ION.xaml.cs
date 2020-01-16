@@ -21,13 +21,13 @@ namespace KVANT_Scada.GUI
     /// </summary>
     public partial class ION : Window
     {
-       
-       private  Installing_Tags Tag;
-       private SolidColorBrush on, off;
+
+        private Installing_Tags Tag;
+        private SolidColorBrush on, off;
         public ION(Installing_Tags Tags)
         {
-           
-                InitializeComponent();
+
+            InitializeComponent();
             on = new SolidColorBrush(Color.FromArgb(100, 0, 255, 0));
             off = new SolidColorBrush(Color.FromArgb(100, 255, 0, 0));
             Tag = Tags;
@@ -56,7 +56,7 @@ namespace KVANT_Scada.GUI
 
         private void Ion_Command_automode_Click(object sender, RoutedEventArgs e)
         {
-            if(Tag.getIONAuto())
+            if (Tag.getIONAuto())
             {
                 Tag.setIONAutoMode(false);
             }
@@ -70,52 +70,53 @@ namespace KVANT_Scada.GUI
         {
             if (Tag.GetIonAutoMode())
             {
-                Ion_Status_Automat_on.Fill= on;
-               
-               
+                Ion_Status_Automat_on.Fill = on;
+
+
 
 
             }
             else
             {
                 Ion_Status_Automat_on.Fill = off;
-              
 
 
-            if (Tag.GetIonPowerOn())
-            {
-                Ion_Status_Power_On.Fill = on;
 
-            }
-            else
-            {
+                if (Tag.GetIonPowerOn())
+                {
+                    Ion_Status_Power_On.Fill = on;
+
+                }
+                else
+                {
                     Ion_Status_Power_On.Fill = off;
-            }
+                }
 
-            if(Tag.GetIonTurnOn())
-            {
-                Ion_Status_Turn_On.Fill = on;
-            }
-            else
-            {
+                if (Tag.GetIonTurnOn())
+                {
+                    Ion_Status_Turn_On.Fill = on;
+                }
+                else
+                {
                     Ion_Status_Turn_On.Fill = off;
-            }
+                }
 
-            if(Tag.GetIonFailure())
-            {
-                Ion_Status_Failure.Fill = off;
-            }
-            else
-            {
+                if (Tag.GetIonFailure())
+                {
+                    Ion_Status_Failure.Fill = off;
+                }
+                else
+                {
                     Ion_Status_Failure.Fill = null;
+                }
+
+
+
+
+
             }
 
 
-
-
-            
         }
-
-
     }
 }
