@@ -32,11 +32,14 @@ namespace KVANT_Scada
         private GUI.FVV_B wFVV_B;
         private GUI.Crio wCrio;
         private GUI.FVP wFVP;
+        private GUI.ION wIon;
         private RotateTransform rt;
         private udtIONWrite udtIONWrite;
         public int userPolicy = 0;
         public static users User;
-       
+        private System.Windows.Threading.DispatcherTimer dispatcherTimer;
+
+
         public MainWindow()
         {
            
@@ -53,10 +56,8 @@ namespace KVANT_Scada
             
       
 
-            System.Windows.Threading.DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            //dispatcherTimer.Interval = new System.TimeSpan(0,0,1);
-            //dispatcherTimer.Tick += new EventHandler(Count);
-            //dispatcherTimer.Start();
+            dispatcherTimer = new DispatcherTimer();
+           
 
             rt = new RotateTransform();
           
@@ -73,7 +74,9 @@ namespace KVANT_Scada
             if (plc.IsConnected)
             {
                 Tags = new Installing_Tags(plc, real_Tag_Entitys);
-                
+                dispatcherTimer.Interval = new System.TimeSpan(0, 0, 1);
+                dispatcherTimer.Tick += new EventHandler(Count);
+                dispatcherTimer.Start();
 
             }
             else
@@ -89,6 +92,7 @@ namespace KVANT_Scada
             Main_pressure.Text = Tags.get_cam_pressure().ToString("E1") + "mbar";
             Crio_pressure.Text = Tags.get_crio_pressure().ToString("E1")+ "mbar";
             Crio_temperature.Text = Tags.get_crio_temperature().ToString("F1")+"K";
+            txtbox_FV_pressure.Text = Tags.get_FV_pressure().ToString("E1") + "mbar";
             Anod_I.Text = Tags.GetAnodI();
             Anod_U.Text = Tags.GetAnodU();
             Anod_P.Text = Tags.GetAnodP();
@@ -120,6 +124,16 @@ namespace KVANT_Scada
             {
                 FVV_S_opened.Fill = neutral;
             }
+
+            if(Tags.get_Process_compite())
+            {
+                Process_complite.Fill = on;
+            }
+            else
+            {
+                Process_complite.Fill = neutral;
+            }
+
             if(Tags.get_FVV_B_opened())
             {
                 FVV_B_opened.Fill = on;
@@ -305,6 +319,23 @@ namespace KVANT_Scada
            
 
 
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            bool a = (bool)Heat_open_cam.IsChecked;
+            Tags.set_Cam_Heat_Open(a);
+        }
+
+        private void Ion_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            wIon = new GUI.ION(Tags);
+            wIon.ShowDialog();
+        }
+
+        private void Start_process_Click(object sender, RoutedEventArgs e)
+        {
+            Tags.setELIStart(true);
         }
 
         private void Stage_0_Crio_Start_Click(object sender, RoutedEventArgs e)

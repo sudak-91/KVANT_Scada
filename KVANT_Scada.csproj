@@ -454,6 +454,9 @@
     <Compile Include="GUI\auth\auth_form.xaml.cs">
       <DependentUpon>auth_form.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ION.xaml.cs">
+      <DependentUpon>ION.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Crio.xaml.cs">
       <DependentUpon>Crio.xaml</DependentUpon>
     </Compile>
@@ -489,6 +492,10 @@
     <Page Include="GUI\auth\auth_form.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\ION.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="GUI\Crio.xaml">
       <SubType>Designer</SubType>
