@@ -243,6 +243,7 @@ namespace KVANT_Scada
         {
             Main.Visibility = Visibility.Hidden;
             ION_Screen.Visibility = Visibility.Visible;
+            Heat.Visibility = Visibility.Hidden;
             Tags.GetInitValue();
             Anod_I_SP.Text = Tags.GetAnodISp();
             Anod_U_SP.Text = Tags.GetAnodUSp();
@@ -268,6 +269,7 @@ namespace KVANT_Scada
         {
             Main.Visibility = Visibility.Visible;
             ION_Screen.Visibility = Visibility.Hidden;
+            Heat.Visibility = Visibility.Hidden;
         }
 
  
@@ -295,6 +297,7 @@ namespace KVANT_Scada
             double dhp = Convert.ToDouble(hp);
             
             Tags.WriteToDbISp(di,du,dp,dhi,dhu,dhp);
+           
         }
 
         private void Screens_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -337,6 +340,70 @@ namespace KVANT_Scada
         private void Start_process_Click(object sender, RoutedEventArgs e)
         {
             Tags.setELIStart(true);
+        }
+
+        private void Heat_Assist_Click(object sender, RoutedEventArgs e)
+        {
+            Tags.set_Heat_Asssit((bool)Heat_Assist.IsChecked);
+        }
+
+        private void Heat_cam_Click(object sender, RoutedEventArgs e)
+        {
+            Tags.set_PreHeat_Start(true);
+        }
+
+        private void Heat_Scrn_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Visibility = Visibility.Hidden;
+            ION_Screen.Visibility = Visibility.Hidden;
+            Heat.Visibility = Visibility.Visible;
+            HeatAssist_temp_sp.Text = Tags.get_HeatAssist_Temp_Sp().ToString();
+            HeatAssist_Time_Sp.Text = Tags.get_HeatAssist_Time_Sp().ToString();
+            PreHeat_Time_Sp.Text = Tags.get_PreHeat_Time_SP().ToString();
+            PreHeat_Temp_Sp.Text = Tags.get_PreHeat_Temp_SP().ToString();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Tags.set_HeatAssist_Temp_SP((double)(Convert.ToDouble(HeatAssist_temp_sp.Text.Replace(".", ","))));
+            Tags.set_HeatAssist_time_Sp((double)Convert.ToDouble(HeatAssist_Time_Sp.Text.Replace(".", ",")));
+            Tags.set_PreHeat_Temp_SP((double)Convert.ToDouble(PreHeat_Temp_Sp.Text.Replace(".", ",")));
+            Tags.set_PreHeat_Time_sp((double)Convert.ToDouble(PreHeat_Time_Sp.Text.Replace(".", ",")));
+        }
+
+        private void PreHeat_Temp_Sp_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            Tags.set_PreHeat_Temp_SP((double)Convert.ToDouble(PreHeat_Temp_Sp.Text.Replace(".", ",")));
+        }
+
+        private void PreHeat_Time_Sp_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            Tags.set_PreHeat_Time_sp((double)Convert.ToDouble(PreHeat_Time_Sp.Text.Replace(".", ",")));
+        }
+
+        private void HeatAssist_temp_sp_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            Tags.set_PreHeat_Temp_SP((double)Convert.ToDouble(PreHeat_Temp_Sp.Text.Replace(".", ",")));
+        }
+
+        private void HeatAssist_Time_Sp_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            Tags.set_PreHeat_Time_sp((double)Convert.ToDouble(PreHeat_Time_Sp.Text.Replace(".", ",")));
+        }
+
+        private void Start_SSP_Click(object sender, RoutedEventArgs e)
+        {
+            Tags.set_SSP_on(true);
+        }
+
+        private void Stop_SSP_Click(object sender, RoutedEventArgs e)
+        {
+            Tags.set_SSP_on(false);
+        }
+
+        private void Circle_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
         }
 
         private void Stage_0_Crio_Start_Click(object sender, RoutedEventArgs e)

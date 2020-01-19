@@ -28,6 +28,12 @@ namespace KVANT_Scada.UDT
             ManVal_PID_RRG = new Real_type(plc, 39, 4, real_Tag_Entitys, "ManVal_PID_RRG");
             Mode_RRG = new Real_type(plc, 39, 12, real_Tag_Entitys, "Mode_RRG");
             Pne_press = new Real_type(plc, 23, 0, real_Tag_Entitys, "Pne_Press");
+            HeatAssist_Temp_Sp = new Real_type(plc, 46, 4, real_Tag_Entitys, "HeatAssist Temp Sp");
+            PreHeat_Temp_Sp = new Real_type(plc, 46, 0, real_Tag_Entitys, "PreHeat_Temp_Sp");
+            HeatAssist_Time_Sp = new Real_type(plc, 46, 12, real_Tag_Entitys, "HeatAssist_Time_Sp");
+            PreHeat_Time_Sp = new Real_type(plc, 46, 8, real_Tag_Entitys, "PreHeat_Time_Sp");
+
+
             #endregion
             #region
             SHV = new udtValve(plc, 7, 28, real_Tag_Entitys, "SHV");
@@ -69,6 +75,9 @@ namespace KVANT_Scada.UDT
             IONReset = new udtCommandBit(plc, 20, 30, 5, real_Tag_Entitys, "IonReset");
             ELIStart = new udtCommandBit(plc, 40, 0, 0, real_Tag_Entitys, "ELI Start");
             ELIProcessComplete = new udtCommandBit(plc, 3, 104, 4, real_Tag_Entitys, "ELI_Process_Complete");
+            PreHeat_Start = new udtCommandBit(plc, 46, 28, 2, real_Tag_Entitys, "PreHeat_Start");
+            Heat_Assist = new udtCommandBit(plc, 46, 28, 3, real_Tag_Entitys, "Heat_Assist");
+            SSP_on = new udtCommandBit(plc, 4, 50, 0, real_Tag_Entitys, "SSP_on");
             
 
 
@@ -83,7 +92,58 @@ namespace KVANT_Scada.UDT
             Ion_SP = new udtIONWrite(plc, 20, 32, real_Tag_Entitys, "ION_Write");
             Ion = new udtION(plc, 20, 56, real_Tag_Entitys, "ION");
         }
-
+        public void set_SSP_on(bool value)
+        {
+            SSP_on.Write(value);
+        }
+        public void set_HeatAssist_Temp_SP(double value)
+        {
+            HeatAssist_Temp_Sp.Write_type(value);
+        }
+        public void set_HeatAssist_time_Sp(double value)
+        {
+            HeatAssist_Time_Sp.Write_type(value);
+        }
+        public void set_PreHeat_Temp_SP(double value)
+        {
+            PreHeat_Temp_Sp.Write_type(value);
+        }
+        public void set_PreHeat_Time_sp(double value)
+        {
+            PreHeat_Time_Sp.Write_type(value);
+        }
+        public double get_HeatAssist_Temp_Sp()
+        {
+            HeatAssist_Temp_Sp.Read_type();
+            return HeatAssist_Temp_Sp.value;
+        }
+        public double get_HeatAssist_Time_Sp()
+        {
+            HeatAssist_Time_Sp.Read_type();
+            return HeatAssist_Time_Sp.value;
+        }
+        public double get_PreHeat_Temp_SP()
+        {
+            PreHeat_Temp_Sp.Read_type();
+            return PreHeat_Temp_Sp.value;
+        }
+        public double get_PreHeat_Time_SP()
+        {
+            PreHeat_Time_Sp.Read_type();
+            return PreHeat_Time_Sp.value;
+        }
+        public void set_PreHeat_Start(bool value)
+        {
+            PreHeat_Start.Write(value);
+        }
+        public bool get_PreHeat_Start()
+        {
+            return PreHeat_Start.value;
+        }
+        public void set_Heat_Asssit(bool value)
+        {
+            Heat_Assist.Write(value);
+        }
         public void Update_Read()
         {
 
@@ -451,6 +511,7 @@ namespace KVANT_Scada.UDT
             this.Ion_SP.Heat_U_SP = hu;
             this.Ion_SP.Heat_P_SP = hp;
             this.Ion_SP.WriteToDB();
+            
         }
         public void GetInitValue()
         {
@@ -552,21 +613,21 @@ namespace KVANT_Scada.UDT
         {
             return K_RRG_3.value;
         }
-        public void set_K_RRG(float v1, float v2, float v3)
+        public void set_K_RRG(double v1, double v2, double v3)
         {
             this.K_RRG_1.Write_type(v1);
             this.K_RRG_2.Write_type(v2);
             this.K_RRG_3.Write_type(v3);
         }
-        public void set_SP_PID_RRG(float value)
+        public void set_SP_PID_RRG(double value)
         {
             SP_PID_RRG.Write_type(value);
         }
-        public void set_ManVal_PID_RRG(float value)
+        public void set_ManVal_PID_RRG(double value)
         {
             ManVal_PID_RRG.Write_type(value);
         }
-        public void set_MODE_PID (float value)
+        public void set_MODE_PID (double value)
         {
             Mode_RRG.Write_type(value);
         }

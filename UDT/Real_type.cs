@@ -77,13 +77,14 @@ namespace KVANT_Scada.UDT
 
             }
         }
-        public void Write_type(float value)
+        public void Write_type(double value)
         {
             this.PLC.Write(DataType.DataBlock, this.DB, this.DBB, value);
             real real_tag = rte.real.Find(this.DB, this.DBB);
             real_tag.Value = value;
             rte.SaveChanges();
             this.value = value;
+           
         }
     }
 }

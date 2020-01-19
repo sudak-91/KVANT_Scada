@@ -74,14 +74,14 @@ namespace KVANT_Scada.GUI
 
         private void PID_auto_Click(object sender, RoutedEventArgs e)
         {
-            Tag.set_MODE_PID((float)3.0);
-            Tag.set_SP_PID_RRG(float.Parse(RRG_SP.Text.ToString()));
+            Tag.set_MODE_PID((double)3.0);
+            Tag.set_SP_PID_RRG(double.Parse(RRG_SP.Text.ToString()));
         }
 
         private void Manual_RRG_Click(object sender, RoutedEventArgs e)
         {
-            Tag.set_MODE_PID((float)4.0);
-            Tag.set_ManVal_PID_RRG(float.Parse(RRG_ManVal.Text.ToString()));
+            Tag.set_MODE_PID((double)4.0);
+            Tag.set_ManVal_PID_RRG(double.Parse(RRG_ManVal.Text.ToString()));
            
         }
 

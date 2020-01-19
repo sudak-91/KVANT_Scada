@@ -26,7 +26,6 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="Ion_Command_Start" Content="Старт" HorizontalAlignment="Left" Height="44" Margin="14,13,0,0" VerticalAlignment="Top" Width="107" Click="Ion_Command_Start_Click" />
             <Button x:Name="Ion_Command_Stop" Content="Стоп" HorizontalAlignment="Left" Height="44" Margin="14,62,0,0" VerticalAlignment="Top" Width="107" Click="Ion_Command_Stop_Click" />
-            <Button x:Name="Ion_Command_automode" Content="Автомат. режим" Grid.Column="1" HorizontalAlignment="Left" Height="43" Margin="10,14,0,0" VerticalAlignment="Top" Width="117" IsDefault="True" Click="Ion_Command_automode_Click" />
             <Button x:Name="Ion_Command_Reset" Content="Сброс&#xD;&#xA;" HorizontalAlignment="Left" Height="44" Margin="14,111,0,-30" VerticalAlignment="Top" Width="107" Click="Ion_Command_Reset_Click" />
         </Grid>
         <Label Content="Управление РРГ" HorizontalAlignment="Left" Margin="418,13,0,0" VerticalAlignment="Top"/>
