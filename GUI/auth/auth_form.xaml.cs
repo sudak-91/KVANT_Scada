@@ -28,6 +28,8 @@ namespace KVANT_Scada.GUI.auth
             InitializeComponent();
             this.rte = rte;
             mw = mainWindow;
+            
+           //rte.Database.CreateIfNotExists();
 
         }
 
@@ -59,6 +61,29 @@ namespace KVANT_Scada.GUI.auth
             
             
 
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            rte.Database.Delete();
+            rte.Database.CreateIfNotExists();
+        }
+
+        private void create_root_Click(object sender, RoutedEventArgs e)
+        {
+            if (rte.users.Find("root") == null)
+            {
+                users adm = new users
+                {
+                    Login = "root",
+                    PassWord = "root",
+                    Policy = 9,
+                    Name = "Root"
+                };
+                rte.users.Add(adm);
+                rte.SaveChanges();
+            }
 
         }
     }

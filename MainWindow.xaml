@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KVANT_Scada"
-        xmlns:Data="clr-namespace:KVANT_Scada.Data" x:Name="Main_Screen" x:Class="KVANT_Scada.MainWindow"
+        xmlns:Data="clr-namespace:KVANT_Scada.Data" xmlns:Config="clr-namespace:KVANT_Scada.Config" x:Name="Main_Screen" x:Class="KVANT_Scada.MainWindow"
         mc:Ignorable="d"
         Title="DanaEng D-1000" Height="768" Width="1024" Background="#FF95A8FF" WindowState="Maximized" Initialized="Main_Screen_Initialized" Loaded="Main_Screen_Loaded">
     <Grid x:Name="MainScreen">
@@ -34,6 +34,7 @@
                         <Button x:Name="Test" Content="Ионный&#xA;источник" HorizontalAlignment="Left" Height="35" Margin="83,6,0,0" VerticalAlignment="Top" Width="72" Click="Test_Click"/>
                         <Button x:Name="btnMainScreen" Content="Главный &#xA;экран" HorizontalAlignment="Left" Height="35" Margin="3,6,0,0" VerticalAlignment="Top" Width="75" Click="btnMainScreen_Click"/>
                         <Button x:Name="Heat_Scrn" Content="Нагерватель" HorizontalAlignment="Left" Height="35" Margin="161,6,0,0" VerticalAlignment="Top" Width="72" Click="Heat_Scrn_Click"/>
+                        <Button x:Name="Users" Content="Пользователи" Grid.Column="1" HorizontalAlignment="Left" Height="35" Margin="644,6,0,0" VerticalAlignment="Top" Width="72" Click="Users_Click"/>
                     </Grid>
                 </TabItem>
             </TabControl>
@@ -154,15 +155,16 @@
             <TextBox x:Name="txtbox_FV_pressure" HorizontalAlignment="Left" Height="23" Margin="59,345,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="86"/>
             <Label Content="Давление в форвакуумной линии" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.105,-0.115"/>
             <TextBox x:Name="Pne_press" HorizontalAlignment="Left" Height="23" Margin="857,28,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <Label Content="Давление &#xD;&#xA;в пневмосистеме" HorizontalAlignment="Left" Margin="750,17,0,0" VerticalAlignment="Top"/>
+            <Label Content="Давление &#xA;в пневмосистеме" HorizontalAlignment="Left" Margin="750,17,0,0" VerticalAlignment="Top"/>
             <CheckBox x:Name="Heat_Assist" Content="Нагрев камеры при напылении" HorizontalAlignment="Left" Height="24" Margin="47,64,0,0" VerticalAlignment="Top" Width="188" Click="Heat_Assist_Click"/>
             <Grid HorizontalAlignment="Left" Height="50" Margin="155,29,0,0" VerticalAlignment="Top" Width="91"/>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="149" Margin="32,411,0,0" VerticalAlignment="Top" Width="215"/>
             <Label Content="Насос второго контура охлаждения" HorizontalAlignment="Left" Margin="35,416,0,0" VerticalAlignment="Top"/>
             <Button x:Name="Start_SSP" Content="Старт" HorizontalAlignment="Left" Height="35" Margin="49,462,0,0" VerticalAlignment="Top" Width="182" Click="Start_SSP_Click"/>
             <Button x:Name="Stop_SSP" Content="Стоп" HorizontalAlignment="Left" Height="35" Margin="49,506,0,0" VerticalAlignment="Top" Width="182" Click="Stop_SSP_Click"/>
+            <Button x:Name="Alarm" Content="Button" HorizontalAlignment="Left" Height="94" Margin="807,450,0,0" VerticalAlignment="Top" Width="125" Click="Alarm_Click"/>
         </Grid>
-        <Grid x:Name="ION_Screen" HorizontalAlignment="Left" Height="576" Margin="10,70,0,0" VerticalAlignment="Top" Width="995" d:IsHidden="True">
+        <Grid x:Name="ION_Screen" HorizontalAlignment="Left" Height="576" Margin="10,70,0,0" VerticalAlignment="Top" Width="995" Visibility="Hidden">
             <TextBox x:Name="Anod_I_SP" HorizontalAlignment="Left" Height="32" Margin="623,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
             <Button x:Name="Rest_Cliker" Content="Сохранить&#xA;изменения" HorizontalAlignment="Left" Height="41" Margin="623,221,0,0" VerticalAlignment="Top" Width="103" Click="Rest_Cliker_Click"/>
             <TextBox x:Name="Anod_U_SP" HorizontalAlignment="Left" Height="32" Margin="623,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
@@ -188,13 +190,12 @@
             <Label Content="Cилa тока нагрева" HorizontalAlignment="Left" Margin="236,16,0,0" VerticalAlignment="Top"/>
             <Label Content="Напряжение нагрева" HorizontalAlignment="Left" Margin="236,74,0,0" VerticalAlignment="Top"/>
             <Label Content="Мощность нагрева" HorizontalAlignment="Left" Margin="236,132,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="53,74,0,0" VerticalAlignment="Top"/>
         </Grid>
         <Ellipse x:Name="Process_complite" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="42" Margin="20,21,0,0" Stroke="Black" VerticalAlignment="Top" Width="42"/>
         <Label Content="Процесс напыления завершен" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="67,29,0,0" Height="26" Width="179"/>
-        <Grid x:Name="Heat" HorizontalAlignment="Left" Height="585" Margin="10,68,0,0" VerticalAlignment="Top" Width="995" d:IsHidden="True">
+        <Grid x:Name="Heat" HorizontalAlignment="Left" Height="585" Margin="10,68,0,0" VerticalAlignment="Top" Width="995" Visibility="Hidden">
             <TextBlock HorizontalAlignment="Left" Height="28" Margin="16,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329"><Run Text="Настройки "/><Run Text="режимов нагрева"/></TextBlock>
-            <TextBox x:Name="PreHeat_Temp_Sp" HorizontalAlignment="Left" Height="27" Margin="235,71,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="114" TextChanged="PreHeat_Temp_Sp_TextChanged"/>
+            <TextBox x:Name="PreHeat_Temp_Sp" HorizontalAlignment="Left" Height="27" Margin="235,71,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="114" TextChanged="PreHeat_Temp_Sp_TextChanged" Visibility="Hidden"/>
             <TextBox x:Name="PreHeat_Time_Sp" HorizontalAlignment="Left" Height="27" Margin="235,111,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="114" TextChanged="PreHeat_Time_Sp_TextChanged"/>
             <TextBox x:Name="HeatAssist_temp_sp" HorizontalAlignment="Left" Height="27" Margin="756,70,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="114" TextChanged="HeatAssist_temp_sp_TextChanged"/>
             <TextBox x:Name="HeatAssist_Time_Sp" HorizontalAlignment="Left" Height="27" Margin="758,114,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="114" TextChanged="HeatAssist_Time_Sp_TextChanged"/>
@@ -203,6 +204,18 @@
             <Label Content="Уставка температуры нагрева при ассистировании" HorizontalAlignment="Left" Margin="454,70,0,0" VerticalAlignment="Top"/>
             <Label Content="Время нагерва" HorizontalAlignment="Left" Margin="458,114,0,0" VerticalAlignment="Top"/>
             <Button x:Name="Save_heat_change" Content="Сохранить настройки" HorizontalAlignment="Left" Height="32" Margin="696,246,0,0" VerticalAlignment="Top" Width="153" Click="Button_Click"/>
+            <Grid HorizontalAlignment="Left" Height="257" Margin="50,57,0,0" VerticalAlignment="Top" Width="596"/>
+        </Grid>
+        <Grid x:Name="Users1" HorizontalAlignment="Left" Height="585" Margin="10,68,0,0" VerticalAlignment="Top" Width="995" d:IsHidden="True">
+            <DataGrid x:Name="users_grid" HorizontalAlignment="Left" Height="282" Margin="18,287,0,0" VerticalAlignment="Top" Width="967" IsSynchronizedWithCurrentItem="True" AllowDrop="True"/>
+            <TextBox x:Name="Login" HorizontalAlignment="Left" Height="23" Margin="188,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Логин"/>
+            <Label Content="Логин" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="118,66,0,0"/>
+            <PasswordBox x:Name="User_Password" HorizontalAlignment="Left" Margin="187,106,0,0" VerticalAlignment="Top" Width="121"/>
+            <Label Content="Пароль" HorizontalAlignment="Left" Margin="116,102,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="User_name" HorizontalAlignment="Left" Height="23" Margin="188,145,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="Role" HorizontalAlignment="Left" Margin="190,192,0,0" VerticalAlignment="Top" Width="120" IsTextSearchEnabled="False"/>
+            <Button x:Name="Save_user" Content="Создать пользователя." HorizontalAlignment="Left" Height="40" Margin="125,232,0,0" VerticalAlignment="Top" Width="187" Click="Save_user_Click"/>
+            <Label Content="Имя" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="128,147,0,0"/>
         </Grid>
 
     </Grid>

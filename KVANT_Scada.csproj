@@ -393,13 +393,22 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>PLC.settings</DependentUpon>
     </Compile>
+    <Compile Include="Data\action_log.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\command_bit.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\crio.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\crio_log.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\fvp.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\fvp_log.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ion_read.cs">
@@ -489,6 +498,10 @@
     <Compile Include="UDT\udtIONWrite.cs" />
     <Compile Include="UDT\udtProcess.cs" />
     <Compile Include="UDT\udtValve.cs" />
+    <Page Include="Config\.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\auth\auth_form.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

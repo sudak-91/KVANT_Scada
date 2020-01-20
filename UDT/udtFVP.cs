@@ -31,6 +31,7 @@ namespace KVANT_Scada.UDT
             this.DBB = DBB;
             this.name = name;
             this.rte = rte;
+            
             if (this.rte.fvp.Find(this.DB, this.DBB) == null)
             {
                 try
@@ -79,8 +80,24 @@ namespace KVANT_Scada.UDT
                     fvp.Start = this.bStart;
                     fvp.TurnOn = this.bTurnOn;
 
-                    this.rte.SaveChanges();
+                    
                 }
+                fvp_log f_l = new fvp_log
+                {
+                    AutoMode = this.bAutoMode,
+                    Block = this.bBlock,
+                    DateTime = System.DateTime.Now,
+                    ManualStart = this.bManualStart,
+                    name = this.name,
+                    PowerOn = this.bPowerOn,
+                    Remote = this.bRemote,
+                    Start = this.bStart,
+                    TurnOn = this.bTurnOn
+
+                };
+                this.rte.fvp_log.Add(f_l);
+                this.rte.SaveChanges();
+
 
             }
             catch (Exception ex)

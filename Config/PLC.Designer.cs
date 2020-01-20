@@ -58,5 +58,41 @@ namespace KVANT_Scada.Config {
                 this["Slot"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Оператор {
+            get {
+                return ((int)(this["Оператор"]));
+            }
+            set {
+                this["Оператор"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int Технолог {
+            get {
+                return ((int)(this["Технолог"]));
+            }
+            set {
+                this["Технолог"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int Администартор {
+            get {
+                return ((int)(this["Администартор"]));
+            }
+            set {
+                this["Администартор"] = value;
+            }
+        }
     }
 }

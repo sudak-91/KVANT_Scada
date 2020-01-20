@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using KVANT_Scada.Log_Sub_System;
 
 namespace KVANT_Scada.GUI
 {
@@ -24,6 +25,8 @@ namespace KVANT_Scada.GUI
        
        private  Installing_Tags Tag;
        private SolidColorBrush on, off;
+        
+        
         public BAV_3(Installing_Tags Tags)
         {
            
@@ -31,6 +34,7 @@ namespace KVANT_Scada.GUI
             on = new SolidColorBrush(Color.FromArgb(100, 0, 255, 0));
             off = new SolidColorBrush(Color.FromArgb(100, 255, 0, 0));
             Tag = Tags;
+           
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Interval = new System.TimeSpan(0, 0, 1);
             dispatcherTimer.Tick += new EventHandler(Update_GUI);
@@ -70,6 +74,7 @@ namespace KVANT_Scada.GUI
         private void BAV_3_Command_Open_Click(object sender, RoutedEventArgs e)
         {
             Tag.BAV_3_open(true);
+            
         }
 
         private void BAV_3_Command_Closed_Click(object sender, RoutedEventArgs e)
