@@ -32,6 +32,9 @@ namespace KVANT_Scada.UDT
             PreHeat_Temp_Sp = new Real_type(plc, 46, 0, real_Tag_Entitys, "PreHeat_Temp_Sp");
             HeatAssist_Time_Sp = new Real_type(plc, 46, 12, real_Tag_Entitys, "HeatAssist_Time_Sp");
             PreHeat_Time_Sp = new Real_type(plc, 46, 8, real_Tag_Entitys, "PreHeat_Time_Sp");
+            Cam_Temp = new Real_type(plc, 1, 534, real_Tag_Entitys, "Cam_Temp");
+            Driver_Speed = new Real_type(plc, 37, 4, real_Tag_Entitys, "Driver_Speed");
+            
 
 
             #endregion
@@ -78,7 +81,31 @@ namespace KVANT_Scada.UDT
             PreHeat_Start = new udtCommandBit(plc, 46, 28, 2, real_Tag_Entitys, "PreHeat_Start");
             Heat_Assist = new udtCommandBit(plc, 46, 28, 3, real_Tag_Entitys, "Heat_Assist");
             SSP_on = new udtCommandBit(plc, 4, 50, 0, real_Tag_Entitys, "SSP_on");
-            
+            Shield_autoOn = new udtCommandBit(plc, 38, 0, 1, real_Tag_Entitys, "Shield_AutoOn");
+            Crio_Pump_Run = new udtCommandBit(plc, 24, 24, 2, real_Tag_Entitys, "Crio pump Run");
+            Cam_Prepare = new udtCommandBit(plc, 24, 40, 1, real_Tag_Entitys, "Camera prepare");
+            Cam_opened = new udtCommandBit(plc, 24, 44, 2, real_Tag_Entitys,"Cam_open");
+            Crio_Pump_Turn_off = new udtCommandBit(plc, 24, 48, 2, real_Tag_Entitys, "Crio_Pump_Turn_Off");
+            Day_End = new udtCommandBit(plc, 24, 50, 2, real_Tag_Entitys, "Day_End");
+            Shield_open = new udtCommandBit(plc, 38, 0, 2, real_Tag_Entitys, "Shield_Open");
+            Shield_close = new udtCommandBit(plc, 38, 0, 3, real_Tag_Entitys, "Shield_Close");
+            Driver_Run = new udtCommandBit(plc, 37, 8, 0, real_Tag_Entitys, "Driver_run");
+            Open_Door = new udtCommandBit(plc, 43,0,0,real_Tag_Entitys,"Open_Door");
+            Water_Crio = new udtCommandBit(plc, 43, 0, 1, real_Tag_Entitys, "Water_Crio");
+            HH_pne = new udtCommandBit(plc, 43, 0, 2, real_Tag_Entitys, "HH_pne");
+            LL_pne = new udtCommandBit(plc, 43, 0, 3, real_Tag_Entitys, "LL_pne");
+            Crio_Power_Failure = new udtCommandBit(plc, 43, 0, 4, real_Tag_Entitys, "Crio_Power_Failure");
+            Qartz_Power_Failure = new udtCommandBit(plc, 43, 0, 5, real_Tag_Entitys, "Qartz_Power_Failure");
+            ELI_Power_Failure = new udtCommandBit(plc, 43, 0, 6, real_Tag_Entitys, "ELI_Power_Failure");
+            WaterHeat_Power_Failure = new udtCommandBit(plc, 43, 0, 7, real_Tag_Entitys, "WaterHeat_Power_Failure");
+            FVP_Power_Failure = new udtCommandBit(plc, 43, 1, 0, real_Tag_Entitys, "FVP_Power_Failure");
+            Ion_Power_Failure = new udtCommandBit(plc, 43, 1, 1, real_Tag_Entitys, "Ion_Power_Failure");
+            Indexer_Power_Failure = new udtCommandBit(plc, 43, 1, 2, real_Tag_Entitys, "Indexer_Power_Failure");
+            SSP_Power_Failure = new udtCommandBit(plc, 43, 1, 3, real_Tag_Entitys, "SSP_Power_Failure");
+            Heater_Power_Failure = new udtCommandBit(plc, 43, 1, 4, real_Tag_Entitys, "Heater_Power_Failure");
+            ELI_Water_Failure = new udtCommandBit(plc, 43, 1, 5, real_Tag_Entitys, "ELI_Water_Failure");
+            CRIO_Hight_Temp = new udtCommandBit(plc, 43, 1, 6, real_Tag_Entitys, "CRIO_Hight_Temp");
+
 
 
 
@@ -91,6 +118,119 @@ namespace KVANT_Scada.UDT
           
             Ion_SP = new udtIONWrite(plc, 20, 32, real_Tag_Entitys, "ION_Write");
             Ion = new udtION(plc, 20, 56, real_Tag_Entitys, "ION");
+        }
+        public bool get_CRIO_Hight_Temp()
+        {
+            return CRIO_Hight_Temp.value;
+        }
+        public bool get_ELI_Water_Failure()
+        {
+            return ELI_Water_Failure.value;
+        }
+        public bool get_Heater_Power_Failure()
+        {
+            return Heater_Power_Failure.value;
+        }
+        public bool get_SSP_Power_Failure()
+        {
+            return SSP_Power_Failure.value;
+        }
+        public bool get_Indexer_Power_Failure()
+        {
+            return Indexer_Power_Failure.value;
+        }
+        public bool get_Ion_Power_Failure()
+        {
+            return Ion_Power_Failure.value;
+        }
+        public bool get_FVP_Power_Failure()
+        {
+            return FVP_Power_Failure.value;
+        }
+        public bool get_WaterHEat_Power_Failure()
+        {
+            return WaterHeat_Power_Failure.value;
+        }
+        public bool get_ELI_Power_Failure()
+        {
+            return ELI_Power_Failure.value;
+        }
+        public bool get_Qartz_Power_Failure()
+        {
+            return Qartz_Power_Failure.value;
+
+        }
+        public bool get_Crio_Power_Failure()
+        {
+            return Crio_Power_Failure.value;
+        }
+        public bool get_LL_pne()
+        {
+            return LL_pne.value;
+        }
+        public bool get_HH_pne()
+        {
+            return HH_pne.value;
+        }
+        public bool get_Water_Crio()
+        {
+            return Water_Crio.value;
+        }
+        public bool get_Open_Door()
+        {
+            return Open_Door.value;
+        }
+        public bool get_Driver_Run()
+        {
+            return Driver_Run.value;
+        }
+        public void set_Driver_Speed(double value)
+        {
+            Driver_Speed.Write_type(value);
+        }
+        public double get_Driver_Speed()
+        {
+            Driver_Speed.Read_type();
+            return Driver_Speed.value;
+        }
+        public void set_Shield_open(bool value)
+        {
+            Shield_open.Write(value);
+        }
+        public void set_Shield_close(bool value)
+            {
+            Shield_close.Write(value);
+
+        }
+        public bool get_Crio_Pump_run()
+        {
+            return Crio_Pump_Run.value;
+        }
+        public bool get_Cam_Prepare()
+        {
+            return Cam_Prepare.value;
+        }
+        public bool get_Cam_open()
+        {
+            return Cam_opened.value;
+        }
+        public bool get_Crio_pump_turn_off()
+        {
+            return Crio_Pump_Turn_off.value;
+        }
+        public bool get_Day_End()
+        {
+            return Day_End.value;
+        }
+
+        public void set_Shield_Auto(bool value)
+        {
+            Shield_autoOn.Write(value);
+        }
+        public bool get_Shield_Auto()
+        {
+            return Shield_autoOn.value;
+                
         }
         public void set_SSP_on(bool value)
         {
@@ -164,6 +304,32 @@ namespace KVANT_Scada.UDT
             FB_RRG_2.Read_type();
             FB_RRG_3.Read_type();
             Pne_press.Read_type();
+            Shield_autoOn.Read();
+            Cam_Temp.Read_type();
+            Crio_Pump_Run.Read();
+            Crio_Pump_Turn_off.Read();
+            Cam_Prepare.Read();
+            Day_End.Read();
+            Cam_opened.Read();
+            Driver_Run.Read();
+            Open_Door.Read();
+            Water_Crio.Read();
+            HH_pne.Read();
+            LL_pne.Read();
+            Crio_Power_Failure.Read();
+            Qartz_Power_Failure.Read();
+            ELI_Power_Failure.Read();
+            WaterHeat_Power_Failure.Read();
+            FVP_Power_Failure.Read();
+            Ion_Power_Failure.Read();
+            Indexer_Power_Failure.Read();
+            SSP_Power_Failure.Read();
+            Heater_Power_Failure.Read();
+            ELI_Water_Failure.Read();
+            CRIO_Hight_Temp.Read();
+
+
+
 
 
 
@@ -171,8 +337,15 @@ namespace KVANT_Scada.UDT
 
         }
 
-
-
+        public bool get_Heat_Assist()
+        {
+            Heat_Assist.Read();
+            return Heat_Assist.value;
+        }
+        public double get_cam_temp()
+        {
+            return Cam_Temp.value;
+        }
         public double get_cam_pressure ()
         {
             return this.Cam_pressure.value;

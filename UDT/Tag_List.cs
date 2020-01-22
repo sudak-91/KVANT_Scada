@@ -17,11 +17,12 @@ namespace KVANT_Scada.UDT
         private Real_type FB_RRG_1, FB_RRG_2, FB_RRG_3;
         private Real_type SP_PID_RRG, ManVal_PID_RRG,Mode_RRG;
         private Real_type Pne_press;
-        private Real_type Cam_Temp;//заточить под IW
+        private Real_type Cam_Temp;//
         private Real_type PreHeat_Temp_Sp;
         private Real_type HeatAssist_Temp_Sp;
         private Real_type PreHeat_Time_Sp;
         private Real_type HeatAssist_Time_Sp;
+        private Real_type Driver_Speed;
         #endregion
 
         #region udtValve
@@ -63,6 +64,12 @@ namespace KVANT_Scada.UDT
         private udtCommandBit PreHeat_Start;
         private udtCommandBit Heat_Assist;
         private udtCommandBit SSP_on;
+        private udtCommandBit Shield_autoOn;
+        private udtCommandBit Crio_Pump_Run, Cam_Prepare, Cam_opened, Crio_Pump_Turn_off, Day_End;
+        private udtCommandBit Shield_open, Shield_close;
+        private udtCommandBit Driver_Run;
+        private udtCommandBit Open_Door, Water_Crio, HH_pne, LL_pne, Crio_Power_Failure, Qartz_Power_Failure, ELI_Power_Failure, WaterHeat_Power_Failure, FVP_Power_Failure, Ion_Power_Failure, Indexer_Power_Failure, SSP_Power_Failure, Heater_Power_Failure, ELI_Water_Failure, CRIO_Hight_Temp; 
+
 
 
 

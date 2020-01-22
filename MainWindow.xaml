@@ -54,18 +54,10 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Image x:Name="ELI" HorizontalAlignment="Left" Height="80" Margin="609,389,0,0" VerticalAlignment="Top" Width="53" Source="Тигель.png"/>
+            <Image x:Name="ELI" HorizontalAlignment="Left" Height="80" Margin="609,389,0,0" VerticalAlignment="Top" Width="53" Source="Тигель.png" MouseLeftButtonDown="ELI_MouseLeftButtonDown"/>
             <Image x:Name="Ion" HorizontalAlignment="Left" Height="45" Margin="418,424,0,0" VerticalAlignment="Top" Width="58" Source="ИИ.png" MouseLeftButtonDown="Ion_MouseLeftButtonDown"/>
             <Image x:Name="Heather" HorizontalAlignment="Left" Height="72" Margin="452,291,0,0" VerticalAlignment="Top" Width="100" Source="Нагреватель.png"/>
-            <Grid HorizontalAlignment="Left" Height="40" Margin="668,300,0,0" VerticalAlignment="Top" Width="205">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="127*"/>
-                    <ColumnDefinition Width="90*"/>
-                </Grid.ColumnDefinitions>
-                <TextBox x:Name="Main_pressure" HorizontalAlignment="Left" Height="21" Margin="117,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="88" Grid.ColumnSpan="2" Background="White" SelectionOpacity="-2" SelectionBrush="White" Focusable="False"/>
-                <Label x:Name="Main_press_label" Content="Давление в камере" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top"/>
-            </Grid>
-            <Grid x:Name="Crio_Grid" HorizontalAlignment="Left" Height="84" Margin="583,126,0,0" VerticalAlignment="Top" Width="249">
+            <Grid x:Name="Crio_Grid" HorizontalAlignment="Left" Height="84" Margin="581,82,0,0" VerticalAlignment="Top" Width="249">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="127*"/>
                     <ColumnDefinition Width="90*"/>
@@ -162,7 +154,51 @@
             <Label Content="Насос второго контура охлаждения" HorizontalAlignment="Left" Margin="35,416,0,0" VerticalAlignment="Top"/>
             <Button x:Name="Start_SSP" Content="Старт" HorizontalAlignment="Left" Height="35" Margin="49,462,0,0" VerticalAlignment="Top" Width="182" Click="Start_SSP_Click"/>
             <Button x:Name="Stop_SSP" Content="Стоп" HorizontalAlignment="Left" Height="35" Margin="49,506,0,0" VerticalAlignment="Top" Width="182" Click="Stop_SSP_Click"/>
-            <Button x:Name="Alarm" Content="Button" HorizontalAlignment="Left" Height="94" Margin="807,450,0,0" VerticalAlignment="Top" Width="125" Click="Alarm_Click"/>
+            <TextBox x:Name="Cam_temp" HorizontalAlignment="Left" Height="23" Margin="859,62,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Температура в камере" HorizontalAlignment="Left" Margin="722,61,0,0" VerticalAlignment="Top"/>
+            <Ellipse x:Name="lCrioPumpStart" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="833,102,0,0" Stroke="Black" VerticalAlignment="Top" Width="15"/>
+            <Label Content="Крионасос запущен" HorizontalAlignment="Left" Margin="848,97,0,0" VerticalAlignment="Top"/>
+            <Ellipse x:Name="lCamPrep" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="834,127,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Label Content="Камера откачена" HorizontalAlignment="Left" Margin="849,122,0,0" VerticalAlignment="Top"/>
+            <Ellipse x:Name="lCamOpen" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="834,150,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Label Content="Камера открыта" HorizontalAlignment="Left" Margin="848,144,0,0" VerticalAlignment="Top"/>
+            <Ellipse x:Name="lDayEnd" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="834,174,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Label Content="Конец смены" HorizontalAlignment="Left" Margin="849,169,0,0" VerticalAlignment="Top"/>
+            <Ellipse x:Name="lDayEnd_Copy" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="834,196,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Label Content="Крионасос остановлен" HorizontalAlignment="Left" Margin="849,191,0,0" VerticalAlignment="Top"/>
+            <Ellipse x:Name="lDriver_run" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="21" Margin="529,378,0,0" Stroke="Black" VerticalAlignment="Top" Width="21"/>
+            <Ellipse x:Name="lOpenDoor" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,226,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lWaterCrio" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,250,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lHH_pne" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,274,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lLL_pne" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,298,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lCrioPowerFailure" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,323,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lQartzPowerFailure" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,349,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lELIPowerFailure" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,372,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lWaterHEatPowerFailure" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="14" Margin="792,394,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lFVPPowerFailure" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,419,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lIonPOwerFailure" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,442,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lIndexerPowerFailure" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,465,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lSSPPowerFailure" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="14" Margin="792,490,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lHeaterPowerFailure" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16" Margin="792,514,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lELIWaterFailure" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="14" Margin="792,540,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Ellipse x:Name="lCRIOHightTempFailure" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,562,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <TextBox x:Name="Main_pressure" HorizontalAlignment="Left" Height="20" Margin="540,512,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="83"/>
+            <Label Content="Давление&#xD;&#xA;в камере" HorizontalAlignment="Left" Margin="465,503,0,0" VerticalAlignment="Top"/>
+            <Label Content="Открыта дверь" HorizontalAlignment="Left" Margin="807,220,0,0" VerticalAlignment="Top"/>
+            <Label Content="Нет воды в контуре крионасоса" HorizontalAlignment="Left" Margin="807,245,0,0" VerticalAlignment="Top"/>
+            <Label Content="Высокое пнев. давление" HorizontalAlignment="Left" Margin="807,269,0,0" VerticalAlignment="Top"/>
+            <Label Content="Низкое пнев. давление" HorizontalAlignment="Left" Margin="807,292,0,0" VerticalAlignment="Top"/>
+            <Label Content="Питание криогенного насоса" HorizontalAlignment="Left" Margin="807,317,0,0" VerticalAlignment="Top"/>
+            <Label Content="Питание кварцевого датчика" HorizontalAlignment="Left" Margin="807,343,0,0" VerticalAlignment="Top"/>
+            <Label Content="Питание ЭЛИ" HorizontalAlignment="Left" Margin="808,366,0,0" VerticalAlignment="Top"/>
+            <Label Content="Питание водонагревателя" HorizontalAlignment="Left" Margin="808,388,0,0" VerticalAlignment="Top"/>
+            <Label Content="Питание ФВН" HorizontalAlignment="Left" Margin="808,413,0,0" VerticalAlignment="Top"/>
+            <Label Content="Питание ИИ" HorizontalAlignment="Left" Margin="809,436,0,0" VerticalAlignment="Top"/>
+            <Label Content="Питание тигеля" HorizontalAlignment="Left" Margin="810,460,0,0" VerticalAlignment="Top"/>
+            <Label Content="Питание СВН" HorizontalAlignment="Left" Margin="812,484,0,0" VerticalAlignment="Top"/>
+            <Label Content="Питание нагревателя" HorizontalAlignment="Left" Margin="808,508,0,0" VerticalAlignment="Top"/>
+            <Label Content="Нет воды ЭЛИ" HorizontalAlignment="Left" Margin="807,533,0,0" VerticalAlignment="Top"/>
+            <Label Content="Высокая температура крио" HorizontalAlignment="Left" Margin="807,556,0,0" VerticalAlignment="Top"/>
         </Grid>
         <Grid x:Name="ION_Screen" HorizontalAlignment="Left" Height="576" Margin="10,70,0,0" VerticalAlignment="Top" Width="995" Visibility="Hidden">
             <TextBox x:Name="Anod_I_SP" HorizontalAlignment="Left" Height="32" Margin="623,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="129" BorderBrush="White" Panel.ZIndex="16" TextChanged="Anod_I_SP_TextChanged"/>
@@ -195,7 +231,7 @@
         <Label Content="Процесс напыления завершен" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="67,29,0,0" Height="26" Width="179"/>
         <Grid x:Name="Heat" HorizontalAlignment="Left" Height="585" Margin="10,68,0,0" VerticalAlignment="Top" Width="995" Visibility="Hidden">
             <TextBlock HorizontalAlignment="Left" Height="28" Margin="16,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329"><Run Text="Настройки "/><Run Text="режимов нагрева"/></TextBlock>
-            <TextBox x:Name="PreHeat_Temp_Sp" HorizontalAlignment="Left" Height="27" Margin="235,71,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="114" TextChanged="PreHeat_Temp_Sp_TextChanged" Visibility="Hidden"/>
+            <TextBox x:Name="PreHeat_Temp_Sp" HorizontalAlignment="Left" Height="27" Margin="233,69,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="114" TextChanged="PreHeat_Temp_Sp_TextChanged" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Visible"/>
             <TextBox x:Name="PreHeat_Time_Sp" HorizontalAlignment="Left" Height="27" Margin="235,111,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="114" TextChanged="PreHeat_Time_Sp_TextChanged"/>
             <TextBox x:Name="HeatAssist_temp_sp" HorizontalAlignment="Left" Height="27" Margin="756,70,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="114" TextChanged="HeatAssist_temp_sp_TextChanged"/>
             <TextBox x:Name="HeatAssist_Time_Sp" HorizontalAlignment="Left" Height="27" Margin="758,114,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="114" TextChanged="HeatAssist_Time_Sp_TextChanged"/>
@@ -206,7 +242,7 @@
             <Button x:Name="Save_heat_change" Content="Сохранить настройки" HorizontalAlignment="Left" Height="32" Margin="696,246,0,0" VerticalAlignment="Top" Width="153" Click="Button_Click"/>
             <Grid HorizontalAlignment="Left" Height="257" Margin="50,57,0,0" VerticalAlignment="Top" Width="596"/>
         </Grid>
-        <Grid x:Name="Users1" HorizontalAlignment="Left" Height="585" Margin="10,68,0,0" VerticalAlignment="Top" Width="995" d:IsHidden="True">
+        <Grid x:Name="Users1" HorizontalAlignment="Left" Height="585" Margin="10,68,0,0" VerticalAlignment="Top" Width="995" Visibility="Hidden">
             <DataGrid x:Name="users_grid" HorizontalAlignment="Left" Height="282" Margin="18,287,0,0" VerticalAlignment="Top" Width="967" IsSynchronizedWithCurrentItem="True" AllowDrop="True"/>
             <TextBox x:Name="Login" HorizontalAlignment="Left" Height="23" Margin="188,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Логин"/>
             <Label Content="Логин" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="118,66,0,0"/>

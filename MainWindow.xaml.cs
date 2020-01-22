@@ -34,6 +34,8 @@ namespace KVANT_Scada
         private GUI.Crio wCrio;
         private GUI.FVP wFVP;
         private GUI.ION wIon;
+        private GUI.Window1 Shield;
+        private GUI.Driver_Speed Driver_Speed;
         private RotateTransform rt;
         private udtIONWrite udtIONWrite;
         private Log_Sub_System.Log_Sub_System LSS;
@@ -71,6 +73,7 @@ namespace KVANT_Scada
             lRole.Add("Технолог", 1);
             lRole.Add("Инженер", 2);
             Role.ItemsSource = lRole;
+            Heat_Assist.IsChecked = Tags.get_Heat_Assist();
             
 
 
@@ -97,7 +100,7 @@ namespace KVANT_Scada
         }
         public void ConnectToPlc()
         {
-            if (plc.IsAvailable == false)
+            if (plc.IsConnected == false)
             {
                 plc.Open();
                 if (plc.IsConnected)
@@ -127,6 +130,7 @@ namespace KVANT_Scada
             Heat_I.Text = Tags.GetHeatI();
             Heat_U.Text = Tags.GetHeatU();
             Heat_P.Text = Tags.GetHeatP();
+            Cam_temp.Text = Tags.get_cam_temp().ToString();
             if(User.Policy!=0)
             {
                 control_toolbar.IsEnabled = true;
@@ -195,6 +199,166 @@ namespace KVANT_Scada
                 Crio_Turn_On.Fill = neutral;
             }
 
+            if(Tags.get_Crio_Pump_run())
+            {
+                lCrioPumpStart.Fill = on;
+            }else
+            {
+                lCrioPumpStart.Fill = neutral;
+            }
+            if(Tags.get_Cam_Prepare())
+            {
+                lCamPrep.Fill = on;
+            }
+            else
+            {
+                lCamPrep.Fill = neutral;
+            }
+            if(Tags.get_Cam_open())
+            {
+                lCamOpen.Fill = on;
+            }else
+            {
+                lCamOpen.Fill = neutral;
+            }
+            if(Tags.get_Day_End())
+            {
+                lDayEnd.Fill = on;
+            }else
+            {
+                lDayEnd.Fill = neutral;
+            }
+            if(Tags.get_Crio_pump_turn_off())
+            {
+                lDayEnd_Copy.Fill = off;
+            }else
+            {
+                lDayEnd_Copy.Fill = neutral;
+            }
+            if(Tags.get_Driver_Run())
+            {
+                lDriver_run.Fill = on;
+            }else
+            {
+                lDriver_run.Fill = neutral;
+            }
+            if(Tags.get_Open_Door())
+            {
+                lOpenDoor.Fill = off;
+            }else
+            {
+                lOpenDoor.Fill = neutral;
+            }
+            if(Tags.get_Water_Crio())
+            {
+                lWaterCrio.Fill = off;
+            }else
+            {
+                lWaterCrio.Fill = neutral;
+            }
+            if(Tags.get_HH_pne())
+            {
+                lHH_pne.Fill = off;
+            }
+            else
+            {
+                lHH_pne.Fill = neutral;
+            }
+            if(Tags.get_LL_pne())
+            {
+                lLL_pne.Fill = off;
+            }else
+            {
+                lLL_pne.Fill = neutral;
+            }
+            if(Tags.get_Crio_Power_Failure())
+            {
+                lCrioPowerFailure.Fill = off;
+            }else
+            {
+                lCrioPowerFailure.Fill = neutral;
+
+            }
+            if(Tags.get_Qartz_Power_Failure())
+            {
+                lQartzPowerFailure.Fill = off;
+            }
+            else
+            {
+                lQartzPowerFailure.Fill = neutral;
+            }
+            if(Tags.get_ELI_Power_Failure())
+            {
+                lELIPowerFailure.Fill = off;
+            }else
+            {
+                lELIPowerFailure.Fill = neutral;
+            }
+            if(Tags.get_WaterHEat_Power_Failure())
+            {
+                lWaterHEatPowerFailure.Fill = off;
+            }
+            else
+            {
+                lWaterHEatPowerFailure.Fill = neutral;
+
+            }
+            if(Tags.get_FVP_Power_Failure())
+            {
+                lFVPPowerFailure.Fill = off;
+            }else
+            {
+                lFVPPowerFailure.Fill = neutral;
+            }
+            if(Tags.get_Ion_Power_Failure())
+            {
+                lIonPOwerFailure.Fill = off;
+            }
+            else
+            {
+                lIonPOwerFailure.Fill = neutral;
+
+            }
+            if(Tags.get_Indexer_Power_Failure())
+            {
+                lIndexerPowerFailure.Fill = off;
+            }else
+            {
+                lIndexerPowerFailure.Fill = neutral;
+            }
+            if(Tags.get_SSP_Power_Failure())
+            {
+                lSSPPowerFailure.Fill = off;
+            }else
+            {
+                lSSPPowerFailure.Fill = neutral;
+            }
+            if(Tags.get_Heater_Power_Failure())
+            {
+                lHeaterPowerFailure.Fill = off;
+            }
+            else
+            {
+                lHeaterPowerFailure.Fill = neutral;
+            }
+            if(Tags.get_ELI_Water_Failure())
+            {
+                lELIWaterFailure.Fill = off;
+            }
+            else
+            {
+                lELIWaterFailure.Fill = neutral;
+            }
+            if(Tags.get_CRIO_Hight_Temp())
+            {
+                lCRIOHightTempFailure.Fill = off;
+            }
+            else
+            {
+                lCRIOHightTempFailure.Fill = neutral;
+            }
+
+
 
             //rt.Angle += 25.0;
             //Circle.RenderTransform = rt;
@@ -212,7 +376,7 @@ namespace KVANT_Scada
 
         private void BAV_3_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            wBAV_3 = new GUI.BAV_3(Tags, LSS);
+            wBAV_3 = new GUI.BAV_3(Tags);
             wBAV_3.ShowDialog();
 
         }
@@ -442,7 +606,8 @@ namespace KVANT_Scada
 
         private void Circle_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
+            Driver_Speed = new GUI.Driver_Speed(Tags);
+            Driver_Speed.ShowDialog();
         }
 
         private void Alarm_Click(object sender, RoutedEventArgs e)
@@ -488,7 +653,11 @@ namespace KVANT_Scada
             Users1.Visibility = Visibility.Visible;
         }
 
-   
+        private void ELI_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Shield = new GUI.Window1(Tags);
+            Shield.ShowDialog();
+        }
 
         private void Stage_0_Crio_Start_Click(object sender, RoutedEventArgs e)
         {

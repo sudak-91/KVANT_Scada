@@ -69,19 +69,19 @@ namespace KVANT_Scada.GUI
         private void Save_K_Click(object sender, RoutedEventArgs e)
         {
             
-            Tag.set_K_RRG(float.Parse(K_RRG__1.Text.ToString()), float.Parse(K_RRG_2.Text.ToString()), float.Parse(K_RRG_3.Text.ToString()));
+            Tag.set_K_RRG((Convert.ToDouble(K_RRG__1.Text.Replace(".",","))), (Convert.ToDouble(K_RRG_2.Text.Replace(".", ","))), (Convert.ToDouble(K_RRG_3.Text.Replace(".", ","))));
         }
 
         private void PID_auto_Click(object sender, RoutedEventArgs e)
         {
             Tag.set_MODE_PID((double)3.0);
-            Tag.set_SP_PID_RRG(double.Parse(RRG_SP.Text.ToString()));
+            Tag.set_SP_PID_RRG(Convert.ToDouble(RRG_SP.Text.Replace(".",",")));
         }
 
         private void Manual_RRG_Click(object sender, RoutedEventArgs e)
         {
             Tag.set_MODE_PID((double)4.0);
-            Tag.set_ManVal_PID_RRG(double.Parse(RRG_ManVal.Text.ToString()));
+            Tag.set_ManVal_PID_RRG(Convert.ToDouble(RRG_ManVal.Text.Replace(".",",")));
            
         }
 
