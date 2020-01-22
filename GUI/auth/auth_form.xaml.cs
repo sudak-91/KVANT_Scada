@@ -1,6 +1,8 @@
 ﻿using KVANT_Scada.Data;
+using Serenity.Data;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,14 +31,17 @@ namespace KVANT_Scada.GUI.auth
             this.rte = rte;
             mw = mainWindow;
             
-           //rte.Database.CreateIfNotExists();
-
+            
+            var a = from g in rte.action_log where g.DateTime < System.DateTime.Now orderby g.idaction_log descending  select g;
+            
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string strLogin = login.Text.ToString();
             string strPass = pass.Password.ToString();
+            
 
             try
             {

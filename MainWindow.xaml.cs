@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using System.Linq;
 
 
 namespace KVANT_Scada
@@ -41,6 +42,8 @@ namespace KVANT_Scada
         private Log_Sub_System.Log_Sub_System LSS;
         public int userPolicy = 0;
         public static users User;
+        bool CPV_open_ind,FVV_S_ind, Process_comp_ind,FVV_B_ind,BAV_3_ind, SHV_ind,Crio_Turn_on_ind,Crio_Run_ind,Cam_Prep_ind, Cam_Open_ind,Day_End_Ind,Heat_Done_Ind;
+        bool alarm_opendoor_ind, alarm_water_crio_ind,alarm_ll_pne;
 
         private System.Windows.Threading.DispatcherTimer dispatcherTimer;
         List<users> data;
@@ -54,27 +57,9 @@ namespace KVANT_Scada
 
             real_Tag_Entitys = new Real_Tag_Entitys();
             data = new List<users>();
-            LSS = new Log_Sub_System.Log_Sub_System(real_Tag_Entitys);
-            foreach (users user in real_Tag_Entitys.users)
-            {
-                
-                data.Add(user);
-                
-               
-                
-                
-                
+   
+            //Heat_Assist.IsChecked = Tags.get_Heat_Assist();
 
-
-            }
-            users_grid.ItemsSource = data;
-            Dictionary<string, int> lRole = new Dictionary<string, int>();
-            lRole.Add("Оператор", 0);
-            lRole.Add("Технолог", 1);
-            lRole.Add("Инженер", 2);
-            Role.ItemsSource = lRole;
-            Heat_Assist.IsChecked = Tags.get_Heat_Assist();
-            
 
 
 
@@ -118,6 +103,7 @@ namespace KVANT_Scada
         public  void Count(object sender, EventArgs e)
 
         {
+            
             Tags.Update_Read();
             Main_pressure.Text = Tags.get_cam_pressure().ToString("E1") + "mbar";
             Crio_pressure.Text = Tags.get_crio_pressure().ToString("E1")+ "mbar";
@@ -131,131 +117,270 @@ namespace KVANT_Scada
             Heat_U.Text = Tags.GetHeatU();
             Heat_P.Text = Tags.GetHeatP();
             Cam_temp.Text = Tags.get_cam_temp().ToString();
-            if(User.Policy!=0)
+            if(User.Policy == 0)
             {
-                control_toolbar.IsEnabled = true;
+                Screens.IsEnabled = false;
             }else
             {
-                control_toolbar.IsEnabled = false;
+                Screens.IsEnabled = true;
             }
+           
             
             if(Tags.get_CPV_opened())
             {
                 CPV_opened.Fill = on;
+                if (!CPV_open_ind) {
+                    LSS.Add_to_LOG("System", "Открыт клапан криогенного насоса");
+                    CPV_open_ind = true;
+                }
+                
             }
             else
             {
                 CPV_opened.Fill = neutral;
+                if(CPV_open_ind)
+                {
+                    LSS.Add_to_LOG("System", "Закрыт клапан криогенного насоса");
+                    CPV_open_ind = false;
+                }
+                
             }
 
             if(Tags.get_FVV_S_opened())
             {
                 FVV_S_opened.Fill = on;
+                if (!FVV_S_ind)
+                {
+                    LSS.Add_to_LOG("System", "Открыт клапан малого сечения форвакуумной линии");
+                    FVV_S_ind = true;
+                }
+                
             }
             else
             {
                 FVV_S_opened.Fill = neutral;
+                if (FVV_S_ind)
+                {
+                    LSS.Add_to_LOG("System", "Закрыт клапан малого сечения форвакуумной линии");
+                    FVV_S_ind = false;
+                }
             }
 
             if(Tags.get_Process_compite())
             {
                 Process_complite.Fill = on;
+                if (!Process_comp_ind)
+                {
+                    LSS.Add_to_LOG("System", "Процесс напыления завершен");
+                    Process_comp_ind = true;
+                }
             }
             else
             {
+                if (Process_comp_ind)
+                {
+                    Process_comp_ind = false;
+                }
                 Process_complite.Fill = neutral;
             }
 
-            if(Tags.get_FVV_B_opened())
+            if (Tags.get_FVV_B_opened())
             {
                 FVV_B_opened.Fill = on;
+                if (!FVV_B_ind)
+                {
+
+                    LSS.Add_to_LOG("System", "Открыт клапан большого сечения форвакуумной линии");
+                    FVV_B_ind = true;
+                }
             }
             else
             {
                 FVV_B_opened.Fill = neutral;
+                if(FVV_B_ind)
+                {
+                    LSS.Add_to_LOG("System", "Закрыт клапан большого сечения форвакуумной линии");
+                    FVV_B_ind = false;
+
+                }
             }
+
             if(Tags.get_BAV_3_opened())
             {
                 BAV_3_opened.Fill = on;
+                if (!BAV_3_ind)
+                {
+                    LSS.Add_to_LOG("System", "Открыт клапан напуска воздуха");
+                    BAV_3_ind = true;
+                }
             }
             else
             {
                 BAV_3_opened.Fill = neutral;
+                if(BAV_3_ind)
+                {
+                    LSS.Add_to_LOG("System", "Закрыт клапан напуска воздуха");
+                    BAV_3_ind = false;
+                }
             }
+
             if(Tags.get_SHV_opened())
             {
                 SHV_opened.Fill = on;
+                if (!SHV_ind)
+                {
+                    LSS.Add_to_LOG("System", "Открыт шиберный затвор");
+                    SHV_ind = true;
+                }
             }
             else
             {
                 SHV_opened.Fill = neutral;
+                if(!SHV_ind )
+                {
+                    LSS.Add_to_LOG("System", "Закрыт шиберный затвор");
+                    SHV_ind = false;
+                }
+
             }
+
             if(Tags.get_Crio_Turn_on())
             {
                 Crio_Turn_On.Fill = on;
+                if (!Crio_Turn_on_ind)
+                {
+                    LSS.Add_to_LOG("System", "Криогенный насос включен");
+                    Crio_Turn_on_ind = true;
+                }
             }
             else
             {
                 Crio_Turn_On.Fill = neutral;
+                if (Crio_Turn_on_ind)
+                {
+                    LSS.Add_to_LOG("System", "Криогенный насос выключен");
+                    Crio_Turn_on_ind = false;
+                }
             }
 
             if(Tags.get_Crio_Pump_run())
             {
                 lCrioPumpStart.Fill = on;
-            }else
+                if (!Crio_Run_ind)
+                {
+                    LSS.Add_to_LOG("System", "Криогенный насос запущен");
+                    Crio_Run_ind = true;
+                }
+            }
+            else
             {
                 lCrioPumpStart.Fill = neutral;
+                if(Crio_Run_ind)
+                {
+                    LSS.Add_to_LOG("System", "Криогенный насос остановлен");
+                    Crio_Run_ind = false;
+                }
             }
+
             if(Tags.get_Cam_Prepare())
-            {
+            {   
                 lCamPrep.Fill = on;
+                if (!Cam_Prep_ind)
+                {
+                    LSS.Add_to_LOG("System", "Процесс откачивания камеры завершен");
+                    Cam_Prep_ind = true;
+                }
             }
             else
             {
                 lCamPrep.Fill = neutral;
+                Cam_Prep_ind = false;
             }
+
+
             if(Tags.get_Cam_open())
             {
                 lCamOpen.Fill = on;
-            }else
+                if (!Cam_Open_ind)
+                {
+                    LSS.Add_to_LOG("System", "Камера открыта");
+                    Cam_Open_ind = true;
+                }
+            }
+            else
             {
                 lCamOpen.Fill = neutral;
+                Cam_Open_ind = false;
             }
+
             if(Tags.get_Day_End())
             {
                 lDayEnd.Fill = on;
-            }else
+                if (!Day_End_Ind)
+                {
+                    LSS.Add_to_LOG("System", "Конец смены");
+                    Day_End_Ind = true;
+                }
+            }
+            else
             {
                 lDayEnd.Fill = neutral;
+                Day_End_Ind = false;
             }
+
             if(Tags.get_Crio_pump_turn_off())
             {
                 lDayEnd_Copy.Fill = off;
-            }else
+                LSS.Add_to_LOG("System", "Крионасос остановлен");
+            }
+            else
             {
                 lDayEnd_Copy.Fill = neutral;
             }
+
+
             if(Tags.get_Driver_Run())
             {
                 lDriver_run.Fill = on;
-            }else
+                LSS.Add_to_LOG("System", "Карусель запущена");
+            }
+            else
             {
                 lDriver_run.Fill = neutral;
             }
+
             if(Tags.get_Open_Door())
             {
                 lOpenDoor.Fill = off;
-            }else
+                if(!alarm_opendoor_ind)
+                {
+                    LSS.Add_to_LOG("Warning", "ДВЕРЬ КАМЕРЫ ОТКРЫТА");
+                    alarm_opendoor_ind = true;
+                }
+            }
+            else
             {
                 lOpenDoor.Fill = neutral;
+                alarm_opendoor_ind = false;
             }
+
+
             if(Tags.get_Water_Crio())
             {
                 lWaterCrio.Fill = off;
-            }else
+                if(!alarm_water_crio_ind)
+                {
+                    LSS.Add_to_LOG("Alarm", "Нет воды в конутре охлаждения крионасоса");
+                    alarm_water_crio_ind = true;
+                }
+            }
+            else
             {
                 lWaterCrio.Fill = neutral;
+                alarm_water_crio_ind = false;
             }
+
+
             if(Tags.get_HH_pne())
             {
                 lHH_pne.Fill = off;
@@ -267,9 +392,15 @@ namespace KVANT_Scada
             if(Tags.get_LL_pne())
             {
                 lLL_pne.Fill = off;
+                if(!alarm_ll_pne)
+                {
+                    LSS.Add_to_LOG("Warning", "Низкое давление в пневмосистеме");
+                    alarm_ll_pne = true;
+                }
             }else
             {
                 lLL_pne.Fill = neutral;
+                alarm_ll_pne = false;
             }
             if(Tags.get_Crio_Power_Failure())
             {
@@ -357,6 +488,20 @@ namespace KVANT_Scada
             {
                 lCRIOHightTempFailure.Fill = neutral;
             }
+            if(Tags.get_PreHeat_Done() || Tags.get_Heat_Assist_Done())
+            {
+                Heat_done.Fill = on;
+                if(!Heat_Done_Ind)
+                {
+                    LSS.Add_to_LOG("System", "Нагрев камеры завершен");
+                    Heat_Done_Ind = true;
+                }
+            }else
+            {
+                Heat_done.Fill = neutral;
+                Heat_Done_Ind = false;
+
+            }
 
 
 
@@ -439,6 +584,7 @@ namespace KVANT_Scada
             ION_Screen.Visibility = Visibility.Visible;
             Heat.Visibility = Visibility.Hidden;
             Users1.Visibility = Visibility.Hidden;
+           Logs.Visibility = Visibility.Hidden;
             Tags.GetInitValue();
             Anod_I_SP.Text = Tags.GetAnodISp();
             Anod_U_SP.Text = Tags.GetAnodUSp();
@@ -466,6 +612,7 @@ namespace KVANT_Scada
             ION_Screen.Visibility = Visibility.Hidden;
             Heat.Visibility = Visibility.Hidden;
             Users1.Visibility = Visibility.Hidden;
+            Logs.Visibility = Visibility.Hidden;
         }
 
  
@@ -493,7 +640,14 @@ namespace KVANT_Scada
             double dhp = Convert.ToDouble(hp);
             
             Tags.WriteToDbISp(di,du,dp,dhi,dhu,dhp);
-           
+            LSS.Add_to_LOG(User.Name, "Anod_I_SP:" +Anod_I_SP.Text);
+            LSS.Add_to_LOG(User.Name, "Anod_U_SP:" + Anod_U_SP.Text);
+            LSS.Add_to_LOG(User.Name, "Anod_P_SP:" + Anod_P_SP.Text);
+            LSS.Add_to_LOG(User.Name, "Heat_I_SP:" + Heat_I_SP.Text);
+            LSS.Add_to_LOG(User.Name, "Heat_U_SP:" + Heat_U_SP.Text);
+            LSS.Add_to_LOG(User.Name, "Heat_P_SP:" + Heat_P_SP.Text);
+
+
         }
 
         private void Screens_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -501,10 +655,7 @@ namespace KVANT_Scada
           
         }
 
-        private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
-        }
+    
 
         private void Main_Screen_Initialized(object sender, EventArgs e)
         {
@@ -513,10 +664,10 @@ namespace KVANT_Scada
 
         private void Main_Screen_Loaded(object sender, RoutedEventArgs e)
         {
-            GUI.auth.auth_form af = new GUI.auth.auth_form(real_Tag_Entitys,this);
+            GUI.auth.auth_form af = new GUI.auth.auth_form(real_Tag_Entitys, this);
             af.Topmost = true;
             af.Show();
-           
+
 
 
         }
@@ -530,7 +681,7 @@ namespace KVANT_Scada
 
         private void Ion_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            wIon = new GUI.ION(Tags);
+            wIon = new GUI.ION(Tags,LSS, User.Name);
             wIon.ShowDialog();
         }
 
@@ -558,6 +709,7 @@ namespace KVANT_Scada
             ION_Screen.Visibility = Visibility.Hidden;
             Heat.Visibility = Visibility.Visible;
             Users1.Visibility = Visibility.Hidden;
+            Logs.Visibility = Visibility.Hidden;
             HeatAssist_temp_sp.Text = Tags.get_HeatAssist_Temp_Sp().ToString();
             HeatAssist_Time_Sp.Text = Tags.get_HeatAssist_Time_Sp().ToString();
             PreHeat_Time_Sp.Text = Tags.get_PreHeat_Time_SP().ToString();
@@ -570,11 +722,22 @@ namespace KVANT_Scada
             Tags.set_HeatAssist_time_Sp((double)Convert.ToDouble(HeatAssist_Time_Sp.Text.Replace(".", ",")));
             Tags.set_PreHeat_Temp_SP((double)Convert.ToDouble(PreHeat_Temp_Sp.Text.Replace(".", ",")));
             Tags.set_PreHeat_Time_sp((double)Convert.ToDouble(PreHeat_Time_Sp.Text.Replace(".", ",")));
+            LSS.Add_to_LOG(User.Name, "Температура нагрева при ассистировании установлена: " + HeatAssist_temp_sp.Text);
+            LSS.Add_to_LOG(User.Name, "Температура предварительного нагрева установлена: " + PreHeat_Temp_Sp.Text);
+            LSS.Add_to_LOG(User.Name, "Время предварительного нагрева установлена: " + PreHeat_Time_Sp.Text);
+            LSS.Add_to_LOG(User.Name, "Время нагрева при ассистировании установлена: " + HeatAssist_Time_Sp.Text);
+
         }
 
         private void PreHeat_Temp_Sp_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
            // Tags.set_PreHeat_Temp_SP((double)Convert.ToDouble(PreHeat_Temp_Sp.Text.Replace(".", ",")));
+        }
+
+        private void Sign_In_Click(object sender, RoutedEventArgs e)
+        {
+            GUI.auth.auth_form a_f = new GUI.auth.auth_form(real_Tag_Entitys, this);
+            a_f.ShowDialog();
         }
 
         private void PreHeat_Time_Sp_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -657,6 +820,47 @@ namespace KVANT_Scada
         {
             Shield = new GUI.Window1(Tags);
             Shield.ShowDialog();
+        }
+
+        private void Users1_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            LSS = new Log_Sub_System.Log_Sub_System(real_Tag_Entitys);
+            foreach (users user in real_Tag_Entitys.users)
+            {
+
+                data.Add(user);
+
+
+
+
+
+
+
+            }
+            users_grid.ItemsSource = data;
+            Dictionary<string, int> lRole = new Dictionary<string, int>();
+            lRole.Add("Оператор", 0);
+            lRole.Add("Технолог", 1);
+            lRole.Add("Инженер", 2);
+            Role.ItemsSource = lRole;
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Main.Visibility = Visibility.Hidden;
+            ION_Screen.Visibility = Visibility.Hidden;
+            Heat.Visibility = Visibility.Hidden;
+            Users1.Visibility = Visibility.Hidden;
+            Logs.Visibility = Visibility.Visible;
+        }
+
+        private void Logs_Loaded(object sender, RoutedEventArgs e)
+        {
+            var a = from g in real_Tag_Entitys.action_log  orderby g.idaction_log descending select g;
+            Action_Logs_Grid.ItemsSource = a.ToList();
+
         }
 
         private void Stage_0_Crio_Start_Click(object sender, RoutedEventArgs e)

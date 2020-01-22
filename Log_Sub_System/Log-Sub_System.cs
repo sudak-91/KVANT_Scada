@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace KVANT_Scada.Log_Sub_System
 {
-    class Log_Sub_System
+   public class Log_Sub_System
     {
         private Real_Tag_Entitys kvantDB { get; set; }
         public action_log action_Log;
@@ -28,7 +28,7 @@ namespace KVANT_Scada.Log_Sub_System
                 Action = action,
                 DateTime = System.DateTime.Now
             };
-        this.kvantDB.action_log.Add(action_Log);
+            this.kvantDB.action_log.Add(action_Log);
             this.kvantDB.SaveChanges();
            
 

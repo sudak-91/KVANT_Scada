@@ -68,7 +68,8 @@ namespace KVANT_Scada.UDT
         private udtCommandBit Crio_Pump_Run, Cam_Prepare, Cam_opened, Crio_Pump_Turn_off, Day_End;
         private udtCommandBit Shield_open, Shield_close;
         private udtCommandBit Driver_Run;
-        private udtCommandBit Open_Door, Water_Crio, HH_pne, LL_pne, Crio_Power_Failure, Qartz_Power_Failure, ELI_Power_Failure, WaterHeat_Power_Failure, FVP_Power_Failure, Ion_Power_Failure, Indexer_Power_Failure, SSP_Power_Failure, Heater_Power_Failure, ELI_Water_Failure, CRIO_Hight_Temp; 
+        private udtCommandBit Open_Door, Water_Crio, HH_pne, LL_pne, Crio_Power_Failure, Qartz_Power_Failure, ELI_Power_Failure, WaterHeat_Power_Failure, FVP_Power_Failure, Ion_Power_Failure, Indexer_Power_Failure, SSP_Power_Failure, Heater_Power_Failure, ELI_Water_Failure, CRIO_Hight_Temp;
+        private udtCommandBit Heat_Asssit_On,Pre_Heat_Done, Heat_Assist_Done;
 
 
 
