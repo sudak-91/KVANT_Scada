@@ -74,7 +74,22 @@ namespace KVANT_Scada.UDT
             ion_sp.Heat_I_SP = this.Heat_I_SP;
             ion_sp.Heat_U_SP = this.Heat_U_SP;
             ion_sp.Heat_P_SP = this.Heat_P_SP;
+
             rte.SaveChanges();
+            try
+            {
+                // this.PLC.WriteClass(this, this.DB, this.DBB);
+                this.PLC.Write(DataType.DataBlock, this.DB, this.DBB, this.Anod_I_SP);
+                this.PLC.Write(DataType.DataBlock, this.DB, (this.DBB + 4), this.Anod_U_SP);
+                this.PLC.Write(DataType.DataBlock, this.DB, (this.DBB + 8), this.Anod_P_SP);
+                this.PLC.Write(DataType.DataBlock, this.DB, (this.DBB + 12), this.Heat_I_SP);
+                this.PLC.Write(DataType.DataBlock, this.DB, (this.DBB + 16), this.Heat_U_SP);
+                this.PLC.Write(DataType.DataBlock, this.DB, (this.DBB + 20), this.Heat_P_SP);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.ToString());
+            }
+
         }
         public void ReadFromDB()
         {

@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище kvantModel" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="action_log">
+          <Key>
+            <PropertyRef Name="idaction_log" />
+          </Key>
+          <Property Name="idaction_log" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" />
+          <Property Name="Action" Type="varchar" MaxLength="45" />
+          <Property Name="DateTime" Type="datetime" Precision="0" />
+        </EntityType>
         <EntityType Name="command_bit">
           <Key>
             <PropertyRef Name="DB" />
@@ -31,6 +40,19 @@
           <Property Name="AutoMode" Type="bool" />
           <Property Name="Error" Type="bool" />
         </EntityType>
+        <EntityType Name="crio_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="PowerOn" Type="bool" />
+          <Property Name="Blocked" Type="bool" />
+          <Property Name="TurnOn" Type="bool" />
+          <Property Name="AutoMode" Type="bool" />
+          <Property Name="Error" Type="bool" />
+          <Property Name="DateTime" Type="datetime" Precision="0" />
+        </EntityType>
         <EntityType Name="fvp">
           <Key>
             <PropertyRef Name="DB" />
@@ -46,6 +68,21 @@
           <Property Name="PowerOn" Type="bool" />
           <Property Name="TurnOn" Type="bool" />
           <Property Name="Block" Type="bool" />
+        </EntityType>
+        <EntityType Name="fvp_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Remote" Type="bool" />
+          <Property Name="AutoMode" Type="bool" />
+          <Property Name="Start" Type="bool" />
+          <Property Name="ManualStart" Type="bool" />
+          <Property Name="PowerOn" Type="bool" />
+          <Property Name="TurnOn" Type="bool" />
+          <Property Name="Block" Type="bool" />
+          <Property Name="DateTime" Type="datetime" Precision="0" />
         </EntityType>
         <EntityType Name="ion_read">
           <Key>
@@ -111,6 +148,24 @@
           <Property Name="DBB" Type="int" Nullable="false" />
           <Property Name="Value" Type="double" />
         </EntityType>
+        <EntityType Name="real_log">
+          <Key>
+            <PropertyRef Name="idnew_table" />
+          </Key>
+          <Property Name="idnew_table" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="value" Type="float" Nullable="false" />
+          <Property Name="TIME" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="PassWord" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Policy" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
         <EntityType Name="valve_log">
           <Key>
             <PropertyRef Name="valve_logcol" />
@@ -138,13 +193,18 @@
           <Property Name="Serviced" Type="bool" />
         </EntityType>
         <EntityContainer Name="Хранилище kvantModelContainer">
+          <EntitySet Name="action_log" EntityType="Self.action_log" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="command_bit" EntityType="Self.command_bit" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="crio" EntityType="Self.crio" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="crio_log" EntityType="Self.crio_log" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="fvp" EntityType="Self.fvp" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="fvp_log" EntityType="Self.fvp_log" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="ion_read" EntityType="Self.ion_read" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="ion_sp" EntityType="Self.ion_sp" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="process" EntityType="Self.process" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="real" EntityType="Self.real" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="real_log" EntityType="Self.real_log" Schema="kvant" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="valve_log" EntityType="Self.valve_log" Schema="kvant" store:Type="Tables" />
           <EntitySet Name="valves" EntityType="Self.valves" Schema="kvant" store:Type="Tables" />
         </EntityContainer>
@@ -172,6 +232,11 @@
           <EntitySet Name="valve_log" EntityType="kvantModel.valve_log" />
           <EntitySet Name="ion_read" EntityType="kvantModel.ion_read" />
           <EntitySet Name="ion_sp" EntityType="kvantModel.ion_sp" />
+          <EntitySet Name="users" EntityType="kvantModel.users" />
+          <EntitySet Name="real_log" EntityType="kvantModel.real_log" />
+          <EntitySet Name="crio_log" EntityType="kvantModel.crio_log" />
+          <EntitySet Name="fvp_log" EntityType="kvantModel.fvp_log" />
+          <EntitySet Name="action_log" EntityType="kvantModel.action_log" />
         </EntityContainer>
         <EntityType Name="valves">
           <Key>
@@ -294,6 +359,61 @@
           <Property Name="Heat_I_SP" Type="Double" />
           <Property Name="Heat_U_SP" Type="Double" />
           <Property Name="Heat_P_SP" Type="Double" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Policy" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="real_log">
+          <Key>
+            <PropertyRef Name="idnew_table" />
+          </Key>
+          <Property Name="idnew_table" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="value" Type="Single" Nullable="false" />
+          <Property Name="TIME" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="crio_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="PowerOn" Type="Boolean" />
+          <Property Name="Blocked" Type="Boolean" />
+          <Property Name="TurnOn" Type="Boolean" />
+          <Property Name="AutoMode" Type="Boolean" />
+          <Property Name="Error" Type="Boolean" />
+          <Property Name="DateTime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="fvp_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Remote" Type="Boolean" />
+          <Property Name="AutoMode" Type="Boolean" />
+          <Property Name="Start" Type="Boolean" />
+          <Property Name="ManualStart" Type="Boolean" />
+          <Property Name="PowerOn" Type="Boolean" />
+          <Property Name="TurnOn" Type="Boolean" />
+          <Property Name="Block" Type="Boolean" />
+          <Property Name="DateTime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="action_log">
+          <Key>
+            <PropertyRef Name="idaction_log" />
+          </Key>
+          <Property Name="idaction_log" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Action" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="DateTime" Type="DateTime" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -430,6 +550,66 @@
                 <ScalarProperty Name="DBB" ColumnName="DBB" />
                 <ScalarProperty Name="DB" ColumnName="DB" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="kvantModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Policy" ColumnName="Policy" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="real_log">
+            <EntityTypeMapping TypeName="kvantModel.real_log">
+              <MappingFragment StoreEntitySet="real_log">
+                <ScalarProperty Name="TIME" ColumnName="TIME" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idnew_table" ColumnName="idnew_table" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="crio_log">
+            <EntityTypeMapping TypeName="kvantModel.crio_log">
+              <MappingFragment StoreEntitySet="crio_log">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Error" ColumnName="Error" />
+                <ScalarProperty Name="AutoMode" ColumnName="AutoMode" />
+                <ScalarProperty Name="TurnOn" ColumnName="TurnOn" />
+                <ScalarProperty Name="Blocked" ColumnName="Blocked" />
+                <ScalarProperty Name="PowerOn" ColumnName="PowerOn" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fvp_log">
+            <EntityTypeMapping TypeName="kvantModel.fvp_log">
+              <MappingFragment StoreEntitySet="fvp_log">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="TurnOn" ColumnName="TurnOn" />
+                <ScalarProperty Name="PowerOn" ColumnName="PowerOn" />
+                <ScalarProperty Name="ManualStart" ColumnName="ManualStart" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="AutoMode" ColumnName="AutoMode" />
+                <ScalarProperty Name="Remote" ColumnName="Remote" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="action_log">
+            <EntityTypeMapping TypeName="kvantModel.action_log">
+              <MappingFragment StoreEntitySet="action_log">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="idaction_log" ColumnName="idaction_log" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

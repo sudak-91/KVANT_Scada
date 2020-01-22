@@ -1,0 +1,15 @@
+﻿<Window x:Class="KVANT_Scada.GUI.Driver_Speed"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KVANT_Scada.GUI"
+        mc:Ignorable="d"
+        Title="Driver_Speed" Height="136.856" Width="347.68" Topmost="True">
+    <Grid>
+        <TextBox x:Name="txtDriverSpeed" HorizontalAlignment="Left" Height="27" Margin="192,27,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="110"/>
+        <Label Content="Скорость" HorizontalAlignment="Left" Margin="53,26,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="DriverSpeedSave" Content="Сохранить" HorizontalAlignment="Left" Height="33" Margin="187,63,0,0" VerticalAlignment="Top" Width="120" Click="DriverSpeedSave_Click"/>
+
+    </Grid>
+</Window>

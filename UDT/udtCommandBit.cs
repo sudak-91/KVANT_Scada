@@ -53,8 +53,29 @@ namespace KVANT_Scada.UDT
         public void Write(bool value)
         {
             PLC.WriteBit(DataType.DataBlock, this.DB, this.DBB, this.DBX, value);
+            command_bit vCommandBit = this.rte.command_bit.Find(this.DB, this.DBB, this.DBX);
+            vCommandBit.Value = value;
+            this.rte.SaveChanges();
+           
         }
+        public bool Read()
+        {
+            try
+            {
+                command_bit vCommandBit = this.rte.command_bit.Find(this.DB, this.DBB, this.DBX);
+                vCommandBit.Value = (bool)this.PLC.Read(DataType.DataBlock, this.DB, this.DBB, VarType.Bit, 1,(byte)this.DBX);
 
+                this.rte.SaveChanges();
+                this.value = (bool)vCommandBit.Value;
+                return  this.value;
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.ToString());
+                return false;
+            }
+        }
 
     }
 }

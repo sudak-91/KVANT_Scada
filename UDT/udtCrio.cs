@@ -75,6 +75,18 @@ namespace KVANT_Scada.UDT
 
                     this.rte.SaveChanges();
                 }
+                crio_log c_l = new crio_log
+                {
+                    AutoMode = this.bAutoMode,
+                    Blocked = this.bBlocked,
+                    DateTime = System.DateTime.Now,
+                    Error = this.bError,
+                    name = this.name,
+                    PowerOn = this.bPowerOn,
+                    TurnOn = this.bTurnOn
+                };
+                this.rte.crio_log.Add(c_l);
+                this.rte.SaveChanges();
 
             }
             catch (Exception ex)

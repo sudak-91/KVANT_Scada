@@ -393,13 +393,22 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>PLC.settings</DependentUpon>
     </Compile>
+    <Compile Include="Data\action_log.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\command_bit.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\crio.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\crio_log.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\fvp.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\fvp_log.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ion_read.cs">
@@ -424,6 +433,9 @@
     <Compile Include="Data\real.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\real_log.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Real_Tags.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -439,11 +451,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Real_Tags.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\users.cs">
+      <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\valves.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\valve_log.cs">
       <DependentUpon>Real_Tags.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\auth\auth_form.xaml.cs">
+      <DependentUpon>auth_form.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Driver_Speed.xaml.cs">
+      <DependentUpon>Driver_Speed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ION.xaml.cs">
+      <DependentUpon>ION.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Crio.xaml.cs">
       <DependentUpon>Crio.xaml</DependentUpon>
@@ -466,6 +490,9 @@
     <Compile Include="GUI\SHV.xaml.cs">
       <DependentUpon>SHV.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Log_Sub_System\Log-Sub_System.cs" />
     <Compile Include="UDT\Installing_Tags.cs" />
     <Compile Include="UDT\Real_type.cs" />
@@ -477,6 +504,22 @@
     <Compile Include="UDT\udtIONWrite.cs" />
     <Compile Include="UDT\udtProcess.cs" />
     <Compile Include="UDT\udtValve.cs" />
+    <Page Include="Config\.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\auth\auth_form.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Driver_Speed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\ION.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GUI\Crio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -502,6 +545,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="GUI\SHV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
