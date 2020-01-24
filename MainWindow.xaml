@@ -58,7 +58,7 @@
             <Image x:Name="ELI" HorizontalAlignment="Left" Height="80" Margin="609,389,0,0" VerticalAlignment="Top" Width="53" Source="Тигель.png" MouseLeftButtonDown="ELI_MouseLeftButtonDown"/>
             <Image x:Name="Ion" HorizontalAlignment="Left" Height="45" Margin="418,424,0,0" VerticalAlignment="Top" Width="58" Source="ИИ.png" MouseLeftButtonDown="Ion_MouseLeftButtonDown"/>
             <Image x:Name="Heather" HorizontalAlignment="Left" Height="72" Margin="452,291,0,0" VerticalAlignment="Top" Width="100" Source="Нагреватель.png"/>
-            <Grid x:Name="Crio_Grid" HorizontalAlignment="Left" Height="84" Margin="581,82,0,0" VerticalAlignment="Top" Width="249">
+            <Grid x:Name="Crio_Grid" HorizontalAlignment="Left" Height="84" Margin="396,-10,0,0" VerticalAlignment="Top" Width="249">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="127*"/>
                     <ColumnDefinition Width="90*"/>
@@ -144,12 +144,12 @@
             <Ellipse x:Name="BAV_3_opened" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="21" Margin="739,411,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
             <Ellipse x:Name="SHV_opened" Fill="#FF4D4DFF" HorizontalAlignment="Left" Height="32" Margin="592,209,0,0" Stroke="Black" VerticalAlignment="Top" Width="32"/>
             <Ellipse x:Name="Crio_Turn_On" Fill="#FF4D4DFF" HorizontalAlignment="Left" Height="35" Margin="521,132,0,0" Stroke="Black" VerticalAlignment="Top" Width="35"/>
-            <CheckBox x:Name="Heat_open_cam" Content="Нагрев камеры при открытии" HorizontalAlignment="Left" Margin="47,43,0,0" VerticalAlignment="Top" Click="CheckBox_Checked"/>
+            <CheckBox x:Name="Heat_open_cam" Content="Нагрев камеры при открытии" HorizontalAlignment="Left" Margin="49,135,0,0" VerticalAlignment="Top" Click="CheckBox_Checked"/>
             <TextBox x:Name="txtbox_FV_pressure" HorizontalAlignment="Left" Height="23" Margin="59,345,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="86"/>
             <Label Content="Давление в форвакуумной линии" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.105,-0.115"/>
             <TextBox x:Name="Pne_press" HorizontalAlignment="Left" Height="23" Margin="857,28,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
             <Label Content="Давление &#xA;в пневмосистеме" HorizontalAlignment="Left" Margin="750,17,0,0" VerticalAlignment="Top"/>
-            <CheckBox x:Name="Heat_Assist" Content="Нагрев камеры при напылении" HorizontalAlignment="Left" Height="24" Margin="47,64,0,0" VerticalAlignment="Top" Width="188" Click="Heat_Assist_Click"/>
+            <CheckBox x:Name="Heat_Assist" Content="Нагрев камеры при напылении" HorizontalAlignment="Left" Height="24" Margin="49,156,0,0" VerticalAlignment="Top" Width="188" Click="Heat_Assist_Click"/>
             <Grid HorizontalAlignment="Left" Height="50" Margin="155,29,0,0" VerticalAlignment="Top" Width="91"/>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="149" Margin="32,411,0,0" VerticalAlignment="Top" Width="215"/>
             <Label Content="Насос второго контура охлаждения" HorizontalAlignment="Left" Margin="35,416,0,0" VerticalAlignment="Top"/>
@@ -157,16 +157,16 @@
             <Button x:Name="Stop_SSP" Content="Стоп" HorizontalAlignment="Left" Height="35" Margin="49,506,0,0" VerticalAlignment="Top" Width="182" Click="Stop_SSP_Click"/>
             <TextBox x:Name="Cam_temp" HorizontalAlignment="Left" Height="23" Margin="859,62,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
             <Label Content="Температура в камере" HorizontalAlignment="Left" Margin="722,61,0,0" VerticalAlignment="Top"/>
-            <Ellipse x:Name="lCrioPumpStart" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="833,102,0,0" Stroke="Black" VerticalAlignment="Top" Width="15"/>
-            <Label Content="Крионасос запущен" HorizontalAlignment="Left" Margin="848,97,0,0" VerticalAlignment="Top"/>
-            <Ellipse x:Name="lCamPrep" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="834,127,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
-            <Label Content="Камера откачена" HorizontalAlignment="Left" Margin="849,122,0,0" VerticalAlignment="Top"/>
-            <Ellipse x:Name="lCamOpen" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="834,150,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
-            <Label Content="Камера открыта" HorizontalAlignment="Left" Margin="848,144,0,0" VerticalAlignment="Top"/>
-            <Ellipse x:Name="lDayEnd" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="834,174,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
-            <Label Content="Конец смены" HorizontalAlignment="Left" Margin="849,169,0,0" VerticalAlignment="Top"/>
-            <Ellipse x:Name="lDayEnd_Copy" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="834,196,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
-            <Label Content="Крионасос остановлен" HorizontalAlignment="Left" Margin="849,191,0,0" VerticalAlignment="Top"/>
+            <Ellipse x:Name="lCrioPumpStart" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,102,0,0" Stroke="Black" VerticalAlignment="Top" Width="15"/>
+            <Label Content="Крионасос запущен" HorizontalAlignment="Left" Margin="807,97,0,0" VerticalAlignment="Top"/>
+            <Ellipse x:Name="lCamPrep" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,127,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Label Content="Камера откачена" HorizontalAlignment="Left" Margin="807,122,0,0" VerticalAlignment="Top"/>
+            <Ellipse x:Name="lCamOpen" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,150,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Label Content="Камера открыта" HorizontalAlignment="Left" Margin="807,144,0,0" VerticalAlignment="Top"/>
+            <Ellipse x:Name="lDayEnd" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,174,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Label Content="Конец смены" HorizontalAlignment="Left" Margin="807,169,0,0" VerticalAlignment="Top"/>
+            <Ellipse x:Name="lDayEnd_Copy" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,196,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
+            <Label Content="Крионасос остановлен" HorizontalAlignment="Left" Margin="807,191,0,0" VerticalAlignment="Top"/>
             <Ellipse x:Name="lDriver_run" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="21" Margin="529,378,0,0" Stroke="Black" VerticalAlignment="Top" Width="21"/>
             <Ellipse x:Name="lOpenDoor" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,226,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>
             <Ellipse x:Name="lWaterCrio" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Margin="792,250,0,0" Stroke="Black" VerticalAlignment="Top" Width="14"/>

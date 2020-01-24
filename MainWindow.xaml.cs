@@ -722,10 +722,10 @@ namespace KVANT_Scada
             Tags.set_HeatAssist_time_Sp((double)Convert.ToDouble(HeatAssist_Time_Sp.Text.Replace(".", ",")));
             Tags.set_PreHeat_Temp_SP((double)Convert.ToDouble(PreHeat_Temp_Sp.Text.Replace(".", ",")));
             Tags.set_PreHeat_Time_sp((double)Convert.ToDouble(PreHeat_Time_Sp.Text.Replace(".", ",")));
-            LSS.Add_to_LOG(User.Name, "Температура нагрева при ассистировании установлена: " + HeatAssist_temp_sp.Text);
-            LSS.Add_to_LOG(User.Name, "Температура предварительного нагрева установлена: " + PreHeat_Temp_Sp.Text);
-            LSS.Add_to_LOG(User.Name, "Время предварительного нагрева установлена: " + PreHeat_Time_Sp.Text);
-            LSS.Add_to_LOG(User.Name, "Время нагрева при ассистировании установлена: " + HeatAssist_Time_Sp.Text);
+            //LSS.Add_to_LOG(User.Name, "Температура нагрева при ассистировании установлена: " + HeatAssist_temp_sp.Text);
+            //LSS.Add_to_LOG(User.Name, "Температура предварительного нагрева установлена: " + PreHeat_Temp_Sp.Text);
+            //LSS.Add_to_LOG(User.Name, "Время предварительного нагрева установлена: " + PreHeat_Time_Sp.Text);
+            //LSS.Add_to_LOG(User.Name, "Время нагрева при ассистировании установлена: " + HeatAssist_Time_Sp.Text);
 
         }
 
@@ -854,12 +854,13 @@ namespace KVANT_Scada
             Heat.Visibility = Visibility.Hidden;
             Users1.Visibility = Visibility.Hidden;
             Logs.Visibility = Visibility.Visible;
+            var a = from g in real_Tag_Entitys.action_log orderby g.idaction_log descending select g;
+            Action_Logs_Grid.ItemsSource = a.ToList();
         }
 
         private void Logs_Loaded(object sender, RoutedEventArgs e)
         {
-            var a = from g in real_Tag_Entitys.action_log  orderby g.idaction_log descending select g;
-            Action_Logs_Grid.ItemsSource = a.ToList();
+           
 
         }
 
@@ -867,13 +868,13 @@ namespace KVANT_Scada
         {
             int a = 1;
             Tags.Tech_Cam_PRocess(a);
-            LSS.Add_to_LOG(User.Name, "Старт Крионасоса");
+            //LSS.Add_to_LOG(User.Name, "Старт Крионасоса");
         }
 
         private void Stage_1_Prepare_Cam_Click(object sender, RoutedEventArgs e)
         {
             Tags.Tech_Cam_PRocess(2);
-            LSS.Add_to_LOG(User.Name, "Откачка камеры");
+           // LSS.Add_to_LOG(User.Name, "Откачка камеры");
 
         }
     }
