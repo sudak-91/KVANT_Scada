@@ -94,6 +94,8 @@ namespace KVANT_Scada
                     dispatcherTimer.Interval = new System.TimeSpan(0, 0, 1);
                     dispatcherTimer.Tick += new EventHandler(Count);
                     dispatcherTimer.Start();
+                    Tags.set_Heat_Asssit(false);
+                    Tags.set_Cam_Heat_Open(false);
 
                 }
            
@@ -130,7 +132,7 @@ namespace KVANT_Scada
             {
                 CPV_opened.Fill = on;
                 if (!CPV_open_ind) {
-                    LSS.Add_to_LOG("System", "Открыт клапан криогенного насоса");
+                    //LSS.Add_to_LOG("System", "Открыт клапан криогенного насоса");
                     CPV_open_ind = true;
                 }
                 
@@ -140,7 +142,7 @@ namespace KVANT_Scada
                 CPV_opened.Fill = neutral;
                 if(CPV_open_ind)
                 {
-                    LSS.Add_to_LOG("System", "Закрыт клапан криогенного насоса");
+                    //LSS.Add_to_LOG("System", "Закрыт клапан криогенного насоса");
                     CPV_open_ind = false;
                 }
                 
@@ -151,7 +153,7 @@ namespace KVANT_Scada
                 FVV_S_opened.Fill = on;
                 if (!FVV_S_ind)
                 {
-                    LSS.Add_to_LOG("System", "Открыт клапан малого сечения форвакуумной линии");
+                    //LSS.Add_to_LOG("System", "Открыт клапан малого сечения форвакуумной линии");
                     FVV_S_ind = true;
                 }
                 
@@ -161,7 +163,7 @@ namespace KVANT_Scada
                 FVV_S_opened.Fill = neutral;
                 if (FVV_S_ind)
                 {
-                    LSS.Add_to_LOG("System", "Закрыт клапан малого сечения форвакуумной линии");
+                    //LSS.Add_to_LOG("System", "Закрыт клапан малого сечения форвакуумной линии");
                     FVV_S_ind = false;
                 }
             }
@@ -171,7 +173,7 @@ namespace KVANT_Scada
                 Process_complite.Fill = on;
                 if (!Process_comp_ind)
                 {
-                    LSS.Add_to_LOG("System", "Процесс напыления завершен");
+                    //LSS.Add_to_LOG("System", "Процесс напыления завершен");
                     Process_comp_ind = true;
                 }
             }
@@ -190,7 +192,7 @@ namespace KVANT_Scada
                 if (!FVV_B_ind)
                 {
 
-                    LSS.Add_to_LOG("System", "Открыт клапан большого сечения форвакуумной линии");
+                    //LSS.Add_to_LOG("System", "Открыт клапан большого сечения форвакуумной линии");
                     FVV_B_ind = true;
                 }
             }
@@ -199,7 +201,7 @@ namespace KVANT_Scada
                 FVV_B_opened.Fill = neutral;
                 if(FVV_B_ind)
                 {
-                    LSS.Add_to_LOG("System", "Закрыт клапан большого сечения форвакуумной линии");
+                    //LSS.Add_to_LOG("System", "Закрыт клапан большого сечения форвакуумной линии");
                     FVV_B_ind = false;
 
                 }
@@ -210,7 +212,7 @@ namespace KVANT_Scada
                 BAV_3_opened.Fill = on;
                 if (!BAV_3_ind)
                 {
-                    LSS.Add_to_LOG("System", "Открыт клапан напуска воздуха");
+                    //LSS.Add_to_LOG("System", "Открыт клапан напуска воздуха");
                     BAV_3_ind = true;
                 }
             }
@@ -219,7 +221,7 @@ namespace KVANT_Scada
                 BAV_3_opened.Fill = neutral;
                 if(BAV_3_ind)
                 {
-                    LSS.Add_to_LOG("System", "Закрыт клапан напуска воздуха");
+                    //LSS.Add_to_LOG("System", "Закрыт клапан напуска воздуха");
                     BAV_3_ind = false;
                 }
             }
@@ -229,7 +231,7 @@ namespace KVANT_Scada
                 SHV_opened.Fill = on;
                 if (!SHV_ind)
                 {
-                    LSS.Add_to_LOG("System", "Открыт шиберный затвор");
+                    //LSS.Add_to_LOG("System", "Открыт шиберный затвор");
                     SHV_ind = true;
                 }
             }
@@ -238,7 +240,7 @@ namespace KVANT_Scada
                 SHV_opened.Fill = neutral;
                 if(!SHV_ind )
                 {
-                    LSS.Add_to_LOG("System", "Закрыт шиберный затвор");
+                    //LSS.Add_to_LOG("System", "Закрыт шиберный затвор");
                     SHV_ind = false;
                 }
 
@@ -249,7 +251,7 @@ namespace KVANT_Scada
                 Crio_Turn_On.Fill = on;
                 if (!Crio_Turn_on_ind)
                 {
-                    LSS.Add_to_LOG("System", "Криогенный насос включен");
+                    //LSS.Add_to_LOG("System", "Криогенный насос включен");
                     Crio_Turn_on_ind = true;
                 }
             }
@@ -258,7 +260,7 @@ namespace KVANT_Scada
                 Crio_Turn_On.Fill = neutral;
                 if (Crio_Turn_on_ind)
                 {
-                    LSS.Add_to_LOG("System", "Криогенный насос выключен");
+                    //LSS.Add_to_LOG("System", "Криогенный насос выключен");
                     Crio_Turn_on_ind = false;
                 }
             }
@@ -268,7 +270,7 @@ namespace KVANT_Scada
                 lCrioPumpStart.Fill = on;
                 if (!Crio_Run_ind)
                 {
-                    LSS.Add_to_LOG("System", "Криогенный насос запущен");
+                    //LSS.Add_to_LOG("System", "Криогенный насос запущен");
                     Crio_Run_ind = true;
                 }
             }
@@ -277,7 +279,7 @@ namespace KVANT_Scada
                 lCrioPumpStart.Fill = neutral;
                 if(Crio_Run_ind)
                 {
-                    LSS.Add_to_LOG("System", "Криогенный насос остановлен");
+                    //LSS.Add_to_LOG("System", "Криогенный насос остановлен");
                     Crio_Run_ind = false;
                 }
             }
@@ -287,7 +289,7 @@ namespace KVANT_Scada
                 lCamPrep.Fill = on;
                 if (!Cam_Prep_ind)
                 {
-                    LSS.Add_to_LOG("System", "Процесс откачивания камеры завершен");
+                    //LSS.Add_to_LOG("System", "Процесс откачивания камеры завершен");
                     Cam_Prep_ind = true;
                 }
             }
@@ -303,7 +305,7 @@ namespace KVANT_Scada
                 lCamOpen.Fill = on;
                 if (!Cam_Open_ind)
                 {
-                    LSS.Add_to_LOG("System", "Камера открыта");
+                    //LSS.Add_to_LOG("System", "Камера открыта");
                     Cam_Open_ind = true;
                 }
             }
@@ -318,7 +320,7 @@ namespace KVANT_Scada
                 lDayEnd.Fill = on;
                 if (!Day_End_Ind)
                 {
-                    LSS.Add_to_LOG("System", "Конец смены");
+                    //LSS.Add_to_LOG("System", "Конец смены");
                     Day_End_Ind = true;
                 }
             }
@@ -331,7 +333,7 @@ namespace KVANT_Scada
             if(Tags.get_Crio_pump_turn_off())
             {
                 lDayEnd_Copy.Fill = off;
-                LSS.Add_to_LOG("System", "Крионасос остановлен");
+                //LSS.Add_to_LOG("System", "Крионасос остановлен");
             }
             else
             {
@@ -342,7 +344,7 @@ namespace KVANT_Scada
             if(Tags.get_Driver_Run())
             {
                 lDriver_run.Fill = on;
-                LSS.Add_to_LOG("System", "Карусель запущена");
+               // LSS.Add_to_LOG("System", "Карусель запущена");
             }
             else
             {
@@ -354,7 +356,7 @@ namespace KVANT_Scada
                 lOpenDoor.Fill = off;
                 if(!alarm_opendoor_ind)
                 {
-                    LSS.Add_to_LOG("Warning", "ДВЕРЬ КАМЕРЫ ОТКРЫТА");
+                   // LSS.Add_to_LOG("Warning", "ДВЕРЬ КАМЕРЫ ОТКРЫТА");
                     alarm_opendoor_ind = true;
                 }
             }
@@ -370,7 +372,7 @@ namespace KVANT_Scada
                 lWaterCrio.Fill = off;
                 if(!alarm_water_crio_ind)
                 {
-                    LSS.Add_to_LOG("Alarm", "Нет воды в конутре охлаждения крионасоса");
+                    //LSS.Add_to_LOG("Alarm", "Нет воды в конутре охлаждения крионасоса");
                     alarm_water_crio_ind = true;
                 }
             }
@@ -394,7 +396,7 @@ namespace KVANT_Scada
                 lLL_pne.Fill = off;
                 if(!alarm_ll_pne)
                 {
-                    LSS.Add_to_LOG("Warning", "Низкое давление в пневмосистеме");
+                    //LSS.Add_to_LOG("Warning", "Низкое давление в пневмосистеме");
                     alarm_ll_pne = true;
                 }
             }else
