@@ -57,7 +57,22 @@ namespace KVANT_Scada
 
             real_Tag_Entitys = new Real_Tag_Entitys();
             data = new List<users>();
-   
+            CPV_open_ind = false;
+            FVV_S_ind = false;
+            Process_comp_ind = false; 
+            FVV_B_ind = false; 
+            BAV_3_ind = false;
+            SHV_ind = false;
+            Crio_Turn_on_ind = false;
+            Crio_Run_ind = false;
+            Cam_Prep_ind = false;
+            Cam_Open_ind = false;
+            Day_End_Ind = false;
+            Heat_Done_Ind = false;
+            alarm_opendoor_ind = false;
+            alarm_water_crio_ind = false;
+            alarm_ll_pne = false;
+
             //Heat_Assist.IsChecked = Tags.get_Heat_Assist();
 
 
@@ -353,7 +368,7 @@ namespace KVANT_Scada
 
             if(Tags.get_Open_Door())
             {
-                lOpenDoor.Fill = off;
+                lOpenDoor.Fill = neutral;
                 if(!alarm_opendoor_ind)
                 {
                    // LSS.Add_to_LOG("Warning", "ДВЕРЬ КАМЕРЫ ОТКРЫТА");
@@ -362,7 +377,7 @@ namespace KVANT_Scada
             }
             else
             {
-                lOpenDoor.Fill = neutral;
+                lOpenDoor.Fill = off;
                 alarm_opendoor_ind = false;
             }
 
@@ -621,6 +636,7 @@ namespace KVANT_Scada
 
         private void Anod_I_SP_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
+           
 
         }
 
@@ -702,6 +718,8 @@ namespace KVANT_Scada
         private void Heat_cam_Click(object sender, RoutedEventArgs e)
         {
             Tags.set_PreHeat_Start(true);
+            Tags.set_SSP_on(true);
+
             LSS.Add_to_LOG(User.Name, "Прогрев камеры");
         }
 
@@ -724,10 +742,10 @@ namespace KVANT_Scada
             Tags.set_HeatAssist_time_Sp((double)Convert.ToDouble(HeatAssist_Time_Sp.Text.Replace(".", ",")));
             Tags.set_PreHeat_Temp_SP((double)Convert.ToDouble(PreHeat_Temp_Sp.Text.Replace(".", ",")));
             Tags.set_PreHeat_Time_sp((double)Convert.ToDouble(PreHeat_Time_Sp.Text.Replace(".", ",")));
-            //LSS.Add_to_LOG(User.Name, "Температура нагрева при ассистировании установлена: " + HeatAssist_temp_sp.Text);
-            //LSS.Add_to_LOG(User.Name, "Температура предварительного нагрева установлена: " + PreHeat_Temp_Sp.Text);
-            //LSS.Add_to_LOG(User.Name, "Время предварительного нагрева установлена: " + PreHeat_Time_Sp.Text);
-            //LSS.Add_to_LOG(User.Name, "Время нагрева при ассистировании установлена: " + HeatAssist_Time_Sp.Text);
+            LSS.Add_to_LOG(User.Name, "Температура нагрева при ассистировании установлена: " + HeatAssist_temp_sp.Text);
+            LSS.Add_to_LOG(User.Name, "Температура предварительного нагрева установлена: " + PreHeat_Temp_Sp.Text);
+            LSS.Add_to_LOG(User.Name, "Время предварительного нагрева установлена: " + PreHeat_Time_Sp.Text);
+            LSS.Add_to_LOG(User.Name, "Время нагрева при ассистировании установлена: " + HeatAssist_Time_Sp.Text);
 
         }
 
@@ -740,6 +758,15 @@ namespace KVANT_Scada
         {
             GUI.auth.auth_form a_f = new GUI.auth.auth_form(real_Tag_Entitys, this);
             a_f.ShowDialog();
+        }
+
+        private void Anod_I_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            char number =(char) e.Key;
+            if (!Char.IsDigit(number) && number != 8 && number != 44) // цифры, клавиша BackSpace и запятая
+            {
+                e.Handled = true;
+            }
         }
 
         private void PreHeat_Time_Sp_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -870,13 +897,13 @@ namespace KVANT_Scada
         {
             int a = 1;
             Tags.Tech_Cam_PRocess(a);
-            //LSS.Add_to_LOG(User.Name, "Старт Крионасоса");
+            LSS.Add_to_LOG(User.Name, "Старт Крионасоса");
         }
 
         private void Stage_1_Prepare_Cam_Click(object sender, RoutedEventArgs e)
         {
             Tags.Tech_Cam_PRocess(2);
-           // LSS.Add_to_LOG(User.Name, "Откачка камеры");
+            LSS.Add_to_LOG(User.Name, "Откачка камеры");
 
         }
     }

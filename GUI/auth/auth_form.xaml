@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KVANT_Scada.GUI.auth"
         mc:Ignorable="d"
-        Title="Авторизация" Height="311" Width="491">
+        Title="Авторизация" Height="311" Width="491" Topmost="True">
     <Grid Margin="10,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="login" HorizontalAlignment="Left" Height="50" Margin="215,75,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="200" TextAlignment="Center"/>
+        <TextBox x:Name="login" HorizontalAlignment="Left" Height="50" Margin="215,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TextAlignment="Center"/>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="130,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.659,-0.096" Height="26" Width="44"/>
 
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="130,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.659,-0.096" Height="26" Width="51"/>
         <Button Content="Авторизация" HorizontalAlignment="Left" Height="40" Margin="255,217,0,0" VerticalAlignment="Top" Width="138" Click="Button_Click"/>
         <PasswordBox x:Name="pass" HorizontalAlignment="Left" Margin="215,137,0,0" VerticalAlignment="Top" Width="201" Height="46"/>
-        <Button Content="Удалить БД" HorizontalAlignment="Left" Height="36" Margin="10,222,0,0" VerticalAlignment="Top" Width="118" Click="Button_Click_1"/>
-        <Button x:Name="create_root" Content="Создать пользователя" HorizontalAlignment="Left" Height="39" Margin="144,222,0,0" VerticalAlignment="Top" Width="89" Click="create_root_Click"/>
+        <Button Content="Удалить БД" HorizontalAlignment="Left" Height="36" Margin="10,222,0,0" VerticalAlignment="Top" Width="118" Click="Button_Click_1" IsEnabled="False" Visibility="Hidden"/>
+        <Button x:Name="create_root" Content="Создать пользователя" HorizontalAlignment="Left" Height="39" Margin="144,222,0,0" VerticalAlignment="Top" Width="89" Click="create_root_Click" IsEnabled="False" Visibility="Hidden"/>
 
     </Grid>
 </Window>

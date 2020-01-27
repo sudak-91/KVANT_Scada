@@ -29,17 +29,17 @@
             <Button x:Name="Ion_Command_Reset" Content="Сброс&#xD;&#xA;" HorizontalAlignment="Left" Height="44" Margin="14,111,0,-30" VerticalAlignment="Top" Width="107" Click="Ion_Command_Reset_Click" />
         </Grid>
         <Label Content="Управление РРГ" HorizontalAlignment="Left" Margin="418,13,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="K_RRG__1" HorizontalAlignment="Left" Height="24" Margin="460,50,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="K_RRG_2" HorizontalAlignment="Left" Height="24" Margin="460,86,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="K_RRG_3" HorizontalAlignment="Left" Height="24" Margin="460,119,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="K_RRG__1" HorizontalAlignment="Left" Height="24" Margin="460,50,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Width="120" KeyDown="K_RRG__1_KeyDown"/>
+        <TextBox x:Name="K_RRG_2" HorizontalAlignment="Left" Height="24" Margin="460,86,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Width="120" KeyDown="K_RRG__1_KeyDown"/>
+        <TextBox x:Name="K_RRG_3" HorizontalAlignment="Left" Height="24" Margin="460,119,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Width="120" KeyDown="K_RRG__1_KeyDown"/>
         <Label Content="Коэффициент РРГ 1" HorizontalAlignment="Left" Margin="337.583,50,0,0" VerticalAlignment="Top"/>
         <Label Content="Коэффициент РРГ 2" HorizontalAlignment="Left" Margin="337.583,84.04,0,0" VerticalAlignment="Top"/>
         <Label Content="Коэффициент РРГ 3" HorizontalAlignment="Left" Margin="337.583,117.04,0,0" VerticalAlignment="Top"/>
         <Button x:Name="PID_auto" Content="ПИД-управление&#xD;&#xA;РРГ" HorizontalAlignment="Left" Margin="468.001,328.078,0,0" VerticalAlignment="Top" Width="120" Height="43.21" Click="PID_auto_Click"/>
         <Button x:Name="Manual_RRG" Content="Ручное управление&#xD;&#xA;РРГ" HorizontalAlignment="Left" Height="41.333" Margin="713.346,331.613,0,0" VerticalAlignment="Top" Width="120" Click="Manual_RRG_Click"/>
-        <TextBox x:Name="RRG_SP" HorizontalAlignment="Left" Height="26.333" Margin="468.001,296.745,0,0" TextWrapping="Wrap" Text="0.0005" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="RRG_SP" HorizontalAlignment="Left" Height="26.333" Margin="468.001,296.745,0,0" TextWrapping="Wrap" Text="0.0005" VerticalAlignment="Top" Width="120" KeyDown="K_RRG__1_KeyDown"/>
         <Label Content="Уставка давления" HorizontalAlignment="Left" Margin="349.996,297.046,0,0" VerticalAlignment="Top" Height="26.032"/>
-        <TextBox x:Name="RRG_ManVal" HorizontalAlignment="Left" Height="23" Margin="713.346,303.613,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="RRG_ManVal" HorizontalAlignment="Left" Height="23" Margin="713.346,303.613,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Width="120" KeyDown="K_RRG__1_KeyDown"/>
         <Label Content="Ручной процент&#xD;&#xA; открытия" HorizontalAlignment="Left" Margin="608.486,292.745,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="FB_RRG_1" HorizontalAlignment="Left" Height="23" Margin="718.424,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Label Content="Открытие РРГ 1" HorizontalAlignment="Left" Margin="622.607,50,0,0" VerticalAlignment="Top"/>

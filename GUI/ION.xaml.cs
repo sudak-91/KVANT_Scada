@@ -28,6 +28,7 @@ namespace KVANT_Scada.GUI
         private SolidColorBrush on, off;
         private Log_Sub_System.Log_Sub_System Loger;
         private string name;
+       
 
 
         public ION(Installing_Tags Tags, Log_Sub_System.Log_Sub_System root,string sName)
@@ -81,19 +82,33 @@ namespace KVANT_Scada.GUI
         {
             
             Tag.set_K_RRG((Convert.ToDouble(K_RRG__1.Text.Replace(".",","))), (Convert.ToDouble(K_RRG_2.Text.Replace(".", ","))), (Convert.ToDouble(K_RRG_3.Text.Replace(".", ","))));
+            Loger.Add_to_LOG(name,"Kоэффициент РРГ 1 =" + K_RRG__1.Text);
+            Loger.Add_to_LOG(name, "Kоэффициент РРГ 2 =" + K_RRG_2.Text);
+            Loger.Add_to_LOG(name, "Kоэффициент РРГ 3 =" + K_RRG_3.Text);
         }
 
         private void PID_auto_Click(object sender, RoutedEventArgs e)
         {
             Tag.set_MODE_PID((double)3.0);
             Tag.set_SP_PID_RRG(Convert.ToDouble(RRG_SP.Text.Replace(".",",")));
+            Loger.Add_to_LOG(name, "Уставка по давление для ПИД-регулятора =" + RRG_SP.Text);
         }
 
         private void Manual_RRG_Click(object sender, RoutedEventArgs e)
         {
             Tag.set_MODE_PID((double)4.0);
             Tag.set_ManVal_PID_RRG(Convert.ToDouble(RRG_ManVal.Text.Replace(".",",")));
-           
+            Loger.Add_to_LOG(name, "Уставка открытия РРГ =" + RRG_ManVal.Text);
+
+        }
+
+        private void K_RRG__1_KeyDown(object sender, KeyEventArgs e)
+        {
+            char number = (char)e.Key;
+            if (!Char.IsDigit(number) && number != 8 && number != 44) // цифры, клавиша BackSpace и запятая
+            {
+                e.Handled = true;
+            }
         }
 
         public void Update_GUI(object sender, EventArgs e)
