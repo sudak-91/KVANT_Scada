@@ -90,8 +90,8 @@ namespace KVANT_Scada.UDT
             Shield_open = new udtCommandBit(plc, 38, 0, 2, real_Tag_Entitys, "Shield_Open");
             Shield_close = new udtCommandBit(plc, 38, 0, 3, real_Tag_Entitys, "Shield_Close");
             Driver_Run = new udtCommandBit(plc, 37, 8, 0, real_Tag_Entitys, "Driver_run");
-            Open_Door = new udtCommandBit(plc, 43,0,0,real_Tag_Entitys,"Open_Door");
-            Water_Crio = new udtCommandBit(plc, 43, 0, 1, real_Tag_Entitys, "Water_Crio");
+            Open_Door = new udtCommandBit(plc, 3,16,4,real_Tag_Entitys,"Open_Door");
+            Water_Crio = new udtCommandBit(plc, 4, 78, 0, real_Tag_Entitys, "Water_Crio");
             HH_pne = new udtCommandBit(plc, 43, 0, 2, real_Tag_Entitys, "HH_pne");
             LL_pne = new udtCommandBit(plc, 43, 0, 3, real_Tag_Entitys, "LL_pne");
             Crio_Power_Failure = new udtCommandBit(plc, 43, 0, 4, real_Tag_Entitys, "Crio_Power_Failure");
@@ -103,8 +103,12 @@ namespace KVANT_Scada.UDT
             Indexer_Power_Failure = new udtCommandBit(plc, 43, 1, 2, real_Tag_Entitys, "Indexer_Power_Failure");
             SSP_Power_Failure = new udtCommandBit(plc, 43, 1, 3, real_Tag_Entitys, "SSP_Power_Failure");
             Heater_Power_Failure = new udtCommandBit(plc, 43, 1, 4, real_Tag_Entitys, "Heater_Power_Failure");
-            ELI_Water_Failure = new udtCommandBit(plc, 43, 1, 5, real_Tag_Entitys, "ELI_Water_Failure");
+            ELI_Water_Failure = new udtCommandBit(plc, 4, 82, 0, real_Tag_Entitys, "ELI_Water_Failure");
             CRIO_Hight_Temp = new udtCommandBit(plc, 43, 1, 6, real_Tag_Entitys, "CRIO_Hight_Temp");
+            Pre_Heat_Done = new udtCommandBit(plc, 46, 28, 0, real_Tag_Entitys, "PreHeat_Done");
+            Heat_Assist_Done = new udtCommandBit(plc, 46, 28, 1, real_Tag_Entitys, "Heat_Assist_Done");
+            Start_Driver = new udtCommandBit(plc, 37, 2, 0, real_Tag_Entitys, "Driver_Start");
+            Driver_Remote_Control = new udtCommandBit(plc, 37, 2, 2, real_Tag_Entitys, "Driver_remote_control");
 
 
 
@@ -118,6 +122,22 @@ namespace KVANT_Scada.UDT
           
             Ion_SP = new udtIONWrite(plc, 20, 32, real_Tag_Entitys, "ION_Write");
             Ion = new udtION(plc, 20, 56, real_Tag_Entitys, "ION");
+        }
+        public void set_Driver_Remote_Control(bool value)
+        {
+            Driver_Remote_Control.Write(value);
+        }
+        public void set_Driver_Start(bool value)
+        {
+            Start_Driver.Write(value);
+        }
+        public bool get_Heat_Assist_Done()
+        {
+            return Heat_Assist_Done.value;
+        }
+        public bool get_PreHeat_Done()
+        {
+            return Pre_Heat_Done.value;
         }
         public bool get_CRIO_Hight_Temp()
         {
@@ -327,6 +347,8 @@ namespace KVANT_Scada.UDT
             Heater_Power_Failure.Read();
             ELI_Water_Failure.Read();
             CRIO_Hight_Temp.Read();
+            Pre_Heat_Done.Read();
+            Heat_Assist_Done.Read();
 
 
 

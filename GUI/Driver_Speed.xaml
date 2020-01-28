@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KVANT_Scada.GUI"
         mc:Ignorable="d"
-        Title="Driver_Speed" Height="136.856" Width="347.68" Topmost="True">
+        Title="Driver_Speed" Height="210.856" Width="347.68" Topmost="True">
     <Grid>
         <TextBox x:Name="txtDriverSpeed" HorizontalAlignment="Left" Height="27" Margin="192,27,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="110"/>
         <Label Content="Скорость" HorizontalAlignment="Left" Margin="53,26,0,0" VerticalAlignment="Top"/>
         <Button x:Name="DriverSpeedSave" Content="Сохранить" HorizontalAlignment="Left" Height="33" Margin="187,63,0,0" VerticalAlignment="Top" Width="120" Click="DriverSpeedSave_Click"/>
+        <Button x:Name="btnDriverStart" Content="Cтарт" HorizontalAlignment="Left" Height="34" Margin="42,75,0,0" VerticalAlignment="Top" Width="80" Click="btnDriverStart_Click"/>
+        <Button x:Name="btnDriverStop" Content="Cтоп" HorizontalAlignment="Left" Height="34" Margin="42,120,0,0" VerticalAlignment="Top" Width="80" Click="btnDriverStop_Click"/>
+        <Button x:Name="Remote_Control" Content="Восстановить связь" HorizontalAlignment="Left" Height="32" Margin="184,100,0,0" VerticalAlignment="Top" Width="126" IsDefault="True" Click="Remote_Control_Click"/>
+        <Button x:Name="Remote_Control_Rev" Content="Подтвердить связь" HorizontalAlignment="Left" Height="32" Margin="183,136,0,0" VerticalAlignment="Top" Width="126" IsDefault="True" Click="Remote_Control_Rev_Click"/>
 
     </Grid>
 </Window>

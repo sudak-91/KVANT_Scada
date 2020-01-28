@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using KVANT_Scada.Log_Sub_System;
+using KVANT_Scada.Data;
 
 namespace KVANT_Scada.GUI
 {
@@ -24,13 +26,20 @@ namespace KVANT_Scada.GUI
 
         private Installing_Tags Tag;
         private SolidColorBrush on, off;
-        public ION(Installing_Tags Tags)
+        private Log_Sub_System.Log_Sub_System Loger;
+        private string name;
+       
+
+
+        public ION(Installing_Tags Tags, Log_Sub_System.Log_Sub_System root,string sName)
         {
 
             InitializeComponent();
             on = new SolidColorBrush(Color.FromArgb(100, 0, 255, 0));
             off = new SolidColorBrush(Color.FromArgb(100, 255, 0, 0));
             Tag = Tags;
+            this.Loger = root;
+            name = sName;
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Interval = new System.TimeSpan(0, 0, 1);
             dispatcherTimer.Tick += new EventHandler(Update_GUI);
@@ -42,11 +51,14 @@ namespace KVANT_Scada.GUI
         private void Ion_Command_Start_Click(object sender, RoutedEventArgs e)
         {
             Tag.setIONManStart(true);
+            Loger.Add_to_LOG(name, "Запуск ИИ");
+
         }
 
         private void Ion_Command_Stop_Click(object sender, RoutedEventArgs e)
         {
             Tag.setIONManStop(true);
+            Loger.Add_to_LOG(name, "Остановка ИИ");
         }
 
         private void Ion_Command_Reset_Click(object sender, RoutedEventArgs e)
@@ -70,19 +82,33 @@ namespace KVANT_Scada.GUI
         {
             
             Tag.set_K_RRG((Convert.ToDouble(K_RRG__1.Text.Replace(".",","))), (Convert.ToDouble(K_RRG_2.Text.Replace(".", ","))), (Convert.ToDouble(K_RRG_3.Text.Replace(".", ","))));
+            Loger.Add_to_LOG(name,"Kоэффициент РРГ 1 =" + K_RRG__1.Text);
+            Loger.Add_to_LOG(name, "Kоэффициент РРГ 2 =" + K_RRG_2.Text);
+            Loger.Add_to_LOG(name, "Kоэффициент РРГ 3 =" + K_RRG_3.Text);
         }
 
         private void PID_auto_Click(object sender, RoutedEventArgs e)
         {
             Tag.set_MODE_PID((double)3.0);
             Tag.set_SP_PID_RRG(Convert.ToDouble(RRG_SP.Text.Replace(".",",")));
+            Loger.Add_to_LOG(name, "Уставка по давление для ПИД-регулятора =" + RRG_SP.Text);
         }
 
         private void Manual_RRG_Click(object sender, RoutedEventArgs e)
         {
             Tag.set_MODE_PID((double)4.0);
             Tag.set_ManVal_PID_RRG(Convert.ToDouble(RRG_ManVal.Text.Replace(".",",")));
-           
+            Loger.Add_to_LOG(name, "Уставка открытия РРГ =" + RRG_ManVal.Text);
+
+        }
+
+        private void K_RRG__1_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            MessageBox.Show(e.Text);
+            if (!System.Text.RegularExpressions.Regex.Match(e.Text.ToString(), @"[0-9]|\,").Success)
+            {
+                e.Handled = true;
+            }
         }
 
         public void Update_GUI(object sender, EventArgs e)

@@ -32,5 +32,30 @@ namespace KVANT_Scada.GUI
         {
             tags.set_Driver_Speed(Convert.ToDouble(txtDriverSpeed.Text.Replace(".", ",")));
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDriverStart_Click(object sender, RoutedEventArgs e)
+        {
+            tags.set_Driver_Start(true);
+        }
+
+        private void btnDriverStop_Click(object sender, RoutedEventArgs e)
+        {
+            tags.set_Driver_Start(false);
+        }
+
+        private void Remote_Control_Click(object sender, RoutedEventArgs e)
+        {
+            tags.set_Driver_Remote_Control(false);
+        }
+
+        private void Remote_Control_Rev_Click(object sender, RoutedEventArgs e)
+        {
+            tags.set_Driver_Remote_Control(true);
+        }
     }
 }

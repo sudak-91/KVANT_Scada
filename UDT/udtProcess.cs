@@ -47,7 +47,14 @@ namespace KVANT_Scada.UDT
         }
         public void Write(int value)
         {
-            PLC.Write(DataType.DataBlock,this.DB,this.DBB,value);
+            try
+            {
+                PLC.Write(DataType.DataBlock, this.DB, this.DBB, value);
+            }catch
+            {
+                MessageBox.Show("Write error");
+            }
+           
             //if (this.rte.process.Find(this.DB, this.DBB) == null)
             //{
             //    try

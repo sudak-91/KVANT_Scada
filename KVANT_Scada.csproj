@@ -108,10 +108,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.EntityFrameworkCore, Version=1.0.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.EntityFrameworkCore.1.0.3\lib\net451\Microsoft.EntityFrameworkCore.dll</HintPath>
@@ -160,6 +160,9 @@
     <Reference Include="MySql.Data.EntityFramework, Version=8.0.18.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>packages\MySql.Data.EntityFramework.8.0.18\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Remotion.Linq, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>packages\Remotion.Linq.2.1.1\lib\net45\Remotion.Linq.dll</HintPath>
     </Reference>
@@ -171,6 +174,12 @@
     </Reference>
     <Reference Include="SapientGuardian.MySql.Data, Version=6.9.8.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\SapientGuardian.MySql.Data.6.9.816\lib\netstandard1.3\SapientGuardian.MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Serenity.Core, Version=3.12.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Serenity.Core.3.12.2\lib\net45\Serenity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Serenity.Data, Version=3.12.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Serenity.Data.3.12.2\lib\net45\Serenity.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -219,7 +228,6 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
