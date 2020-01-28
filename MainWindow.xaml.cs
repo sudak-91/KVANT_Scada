@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using System.Linq;
-
+using System.Windows.Controls;
 
 namespace KVANT_Scada
 {
@@ -111,6 +111,8 @@ namespace KVANT_Scada
                     dispatcherTimer.Start();
                     Tags.set_Heat_Asssit(false);
                     Tags.set_Cam_Heat_Open(false);
+                    Tags.FVP_Auto_mode(true);
+                    Tags.FVP_remote(true);
 
                 }
            
@@ -636,7 +638,7 @@ namespace KVANT_Scada
 
         private void Anod_I_SP_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-           
+
 
         }
 
@@ -762,8 +764,22 @@ namespace KVANT_Scada
 
         private void Anod_I_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            char number =(char) e.Key;
-            if (!Char.IsDigit(number) && number != 8 && number != 44) // цифры, клавиша BackSpace и запятая
+            char number = (char)e.Key;
+            e.Handled = !(Char.IsDigit(number) || ((number == System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0]) && (DS_Count(((TextBox)sender).Text) < 1)));
+        }
+        
+
+        public int DS_Count(string s)
+        {
+            string substr = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0].ToString();
+            int count = (s.Length - s.Replace(substr, "").Length) / substr.Length;
+            return count;
+        }
+
+        private void Anod_I_SP_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+           
+            if (!System.Text.RegularExpressions.Regex.Match(e.Text.ToString(), @"[0-9]|\,").Success)
             {
                 e.Handled = true;
             }

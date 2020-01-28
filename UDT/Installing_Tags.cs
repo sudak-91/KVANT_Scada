@@ -107,6 +107,8 @@ namespace KVANT_Scada.UDT
             CRIO_Hight_Temp = new udtCommandBit(plc, 43, 1, 6, real_Tag_Entitys, "CRIO_Hight_Temp");
             Pre_Heat_Done = new udtCommandBit(plc, 46, 28, 0, real_Tag_Entitys, "PreHeat_Done");
             Heat_Assist_Done = new udtCommandBit(plc, 46, 28, 1, real_Tag_Entitys, "Heat_Assist_Done");
+            Start_Driver = new udtCommandBit(plc, 37, 2, 0, real_Tag_Entitys, "Driver_Start");
+            Driver_Remote_Control = new udtCommandBit(plc, 37, 2, 2, real_Tag_Entitys, "Driver_remote_control");
 
 
 
@@ -120,6 +122,14 @@ namespace KVANT_Scada.UDT
           
             Ion_SP = new udtIONWrite(plc, 20, 32, real_Tag_Entitys, "ION_Write");
             Ion = new udtION(plc, 20, 56, real_Tag_Entitys, "ION");
+        }
+        public void set_Driver_Remote_Control(bool value)
+        {
+            Driver_Remote_Control.Write(value);
+        }
+        public void set_Driver_Start(bool value)
+        {
+            Start_Driver.Write(value);
         }
         public bool get_Heat_Assist_Done()
         {

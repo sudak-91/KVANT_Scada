@@ -3,6 +3,7 @@ using Serenity.Data;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -89,6 +90,14 @@ namespace KVANT_Scada.GUI.auth
                 rte.users.Add(adm);
                 rte.SaveChanges();
             }
+
+        }
+
+
+
+        private void login_KeyDown(object sender, TextCompositionEventArgs e)
+        {
+           
 
         }
     }

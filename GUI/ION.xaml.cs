@@ -102,10 +102,10 @@ namespace KVANT_Scada.GUI
 
         }
 
-        private void K_RRG__1_KeyDown(object sender, KeyEventArgs e)
+        private void K_RRG__1_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            char number = (char)e.Key;
-            if (!Char.IsDigit(number) && number != 8 && number != 44) // цифры, клавиша BackSpace и запятая
+            MessageBox.Show(e.Text);
+            if (!System.Text.RegularExpressions.Regex.Match(e.Text.ToString(), @"[0-9]|\,").Success)
             {
                 e.Handled = true;
             }

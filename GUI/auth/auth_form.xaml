@@ -11,7 +11,7 @@
             <RowDefinition/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="login" HorizontalAlignment="Left" Height="50" Margin="215,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TextAlignment="Center"/>
+        <TextBox x:Name="login" HorizontalAlignment="Left" Height="50" Margin="215,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TextAlignment="Center" PreviewTextInput="login_KeyDown"/>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="130,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.659,-0.096" Height="26" Width="44"/>
 
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="130,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.659,-0.096" Height="26" Width="51"/>
